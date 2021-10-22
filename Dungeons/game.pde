@@ -1,12 +1,13 @@
 void game() {
   background(green);
-  
-  noFill();
-  strokeWeight(15);
+  line(0, 0, width, height);
+  line(0, height, width, 0);
+  fill(yellow);
+  strokeWeight(10);
   stroke(black);
-  rect(400, 400, 700, 700);
+  rect(400, 400, 650, 650);
   
-  secondButton = new Button("GAME", width/2, 100, 200, 50, blue, purple);
+  secondButton = new Button("GAME", width/2, 35, 200, 50, blue, purple);
   secondButton.show();
   myHero.show();
   myHero.act();
