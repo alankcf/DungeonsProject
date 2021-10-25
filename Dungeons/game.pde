@@ -3,7 +3,26 @@ void game() {
   background(green);
   line(0, 0, width, height);
   line(0, height, width, 0);
-   drawRoom();
+  
+  northRoom = map.get(myHero.roomX, myHero.roomY-1);
+  eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
+  southRoom = map.get(myHero.roomX, myHero.roomY+1);
+  westRoom = map.get(myHero.roomX - 1, myHero.roomY);
+  
+  noStroke();
+  fill(black);
+  if (northRoom != black) { //!= white (no show) == white( no show) != black show
+    ellipse(width/2, height * 0.1, 100, 100);
+  }
+  if (eastRoom != black) {
+    ellipse(width*0.9, height/2, 100, 100);
+  }
+  if (southRoom != black) {
+    ellipse(width/2, height * 0.9, 100, 100);
+  }
+  if (westRoom != black) {
+    ellipse(width*0.1, height/2, 100, 100);
+  }
   fill(yellow);
   strokeWeight(10);
   stroke(black);
@@ -38,23 +57,5 @@ void game() {
 
 void drawRoom() {
  
-  northRoom = map.get(myHero.roomX, myHero.roomY-1);
-  eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
-  southRoom = map.get(myHero.roomX, myHero.roomY+1);
-  westRoom = map.get(myHero.roomX - 1, myHero.roomY);
   
-  noStroke();
-  fill(black);
-  if (northRoom == #000000) {
-    ellipse(width/2, height * 0.1, 100, 100);
-  }
-  if (eastRoom == #000000) {
-    ellipse(width*0.9, height/2, 100, 100);
-  }
-  if (southRoom == #000000) {
-    ellipse(width/2, height * 0.9, 100, 100);
-  }
-  if (eastRoom == #000000) {
-    ellipse(width*0.1, height/2, 100, 100);
-  }
 }
