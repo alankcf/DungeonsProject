@@ -26,10 +26,6 @@ class Hero extends GameObject {
   void act() {
     super.act();
     
-    if (velocity.mag() > 5) {
-      velocity.setMag(5);
-    }
-    
     if (upkey == false) velocity.setMag(velocity.mag() *0);
     
     //if (location.y >= 100) {
@@ -44,5 +40,9 @@ class Hero extends GameObject {
     //if (location.x <= 700) {
       if (rightkey) velocity.x = 3;
     //} else location.x = 700;
+      
+      if (velocity.mag() > 3) {
+      velocity.setMag(3);
+    }
   }
 }

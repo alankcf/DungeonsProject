@@ -1,7 +1,9 @@
 void game() {
+ 
   background(green);
   line(0, 0, width, height);
   line(0, height, width, 0);
+   drawRoom();
   fill(yellow);
   strokeWeight(10);
   stroke(black);
@@ -29,5 +31,30 @@ void game() {
     } else {
       i++;
     }
+  }
+  image(map, 100, 100, 100, 100);
+  
+}
+
+void drawRoom() {
+ 
+  northRoom = map.get(myHero.roomX, myHero.roomY-1);
+  eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
+  southRoom = map.get(myHero.roomX, myHero.roomY+1);
+  westRoom = map.get(myHero.roomX - 1, myHero.roomY);
+  
+  noStroke();
+  fill(black);
+  if (northRoom == #000000) {
+    ellipse(width/2, height * 0.1, 100, 100);
+  }
+  if (eastRoom == #000000) {
+    ellipse(width*0.9, height/2, 100, 100);
+  }
+  if (southRoom == #000000) {
+    ellipse(width/2, height * 0.9, 100, 100);
+  }
+  if (eastRoom == #000000) {
+    ellipse(width*0.1, height/2, 100, 100);
   }
 }

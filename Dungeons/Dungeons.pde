@@ -6,6 +6,10 @@ ArrayList<GameObject> myObjects;
 boolean mouseReleased;
 boolean wasPressed;
 
+//Images
+PImage map;
+color northRoom, eastRoom, southRoom, westRoom;
+
 //font
 PFont font;
 
@@ -45,6 +49,7 @@ void setup() {
   size(800, 800);
   mode = INTRO;
   font = createFont("Raleway-Black.ttf", 2);
+  map = loadImage("Map.png");
   rectMode(CENTER);
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
   myGif = new AnimatedGif(10, "frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
