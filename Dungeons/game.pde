@@ -52,7 +52,7 @@ void game() {
     }
   }
   image(map, 100, 100, 100, 100);
-  
+ 
 }
 
 void drawRoom() {

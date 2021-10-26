@@ -21,6 +21,7 @@ class Hero extends GameObject {
     fill(purple);
     circle(0, 0, 50);
     popMatrix();
+    fill(pink);
   }
 
   void act() {
