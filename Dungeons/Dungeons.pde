@@ -16,7 +16,7 @@ PFont font;
 //colors
 color pink = #EAA7FF;
 color green = #A7FFB7;
-color white = #FFFFFF;
+color white = #ffffff;
 color brown = #896120;
 color red = #F70000;
 color orange = #FA8303;

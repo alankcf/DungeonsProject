@@ -11,16 +11,16 @@ void game() {
   
   noStroke();
   fill(black);
-  if (northRoom != black) { //!= white (no show) == white( no show) != black show
+  if (northRoom == black) { //== black (no show) != white (no show) == white( no show) != black show, tried new picture with correct colors
     ellipse(width/2, height * 0.1, 100, 100);
   }
-  if (eastRoom != black) {
+  if (eastRoom == black) {
     ellipse(width*0.9, height/2, 100, 100);
   }
-  if (southRoom != black) {
+  if (southRoom == black) {
     ellipse(width/2, height * 0.9, 100, 100);
   }
-  if (westRoom != black) {
+  if (westRoom == black) {
     ellipse(width*0.1, height/2, 100, 100);
   }
   fill(yellow);
