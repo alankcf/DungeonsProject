@@ -58,7 +58,7 @@ class Hero extends GameObject {
     //west exit
     if (westRoom == black && location.x == 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
       roomX--;
-      location = new PVector (width*0.1-10, height/2);
+      location = new PVector (700 - 3, height/2);
     }
     //south exit
     if (southRoom == black && location.y == 700 - 3 && location.x > height/2-50 && location.x <= height/2 + 50) {

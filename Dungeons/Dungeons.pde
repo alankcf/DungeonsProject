@@ -45,6 +45,14 @@ PImage [] gif;
 int numberOfFrames;
 int f;
 
+//darkness
+DarknessCell myCell;
+int cellx, celly, n;
+int [] x; //arrays
+int [] y; 
+ArrayList <DarknessCell> darkness;
+//float size = 100;
+
 void setup() {
   size(800, 800);
   mode = INTRO;
@@ -54,8 +62,29 @@ void setup() {
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
   myGif = new AnimatedGif(10, "frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
   myHero = new Hero();
-  myObjects = new ArrayList<GameObject>();
+  myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
+  
+  //cells
+  darkness = new ArrayList <DarknessCell>(10000);
+  n = 20;
+  x = new int [n];
+  y = new int [n];  
+  
+  cellx = 0;
+  celly = 0;
+  
+  int i = 0;
+  while (i < n) {
+    
+    x[i] = cellx;
+    y[i] = celly;
+    cellx = cellx + 50;
+    myCell = new DarknessCell(x[i], y[i], 20);
+    
+    i++;
+  }
+  
 }
 
 void draw() {

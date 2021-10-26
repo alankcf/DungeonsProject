@@ -52,7 +52,9 @@ void game() {
     }
   }
   image(map, 100, 100, 100, 100);
- 
+  
+  myCell.show();
+  myCell.act();
 }
 
 void drawRoom() {
