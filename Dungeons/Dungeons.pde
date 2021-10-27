@@ -47,11 +47,11 @@ int f;
 
 //darkness
 DarknessCell myCell;
-int cellx, celly, n;
-int [] x; //arrays
-int [] y; 
-ArrayList <DarknessCell> darkness;
-//float size = 100;
+int[] x;
+int[] y;
+int brickd;
+int num;
+int tempx, tempy;
 
 void setup() {
   size(800, 800);
@@ -65,25 +65,31 @@ void setup() {
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
   
-  //cells
-  darkness = new ArrayList <DarknessCell>(10000);
-  n = 20;
-  x = new int [n];
-  y = new int [n];  
-  
-  cellx = 0;
-  celly = 0;
-  
+  //darkness cells  
+  brickd = 20;
+  num = 2000;
+  x = new int[num]; //number of pages = n
+  y = new int [num];
+
+  //where it starts
+  tempx = 0;
+  tempy = 0;
+
+  //loop
   int i = 0;
-  while (i < n) {
-    
-    x[i] = cellx;
-    y[i] = celly;
-    cellx = cellx + 50;
-    myCell = new DarknessCell(x[i], y[i], 20);
-    
-    i++;
+  while (i < num) {
+    x[i] = tempx;
+    y[i] = tempy;
+    tempx = tempx + brickd;
+    i++; 
+
+    if (tempx > width) {
+      tempy = tempy + brickd;
+      tempx = 0;
+    }
   }
+   
+  
   
 }
 

@@ -34,27 +34,32 @@ void game() {
   myHero.act();
   if (secondButton.clicked) mode = GAMEOVER;
   
-   int i = 0;
-  while (i < myObjects.size()) {
-    GameObject myObj = myObjects.get(i);
+   int j = 0;
+  while (j < myObjects.size()) {
+    GameObject myObj = myObjects.get(j);
 
     myObj.show();
     myObj.act();
 
     if (myObj.lives == 0) {
-      myObjects.remove(i);
+      myObjects.remove(j);
     //} else if (shiplives == 0) {
     //  myObjects.remove(i);
     //} else if (count == 21) {
     //  myObjects.remove(i);
     } else {
-      i++;
+      j++;
     }
   }
   image(map, 100, 100, 100, 100);
-  
-  myCell.show();
-  myCell.act();
+  int i = 0;
+    while (i < num) {
+      myCell = new DarknessCell(x[i], y[i], brickd);
+      myCell.show();
+      myCell.act();
+      i++;
+    }
+ 
 }
 
 void drawRoom() {
