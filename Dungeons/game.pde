@@ -11,7 +11,7 @@ void game() {
   
   noStroke();
   fill(black);
-  if (northRoom == black) { //== black (no show) != white (no show) == white( no show) != black show, tried new picture with correct colors
+  if (northRoom == black) { 
     ellipse(width/2, height * 0.1, 100, 100);
   }
   if (eastRoom == black) {
@@ -34,7 +34,7 @@ void game() {
   myHero.act();
   if (secondButton.clicked) mode = GAMEOVER;
   
-   int j = 0;
+  int j = 0;
   while (j < myObjects.size()) {
     GameObject myObj = myObjects.get(j);
 
@@ -59,10 +59,7 @@ void game() {
       myCell.act();
       i++;
     }
- 
 }
 
-void drawRoom() {
- 
-  
+void drawRoom() {  
 }

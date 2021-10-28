@@ -66,8 +66,8 @@ void setup() {
   myObjects.add(myHero);
   
   //darkness cells  
-  brickd = 20;
-  num = 2000;
+  brickd = 10;
+  num = 7000;
   x = new int[num]; //number of pages = n
   y = new int [num];
 
