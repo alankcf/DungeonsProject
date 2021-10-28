@@ -87,16 +87,12 @@ void setup() {
       tempy = tempy + brickd;
       tempx = 0;
     }
-  }
-   
-  
-  
+  }  
 }
 
 void draw() {
   click();
-  
-  
+    
   //modes
    if (mode == INTRO) {
     intro();
@@ -110,6 +106,7 @@ void draw() {
     println("Error: mode = " + mode);
   }
 }
+
 void keyPressed() {
   if (keyCode == UP)    upkey    = true;
   if (keyCode == DOWN)  downkey  = true;

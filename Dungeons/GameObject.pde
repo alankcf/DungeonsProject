@@ -14,8 +14,7 @@ class GameObject {
    
   }
   
-  void act() {
-  
+  void act() {  
     location.add(velocity);
     
     if (location.x <= 100) location.x = 100 + 3;

@@ -29,22 +29,15 @@ class Hero extends GameObject {
     
     if (upkey == false) velocity.setMag(velocity.mag() *0);
     
-    //if (location.y >= 100) {
-      if (upkey) velocity.y = -3;
-    //} else location.y = 100;
-   // if (location.y <= 700) {
-      if (downkey) velocity.y = 3;
-   // } else location.y = 700;
-   // if (location.x >=100) {
-      if (leftkey) velocity.x = -3;
-    //} else location.x = 100;
-    //if (location.x <= 700) {
-      if (rightkey) velocity.x = 3;
-    //} else location.x = 700;
-      
-      if (velocity.mag() > 3) {
+    if (upkey) velocity.y = -3;
+    if (downkey) velocity.y = 3;
+    if (leftkey) velocity.x = -3;
+    if (rightkey) velocity.x = 3;
+   
+    if (velocity.mag() > 3) {
       velocity.setMag(3);
     }
+    
     //north exit
     if (northRoom == black && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
       roomY--;
@@ -64,6 +57,13 @@ class Hero extends GameObject {
     if (southRoom == black && location.y == 700 - 3 && location.x > height/2-50 && location.x <= height/2 + 50) {
       roomY++;
       location = new PVector (width/2, height*0.1+50);
+    }
+    
+    //reset Hero
+    if (mode == GAMEOVER) {
+      roomX = 1;
+      roomY = 1; 
+      location = new PVector(width/2, height/2);
     }
   }
 }

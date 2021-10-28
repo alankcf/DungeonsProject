@@ -1,6 +1,3 @@
-//2 arraylist of ceels
-// 3 loop to animate color
-
 class DarknessCell {
   float opacity;
   float x, y, size;
