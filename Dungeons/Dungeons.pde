@@ -1,3 +1,7 @@
+//Alan Fung
+//Dungeons Project
+//November 2021
+
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
 Hero myHero;
