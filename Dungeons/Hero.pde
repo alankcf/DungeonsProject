@@ -3,6 +3,7 @@ class Hero extends GameObject {
   PVector direction;
   float speed;
   int roomX, roomY;
+  Weapon myWeapon;
 
   Hero() {
     lives = 1;
@@ -12,6 +13,7 @@ class Hero extends GameObject {
     speed = 5;
     roomX = 1;
     roomY = 1;
+    myWeapon = new Weapon();
   }
 
   void show() {

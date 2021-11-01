@@ -51,7 +51,8 @@ void game() {
       j++;
     }
   }
-  image(map, 100, 100, 100, 100);
+  //image(map, 100, 100, 100, 100);
+  //darkness
   int i = 0;
     while (i < num) {
       myCell = new DarknessCell(x[i], y[i], brickd);
@@ -59,6 +60,26 @@ void game() {
       myCell.act();
       i++;
     }
+  
+  //minimap
+  int x = 0;
+  int y = 0;
+  float size = 10;
+  while (y < map.height) {
+    color c = map.get(x, y);
+    //x += size;
+    fill(c, 150);
+    square(x*10 + 50, y*10 + 50, size);
+    x = x + 1;
+    
+    if  (x >= map.width) {
+      x = 0;
+      y = y + 1;
+    }
+  }
+  
+  fill(purple);
+  square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
 }
 
 void drawRoom() {  
