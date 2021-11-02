@@ -41,12 +41,12 @@ class Hero extends GameObject {
     if (upkey) velocity.y = -3;
     if (downkey) velocity.y = 3;
     if (leftkey) {
-      direction.rotate(-radians(5));
+      //direction.rotate(-radians(5));
       velocity.x = -3;
     }
     if (rightkey) {
       velocity.x = 3;
-      direction.rotate(radians(5));
+      //direction.rotate(radians(5));
     }
     
     myWeapon.update();

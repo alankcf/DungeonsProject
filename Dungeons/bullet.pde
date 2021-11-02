@@ -10,7 +10,7 @@ class Bullet extends GameObject {
     velocity.setMag(10);
     size = 10;
     c = white;
-    timer = 40;
+    timer = 60;
   }
   
   Bullet(PVector vel, color co, int si) {
@@ -19,7 +19,7 @@ class Bullet extends GameObject {
    velocity = vel;
    size = si;
    c = co;
-   timer = 40;
+   timer = 60;
   }
   
   void show() {
@@ -33,7 +33,7 @@ class Bullet extends GameObject {
     location.add(velocity);
     timer--;
     
-    if (timer <=0) lives = 0;
+    if (timer <= 0) lives = 0;
     
     if (location.x <= 100) {
       myObjects.add(new Particle(location.x, location.y));
