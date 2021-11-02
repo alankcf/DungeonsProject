@@ -3,6 +3,7 @@ class Hero extends GameObject {
   PVector direction;
   float speed;
   int roomX, roomY;
+  int threshold, shotTimer;
   Weapon myWeapon;
 
   Hero() {
@@ -14,6 +15,8 @@ class Hero extends GameObject {
     roomX = 1;
     roomY = 1;
     myWeapon = new Weapon();
+    threshold = 20;
+    shotTimer = 0;
   }
 
   void show() {
@@ -21,7 +24,9 @@ class Hero extends GameObject {
     translate(location.x, location.y);
     rotate(direction.heading());
     fill(purple);
+    //rect(0, 0, 50, 50);
     circle(0, 0, 50);
+    //triangle(-25, -12.5, -25, 12.5, 25, 0);
     popMatrix();
     fill(pink);
   }
@@ -29,15 +34,28 @@ class Hero extends GameObject {
   void act() {
     super.act();
     
+    shotTimer ++;
+    
     if (upkey == false) velocity.setMag(velocity.mag() *0);
     
     if (upkey) velocity.y = -3;
     if (downkey) velocity.y = 3;
-    if (leftkey) velocity.x = -3;
-    if (rightkey) velocity.x = 3;
-   
+    if (leftkey) {
+      direction.rotate(-radians(5));
+      velocity.x = -3;
+    }
+    if (rightkey) {
+      velocity.x = 3;
+      direction.rotate(radians(5));
+    }
+    
+    myWeapon.update();
+    
+    if (spacekey) {
+      myWeapon.shoot();
+    }
     if (velocity.mag() > 3) {
-      velocity.setMag(3);
+      velocity.setMag(3);  
     }
     
     //north exit

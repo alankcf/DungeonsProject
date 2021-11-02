@@ -20,12 +20,12 @@ class Weapon {
    shotTimer++; 
   }
   
-  void shoot() {
-   if (shotTimer >= threshold) {
+  void shoot() {  
+    if (shotTimer >= threshold) {
      //using the mouse to aim
      PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
      aimVector.setMag(bulletSpeed); //speed of bullet
-     myObjects.add(new Bullet());
+     myObjects.add(new Bullet(aimVector, white, 10));
      shotTimer = 0;
    }
   }

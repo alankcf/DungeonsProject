@@ -1,6 +1,6 @@
 void game() {
  
-  background(green);
+  background(darkblue);
   line(0, 0, width, height);
   line(0, height, width, 0);
   
