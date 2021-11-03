@@ -2,6 +2,10 @@
 //Dungeons Project
 //November 2021
 
+//Things to add for Criteria (Two Slots)
+//1. Freeze or slow down thing
+//2. Immune to damage for a set amound of time
+
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
 Hero myHero;

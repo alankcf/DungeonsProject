@@ -15,6 +15,9 @@ class Hero extends GameObject {
     roomX = 1;
     roomY = 1;
     myWeapon = new Weapon();
+    //Weapon [] myGuns = new Weapon[10];
+    //myGuns[1] = new Weapon();
+    //myGuns[2] = new SniperRifle();
     threshold = 20;
     shotTimer = 0;
   }
@@ -24,9 +27,7 @@ class Hero extends GameObject {
     translate(location.x, location.y);
     rotate(direction.heading());
     fill(purple);
-    //rect(0, 0, 50, 50);
     circle(0, 0, 50);
-    //triangle(-25, -12.5, -25, 12.5, 25, 0);
     popMatrix();
     fill(pink);
   }
@@ -53,6 +54,11 @@ class Hero extends GameObject {
     
     if (spacekey) {
       myWeapon.shoot();
+      //int i = 0;
+      //while (i < 10) {
+      //  myWeapon[i].shoot();
+      //  i++;
+      //}
     }
     if (velocity.mag() > 3) {
       velocity.setMag(3);  

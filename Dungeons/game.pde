@@ -9,7 +9,8 @@ void game() {
   southRoom = map.get(myHero.roomX, myHero.roomY+1);
   westRoom = map.get(myHero.roomX - 1, myHero.roomY);
   
-  noStroke();
+  strokeWeight(5);
+  stroke(yellow);
   fill(black);
   if (northRoom == black) { 
     ellipse(width/2, height * 0.1, 100, 100);
@@ -23,7 +24,7 @@ void game() {
   if (westRoom == black) {
     ellipse(width*0.1, height/2, 100, 100);
   }
-  fill(yellow);
+  fill(green);
   strokeWeight(10);
   stroke(black);
   rect(400, 400, 650, 650);
