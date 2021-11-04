@@ -31,8 +31,6 @@ void game() {
   
   secondButton = new Button("GAME", width/2, 35, 200, 50, blue, purple);
   secondButton.show();
-  myHero.show();
-  myHero.act();
   if (secondButton.clicked) mode = GAMEOVER;
   
   int j = 0;
