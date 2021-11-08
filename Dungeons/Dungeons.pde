@@ -72,6 +72,7 @@ void setup() {
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
+  myObjects.add(new Enemy());
   
   //darkness cells  
   brickd = 10;

@@ -36,19 +36,20 @@ void game() {
   int j = 0;
   while (j < myObjects.size()) {
     GameObject myObj = myObjects.get(j);
-
-    myObj.show();
-    myObj.act();
-
-    if (myObj.lives == 0) {
-      myObjects.remove(j);
-    //} else if (shiplives == 0) {
-    //  myObjects.remove(i);
-    //} else if (count == 21) {
-    //  myObjects.remove(i);
-    } else {
-      j++;
+    
+    if (myObj.roomX == myHero.roomX && myObj.roomY ==myHero.roomY) {
+      myObj.show();
+      myObj.act();
+      if (myObj.lives <= 0) {
+        myObjects.remove(j);
+        j--;
+      //} else if (shiplives == 0) {
+      //  myObjects.remove(i);
+      //} else if (count == 21) {
+      //  myObjects.remove(i);
+      }  
     }
+    j++;
   }
   //image(map, 100, 100, 100, 100);
   //darkness

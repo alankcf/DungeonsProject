@@ -20,6 +20,8 @@ class Bullet extends GameObject {
    size = si;
    c = co;
    timer = 60;
+   roomX = myHero.roomX;
+   roomY = myHero.roomY;
   }
   
   void show() {

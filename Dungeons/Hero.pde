@@ -2,7 +2,6 @@ class Hero extends GameObject {
 
   PVector direction;
   float speed;
-  int roomX, roomY;
   int threshold, shotTimer;
   Weapon myWeapon;
   Weapon [] myGuns;
@@ -21,10 +20,13 @@ class Hero extends GameObject {
     myGuns = new Weapon[10];
     myGuns[0] = new Weapon();
     myGuns[1] = new SniperRifle();
+    myGuns[2] = new Machine();
+    myGuns[3] = new ShotGun();
     threshold = 20;
     shotTimer = 0;
     //currentGun = 0;
     clicked = false;
+    size = 50;
   }
 
   void show() {
@@ -32,14 +34,17 @@ class Hero extends GameObject {
     translate(location.x, location.y);
     rotate(direction.heading());
     fill(purple);
-    circle(0, 0, 50);
+    circle(0, 0, size);
     popMatrix();
     fill(pink);
   }
 
   void act() {
     super.act();
-
+    
+    fill(white);
+    text(currentGun, 700, 100);
+    
     shotTimer ++;
 
     if (upkey == false) velocity.setMag(velocity.mag() *0);
@@ -63,7 +68,7 @@ class Hero extends GameObject {
     }
 
     if (clicked == true) currentGun++;
-    if (currentGun == 2 && clicked == true) currentGun = 0;
+    if (currentGun == 4 && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
     if (spacekey) {

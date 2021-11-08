@@ -5,6 +5,7 @@ class GameObject {
   PVector location;
   PVector velocity;
   int size;
+  int roomX, roomY;
   
   GameObject() {
     
