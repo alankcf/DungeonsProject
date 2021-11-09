@@ -23,7 +23,7 @@ class Bullet extends GameObject {
    roomX = myHero.roomX;
    roomY = myHero.roomY;
   }
-  
+
   void show() {
     stroke(black);
     fill(c);

@@ -9,6 +9,15 @@ class Enemy extends GameObject {
     size = 30;
   }
   
+  Enemy(int hp, int s, int x, int y) {
+    location = new PVector(int (random(0, width)), int (random(0, height)));
+    velocity = new PVector(0,0);
+    lives = hp;
+    size = s;
+    roomX = x;
+    roomY = y;
+  }
+  
   void show() {
     if (roomX == myHero.roomX && roomY == myHero.roomY) {
       stroke(black);

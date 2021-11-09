@@ -5,6 +5,8 @@
 //Things to add for Criteria (Two Slots)
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
+//Immunity
+//Hero damage
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
@@ -67,12 +69,16 @@ void setup() {
   font = createFont("Raleway-Black.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
+  
+  //objects
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
   myGif = new AnimatedGif(10, "frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
   myObjects.add(new Enemy());
+  myObjects.add(new Follower(1, 2));
+  myObjects.add(new Follower(2, 1));
   
   //darkness cells  
   brickd = 10;
