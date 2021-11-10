@@ -37,7 +37,7 @@ void game() {
   while (j < myObjects.size()) {
     GameObject myObj = myObjects.get(j);
     
-    if (myObj.roomX == myHero.roomX && myObj.roomY ==myHero.roomY) {
+    if (myObj.roomX == myHero.roomX && myObj.roomY == myHero.roomY) {
       myObj.show();
       myObj.act();
       if (myObj.lives <= 0) {

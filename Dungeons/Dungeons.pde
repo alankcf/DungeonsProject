@@ -7,6 +7,7 @@
 //2. Immune to damage for a set amound of time
 //Immunity
 //Hero damage
+//different enemies
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
@@ -77,8 +78,9 @@ void setup() {
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
   myObjects.add(new Enemy());
-  myObjects.add(new Follower(1, 2));
-  myObjects.add(new Follower(2, 1));
+  myObjects.add(new Follower(1, 2, random(100, 700), random(100, 700)));
+  myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
+  myObjects.add(new shootFollower(3, 1));
   
   //darkness cells  
   brickd = 10;
