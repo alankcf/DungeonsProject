@@ -2,6 +2,7 @@ class Bullet extends GameObject {
   
   int c;
   int timer;
+  PVector direction;
   
   Bullet() {
     lives = 1;
@@ -11,6 +12,18 @@ class Bullet extends GameObject {
     size = 10;
     c = white;
     timer = 60;
+  }
+  
+  Bullet(float x, float y, PVector vel, color co, int si) {
+   location = new PVector(x, y);
+   lives = 1;
+   velocity = vel;
+   size = si;
+   c = co;
+   timer = 60;
+   roomX = myHero.roomX;
+   roomY = myHero.roomY;
+   
   }
   
   Bullet(PVector vel, color co, int si) {

@@ -8,6 +8,7 @@
 //Immunity
 //Hero damage
 //different enemies
+//Why enemy bullet no work
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
@@ -63,6 +64,8 @@ int[] y;
 int brickd;
 int num;
 int tempx, tempy;
+
+int immune;
 
 void setup() {
   size(800, 800);

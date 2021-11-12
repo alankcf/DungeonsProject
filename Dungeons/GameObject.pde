@@ -22,5 +22,11 @@ class GameObject {
     if (location.x >= 700) location.x = 700 - 3;
     if (location.y <= 100) location.y = 100 + 3;
     if (location.y >= 700) location.y = 700 - 3;
+    
+    if (mode == GAMEOVER) {
+      roomX = 1;
+      roomY = 1;
+      //myHero.lives = 500;
+    }
   }
 }

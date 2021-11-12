@@ -43,8 +43,8 @@ void game() {
       if (myObj.lives <= 0) {
         myObjects.remove(j);
         j--;
-      //} else if (shiplives == 0) {
-      //  myObjects.remove(i);
+      //} else if (myHero.lives <= 0) {
+      //  myObjects.remove(j);
       //} else if (count == 21) {
       //  myObjects.remove(i);
       }  
@@ -80,6 +80,9 @@ void game() {
   
   fill(purple);
   square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
+  
+  fill(darkred);
+  rect(200, 750, myHero.lives/4, 30);
 }
 
 void drawRoom() {  

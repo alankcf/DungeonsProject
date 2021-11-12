@@ -9,13 +9,14 @@ class Hero extends GameObject {
   boolean clicked;
 
   Hero() {
-    lives = 1;
+    lives = 500;
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0);
     direction = new PVector(0, -0.1);
     speed = 5;
     roomX = 1;
     roomY = 1;
+    immune = 0;
     myWeapon = new Weapon();
     myGuns = new Weapon[10];
     myGuns[0] = new Weapon();
@@ -33,16 +34,25 @@ class Hero extends GameObject {
     pushMatrix();
     translate(location.x, location.y);
     rotate(direction.heading());
+    strokeWeight(10);
+    if (immune >= 100) stroke(white);
+    if (immune < 100) stroke(yellow);
     fill(purple);
     circle(0, 0, size);
+    textSize(10);
     popMatrix();
+    fill(black);
+    text(lives, location.x, location.y);
     fill(pink);
   }
 
   void act() {
     super.act();
+    //print(myHero.lives);
+    immune++;
     
-    fill(white);
+    fill(grey);
+    textSize(20);
     text(currentGun, 700, 100);
     
     shotTimer ++;
@@ -106,10 +116,12 @@ class Hero extends GameObject {
     }
 
     //reset Hero
+    if (myHero.lives <= 0) mode = GAMEOVER;
     if (mode == GAMEOVER) {
       roomX = 1;
       roomY = 1; 
       location = new PVector(width/2, height/2);
+      
     }
   }
 }
