@@ -9,7 +9,9 @@ class Particle extends GameObject {
     location = new PVector (x, y);
     velocity = new PVector (0,0.1);
     velocity.rotate(PI+random(-2, 2)); //180 degrees
-    velocity.setMag(1); 
+    velocity.setMag(1);
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
   }
   
   //override

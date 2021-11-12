@@ -47,8 +47,8 @@ class Follower extends Enemy {
     if (shotTimer >= threshold) {
      //using the mouse to aim
      PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
-     aimVector.setMag(5); //speed of bullet
-     myObjects.add(new Bullet(location.x, location.y, aimVector, blue, 10));
+     aimVector.setMag(5); //instead of using bullet speed use a set number
+     myObjects.add(new Bullet(location.x, location.y, aimVector, purple, 10)); //orgin, where to go, color, size
      shotTimer = 0;
    }
   }

@@ -123,5 +123,19 @@ class Hero extends GameObject {
       location = new PVector(width/2, height/2);
       
     }
+    
+    //int i = 0;
+    //while (i < myObjects.size()) {
+    //  GameObject obj = myObjects.get(i);
+    //  if (obj instanceof Bullet) { 
+    //    float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+    //    if (d <= size/2 + obj.size/2) {
+    //      lives = lives - 1;
+    //      obj.lives = 0;
+    //    }
+    //  }
+      
+    //  i++;
+    //}
   }
 }

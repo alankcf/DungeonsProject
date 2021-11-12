@@ -36,7 +36,7 @@ class Enemy extends GameObject {
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
-      if (obj instanceof Bullet) {
+      if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing
         float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (d <= size/2 + obj.size/2) {
           lives = lives - int(obj.velocity.mag());

@@ -5,10 +5,9 @@
 //Things to add for Criteria (Two Slots)
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
-//Immunity
+//Flamethrower
 //Hero damage
 //different enemies
-//Why enemy bullet no work
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;

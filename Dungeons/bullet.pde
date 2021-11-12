@@ -3,6 +3,7 @@ class Bullet extends GameObject {
   int c;
   int timer;
   PVector direction;
+  boolean good;
   
   Bullet() {
     lives = 1;
@@ -12,6 +13,7 @@ class Bullet extends GameObject {
     size = 10;
     c = white;
     timer = 60;
+    good = true;
   }
   
   Bullet(float x, float y, PVector vel, color co, int si) {
@@ -23,7 +25,7 @@ class Bullet extends GameObject {
    timer = 60;
    roomX = myHero.roomX;
    roomY = myHero.roomY;
-   
+   good = false;
   }
   
   Bullet(PVector vel, color co, int si) {
@@ -35,9 +37,11 @@ class Bullet extends GameObject {
    timer = 60;
    roomX = myHero.roomX;
    roomY = myHero.roomY;
+   good = true;
   }
 
   void show() {
+    strokeWeight(5);
     stroke(black);
     fill(c);
     ellipse(location.x, location.y, size, size);
@@ -51,9 +55,15 @@ class Bullet extends GameObject {
     if (timer <= 0) lives = 0;
     
     if (location.x <= 100) {
-      myObjects.add(new Particle(location.x, location.y));
-      myObjects.add(new Particle(location.x, location.y));
-      myObjects.add(new Particle(location.x, location.y));
+      int i = 0;
+      if (i < 20) {
+        myObjects.add(new Particle(location.x, location.y));
+        i++;
+      } 
+      
+      //myObjects.add(new Particle(location.x, location.y));
+      //myObjects.add(new Particle(location.x, location.y));
+      //myObjects.add(new Particle(location.x, location.y));
       lives = 0;
     }
     if (location.x >= 700) {
