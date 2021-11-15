@@ -23,6 +23,7 @@ class Hero extends GameObject {
     myGuns[1] = new SniperRifle();
     myGuns[2] = new Machine();
     myGuns[3] = new ShotGun();
+    myGuns[4] = new Flamethrower();
     threshold = 20;
     shotTimer = 0;
     //currentGun = 0;
@@ -78,7 +79,7 @@ class Hero extends GameObject {
     }
 
     if (clicked == true) currentGun++;
-    if (currentGun == 4 && clicked == true) currentGun = 0;
+    if (currentGun == 5 && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
     if (spacekey) {

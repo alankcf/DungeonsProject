@@ -6,8 +6,6 @@
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
 //Flamethrower
-//Hero damage
-//different enemies
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
@@ -28,7 +26,7 @@ PFont font;
 color pink = #EAA7FF;
 color green = #A7FFB7;
 color white = #ffffff;
-color brown = #896120;
+color brown = #FC7F00;
 color red = #F70000;
 color orange = #FA8303;
 color blue = #03ADFA;
@@ -83,6 +81,7 @@ void setup() {
   myObjects.add(new Follower(1, 2, random(100, 700), random(100, 700)));
   myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
   myObjects.add(new shootFollower(3, 1));
+  myObjects.add(new Turret(1, 3, width/2, height/2));
   
   //darkness cells  
   brickd = 10;

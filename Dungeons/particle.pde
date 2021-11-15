@@ -4,11 +4,11 @@ class Particle extends GameObject {
   
   Particle(float x, float y) {
     lives = 1;
-    size = int (random(5, 10)); 
+    size = int (random(3, 7)); 
     t = int(random(200, 255)); //255 = solid
     location = new PVector (x, y);
     velocity = new PVector (0,0.1);
-    velocity.rotate(PI+random(-2, 2)); //180 degrees
+    velocity.rotate(PI+random(-3, 3)); //180 degrees
     velocity.setMag(1);
     roomX = myHero.roomX;
     roomY = myHero.roomY;
@@ -22,8 +22,8 @@ class Particle extends GameObject {
   }
   
   void act () {
-    //super.act();
-    location.add(velocity);
+    super.act();
+    //location.add(velocity);
     t = t - 7;   
     if (t <= 0) lives = 0;
   }

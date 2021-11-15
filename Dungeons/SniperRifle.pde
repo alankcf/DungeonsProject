@@ -1,7 +1,7 @@
 class SniperRifle extends Weapon {
   
   SniperRifle() {
-    super(100, 20);//threshold, speed
+    super(80, 20);//threshold, speed
   }
 }
 
@@ -29,5 +29,60 @@ class ShotGun extends Weapon {
       }
       
     }
+  }
+}
+class Flamethrower extends Weapon {
+  
+  Flamethrower() {
+    super(7, 10);
+  }
+  
+  void shoot() {
+    if (shotTimer >= threshold) {
+     //using the mouse to aim
+     //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
+     //aimVector.setMag(bulletSpeed); //speed of bullet
+     int i = 0;
+      while (i < 30) {
+        myObjects.add(new Fire());
+        i++;
+      } 
+     shotTimer = 0;
+   }
+  }
+}
+class Fire extends GameObject {
+  
+  int t; //transparancy
+  PVector nudge;  
+
+  Fire() {
+    lives = 1;
+    size = int (random(5, 10)); //try random
+    t = int(random(200, 255)); //255 = solid
+    location = myHero.location.copy();
+    //nudge = myHero.direction.copy();
+    //nudge.rotate (PI);
+    //nudge.setMag(35);
+    //location.add(nudge);
+    //velocity = vel;
+    velocity = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
+    velocity.rotate(random(-0.3, 0.3)); //180 degrees
+    velocity.setMag(random(4, 7)); //random number?
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
+  }
+
+  void show () {
+    noStroke();
+    fill(orange, t);
+    circle(location.x, location.y, size);
+  }
+
+  void act () {
+    super.act();
+    t = t - 10;
+
+    if (t <= 0) lives = 0;
   }
 }
