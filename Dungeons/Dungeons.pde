@@ -7,6 +7,30 @@
 //2. Immune to damage for a set amound of time
 //Flamethrower
 
+//Game Settings
+int ENEMYHP = 100;
+
+int FOLLOWER_SIZE = 50;
+
+int SHOOTFOLLOWER_HP = 100;
+int SHOOTFOLLOWER_SIZE = 50;
+
+int TURRET_HP = 100;
+int TURRET_SIZE = 50;
+int TURRET_BULLETSIZE = 10;
+
+int SNIPER_THRESHOLD = 80;
+int SNIPER_SPEED = 20;
+
+int MACHINEGUN_THRESHOLD = 7;
+int MACHINEGUN_SPEED = 10;
+
+int SHOTGUN_THRESHOLD = 100;
+int SHOTGUN_SPEED = 5;
+
+int FLAMETHROWER_THRESHOLD = 7;
+int FLAMETHROWER_SPEED = 10;
+
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif;
 Hero myHero;
@@ -62,6 +86,7 @@ int brickd;
 int num;
 int tempx, tempy;
 
+//immunity
 int immune;
 
 void setup() {

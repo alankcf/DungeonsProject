@@ -4,7 +4,7 @@ class Follower extends Enemy {
   int shotTimer, threshold;
   
   Follower(int x, int y, float orginx, float orginy) {
-    super(100, 50, x, y);
+    super(ENEMYHP, FOLLOWER_SIZE, x, y);
     location = new PVector(orginx, orginy);
     timer = 0;
     shotTimer = 0;
@@ -13,12 +13,12 @@ class Follower extends Enemy {
   
   void show() {
     stroke(black);
-      strokeWeight(2);
-      fill(blue);
-      ellipse(location.x, location.y, size, size);
-      fill(black);
-      textSize(10);
-      text(lives, location.x, location.y);
+    strokeWeight(2);
+    fill(blue);
+    ellipse(location.x, location.y, size, size);
+    fill(black);
+    textSize(10);
+    text(lives, location.x, location.y);
   }
   
   void act() {
@@ -59,17 +59,17 @@ class shootFollower extends Enemy {
   int release;
   
   shootFollower(int x, int y) {
-    super(100, 50, x, y);
+    super(SHOOTFOLLOWER_HP, SHOOTFOLLOWER_SIZE, x, y);
   }
   
   void show() {
     stroke(black);
-      strokeWeight(2);
-      fill(yellow);
-      ellipse(location.x, location.y, size, size);
-      fill(black);
-      textSize(10);
-      text(lives, location.x, location.y);
+    strokeWeight(2);
+    fill(yellow);
+    ellipse(location.x, location.y, size, size);
+    fill(black);
+    textSize(10);
+    text(lives, location.x, location.y);
   }
   
   void act() {
@@ -94,7 +94,7 @@ class Turret extends Enemy {
   int shotTimer, threshold;
   
   Turret(int x, int y, float orginx, float orginy) {
-    super(100, 50, x, y);
+    super(TURRET_HP, TURRET_SIZE, x, y);
     location = new PVector(orginx, orginy);
     size = 90;
     shotTimer = 0;
@@ -110,8 +110,7 @@ class Turret extends Enemy {
     textSize(10);
     text(lives, location.x, location.y);
   }
-  
-  
+   
   void act() {
     shotTimer++;
     
@@ -119,8 +118,8 @@ class Turret extends Enemy {
      //using the mouse to aim
      PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
      aimVector.setMag(5); //instead of using bullet speed use a set number
-     myObjects.add(new Bullet(location.x, location.y, aimVector, purple, 10)); //orgin, where to go, color, size
+     myObjects.add(new Bullet(location.x, location.y, aimVector, purple, TURRET_BULLETSIZE)); //orgin, where to go, color, size
      shotTimer = 0;
-   }
+     }
   }
 }

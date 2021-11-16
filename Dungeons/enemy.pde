@@ -46,5 +46,18 @@ class Enemy extends GameObject {
       
       i++;
     }
+    int j = 0;
+    while (j < myObjects.size()) {
+      GameObject obj = myObjects.get(j);
+      if (obj instanceof Fire) { //downsizing
+        float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+        if (d <= size/2 + obj.size/2) {
+          lives = lives - 1;
+          obj.lives = 0;
+        }
+      }
+      
+      j++;
+    }
   }
 }

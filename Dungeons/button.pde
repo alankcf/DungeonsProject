@@ -25,6 +25,7 @@ void show() {
   if (mouseX > x - w/2 && mouseX < x + w/2 && mouseY > y - h/2 && mouseY < y + h/2) {
     fill(highlight);
   } else fill (normal);
+  
   rect(x, y, w, h, 30);
   
   if (mouseX > x - w/2 && mouseX < x + w/2 && mouseY > y - h/2 && mouseY < y + h/2) {

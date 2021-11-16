@@ -1,21 +1,21 @@
 class SniperRifle extends Weapon {
   
   SniperRifle() {
-    super(80, 20);//threshold, speed
+    super(SNIPER_THRESHOLD, SNIPER_SPEED);//threshold, speed
   }
 }
 
 class Machine extends Weapon {
   
   Machine() {
-    super(7, 10);
+    super(MACHINEGUN_THRESHOLD, MACHINEGUN_SPEED);
   }
 }
 
 class ShotGun extends Weapon {
   
   ShotGun() {
-    super(100, 5);
+    super(SHOTGUN_THRESHOLD, SHOTGUN_SPEED);
   }
   
   void shoot() {
@@ -34,7 +34,7 @@ class ShotGun extends Weapon {
 class Flamethrower extends Weapon {
   
   Flamethrower() {
-    super(7, 10);
+    super(FLAMETHROWER_THRESHOLD, FLAMETHROWER_SPEED);
   }
   
   void shoot() {
@@ -43,7 +43,7 @@ class Flamethrower extends Weapon {
      //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
      //aimVector.setMag(bulletSpeed); //speed of bullet
      int i = 0;
-      while (i < 30) {
+      while (i < 20) {
         myObjects.add(new Fire());
         i++;
       } 

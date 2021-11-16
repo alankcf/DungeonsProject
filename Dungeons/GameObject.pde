@@ -29,4 +29,10 @@ class GameObject {
       //myHero.lives = 500;
     }
   }
+    
+  boolean inRoomWith(GameObject myObj) {
+    if (roomX == myObj.roomX && roomY == myObj.roomY) {
+       return true;
+     } else return false;
+   }
 }
