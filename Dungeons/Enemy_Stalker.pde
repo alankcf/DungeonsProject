@@ -11,6 +11,14 @@ class Follower extends Enemy {
     threshold = 100;
   }
   
+  Follower(int x, int y) {
+    super(ENEMYHP, FOLLOWER_SIZE, x, y);
+    location = new PVector(width/2, height/2);
+    timer = 0;
+    shotTimer = 0;
+    threshold = 100;
+  }
+  
   void show() {
     stroke(black);
     strokeWeight(2);
@@ -38,7 +46,7 @@ class Follower extends Enemy {
     //println(immune);
     if (immune > 100) {
       if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10) {
-        myHero.lives = myHero.lives - 5;
+        myHero.lives = myHero.lives - 1;
         immune = 0;
       }
     }

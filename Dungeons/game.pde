@@ -12,16 +12,16 @@ void game() {
   strokeWeight(5);
   stroke(yellow);
   fill(black);
-  if (northRoom == black) { 
+  if (northRoom != white) { 
     ellipse(width/2, height * 0.1, 100, 100);
   }
-  if (eastRoom == black) {
+  if (eastRoom != white) {
     ellipse(width*0.9, height/2, 100, 100);
   }
-  if (southRoom == black) {
+  if (southRoom != white) {
     ellipse(width/2, height * 0.9, 100, 100);
   }
-  if (westRoom == black) {
+  if (westRoom != white) {
     ellipse(width*0.1, height/2, 100, 100);
   }
   fill(green);
@@ -68,7 +68,7 @@ void game() {
   while (y < map.height) {
     color c = map.get(x, y);
     //x += size;
-    fill(c, 150);
+    fill(c, 220);
     square(x*10 + 50, y*10 + 50, size);
     x = x + 1;
     
@@ -81,6 +81,7 @@ void game() {
   fill(purple);
   square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
   
+  //hero lives indicator
   fill(darkred);
   rect(200, 750, myHero.lives/4, 30);
 }

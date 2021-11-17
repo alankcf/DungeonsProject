@@ -6,6 +6,7 @@
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
 //Flamethrower
+//make particles when enemy killed
 
 //Game Settings
 int ENEMYHP = 100;
@@ -102,11 +103,11 @@ void setup() {
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
-  myObjects.add(new Enemy());
-  myObjects.add(new Follower(1, 2, random(100, 700), random(100, 700)));
-  myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
-  myObjects.add(new shootFollower(3, 1));
-  myObjects.add(new Turret(1, 3, width/2, height/2));
+  //myObjects.add(new Enemy());
+  //myObjects.add(new Follower(1, 2, random(100, 700), random(100, 700)));
+  //myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
+  //myObjects.add(new shootFollower(3, 1));
+  //myObjects.add(new Turret(1, 3, width/2, height/2));
   
   //darkness cells  
   brickd = 10;
@@ -118,7 +119,7 @@ void setup() {
   tempx = 0;
   tempy = 0;
 
-  //loop
+  //darkness loop
   int i = 0;
   while (i < num) {
     x[i] = tempx;
@@ -130,7 +131,31 @@ void setup() {
       tempy = tempy + brickd;
       tempx = 0;
     }
-  }  
+  } 
+  
+  //loading enemies from minimap
+  int a = 0;
+  int b = 0;
+  while (b < map.height) {
+    color roomColor = map.get(a, b);
+    if (roomColor == red) {
+      myObjects.add(new Turret(a, b, width/2, height/2));
+    } 
+    if (roomColor == blue) {
+      myObjects.add(new Follower(a, b, random(100, 700), random(100, 700)));
+    }
+    if (roomColor == black) {
+      myObjects.add(new Enemy(a, b));
+    }
+    if (roomColor == green) {
+      myObjects.add(new shootFollower(a, b));
+    }
+    a++;
+    if (a == map.width) {
+      a = 0;
+      b++;
+    }
+  }
 }
 
 void draw() {
