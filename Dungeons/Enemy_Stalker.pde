@@ -106,7 +106,7 @@ class Turret extends Enemy {
     location = new PVector(orginx, orginy);
     size = 90;
     shotTimer = 0;
-    threshold = 100;
+    threshold = 70;
   }
   
   void show () {

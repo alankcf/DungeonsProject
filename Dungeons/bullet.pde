@@ -68,12 +68,12 @@ class Bullet extends GameObject {
     }
     
     //damage
-    if (immune > 100) {
-      if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10 && good == false) {
-        myHero.lives = myHero.lives - 5;
-        immune = 0;
-      }
-    }
+    //if (immune > 100) {
+    //  if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10 && good == false) {
+    //    //myHero.lives = myHero.lives - 5;
+    //    immune = 0;
+    //  }
+    //}
     
     if (location.x >= 700) {
       int i = 0;

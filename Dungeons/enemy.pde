@@ -50,6 +50,7 @@ class Enemy extends GameObject {
         if (d <= size/2 + obj.size/2) {
           lives = lives - int(obj.velocity.mag());
           obj.lives = 0;
+          myObjects.add(new Particle(location.x, location.y));
         }
       }
       
@@ -58,7 +59,7 @@ class Enemy extends GameObject {
     int j = 0;
     while (j < myObjects.size()) {
       GameObject obj = myObjects.get(j);
-      if (obj instanceof Fire) { //downsizing
+      if (obj instanceof Fire) { 
         float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (d <= size/2 + obj.size/2) {
           lives = lives - 1;
