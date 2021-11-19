@@ -5,8 +5,10 @@
 //Things to add for Criteria (Two Slots)
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
-//Flamethrower
-//make particles when enemy killed
+//Flamethrower work
+//make better particles when enemy killed
+//darkness darker
+//two other dropped items
 
 //Game Settings
 int ENEMYHP = 100;

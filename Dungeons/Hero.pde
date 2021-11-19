@@ -129,14 +129,22 @@ class Hero extends GameObject {
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == false) { 
-        float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (d <= size/2 + obj.size/2 && immune > 100) {
+        //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+        if (isCollidingWith(obj)) {
+        //if (d <= size/2 + obj.size/2 && immune > 100) {
           lives = lives - 1;
           obj.lives = 0;
           immune = 0;
         }
       }
-      
+      if (obj instanceof DroppedItem && isCollidingWith(obj)) {
+        DroppedItem item = (DroppedItem) obj;
+          //if (item.type == GUN) {
+            //myWeapon = item.w;
+            currentGun = 3;
+            item.lives = 0;
+         // }
+      }
       i++;
     }
   }

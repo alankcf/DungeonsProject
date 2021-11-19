@@ -45,12 +45,16 @@ class Enemy extends GameObject {
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
-      if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing
-        float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (d <= size/2 + obj.size/2) {
+      if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing   
+        //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+        if (isCollidingWith(obj)) {
+        //if (d <= size/2 + obj.size/2) {
           lives = lives - int(obj.velocity.mag());
           obj.lives = 0;
           myObjects.add(new Particle(location.x, location.y));
+          if (lives <= 0) {
+            myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+          }
         }
       }
       
@@ -60,8 +64,9 @@ class Enemy extends GameObject {
     while (j < myObjects.size()) {
       GameObject obj = myObjects.get(j);
       if (obj instanceof Fire) { 
-        float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (d <= size/2 + obj.size/2) {
+        //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
+        if (isCollidingWith(obj)) {
+        //if (d <= size/2 + obj.size/2) {
           lives = lives - 1;
           obj.lives = 0;
         }

@@ -43,7 +43,7 @@ class Flamethrower extends Weapon {
      //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
      //aimVector.setMag(bulletSpeed); //speed of bullet
      int i = 0;
-      while (i < 20) {
+      while (i < 50) {
         myObjects.add(new Fire());
         i++;
       } 
@@ -61,14 +61,9 @@ class Fire extends GameObject {
     size = int (random(5, 10)); //try random
     t = int(random(200, 255)); //255 = solid
     location = myHero.location.copy();
-    //nudge = myHero.direction.copy();
-    //nudge.rotate (PI);
-    //nudge.setMag(35);
-    //location.add(nudge);
-    //velocity = vel;
     velocity = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
-    velocity.rotate(random(-0.3, 0.3)); //180 degrees
-    velocity.setMag(random(4, 7)); //random number?
+    velocity.rotate(random(-0.2, 0.2)); 
+    velocity.setMag(random(4, 10)); 
     roomX = myHero.roomX;
     roomY = myHero.roomY;
   }
