@@ -5,6 +5,7 @@ class AnimatedGif {
   int numFrames;
   int currentFrame;
   float x, y, w, h;
+  int r;
   
   //constructor
   AnimatedGif(int nf, String prefix, String post) {
@@ -20,6 +21,7 @@ class AnimatedGif {
       i++;
     }
     currentFrame = 0;
+    r = 1;
 }
 AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, float _h) {
     x = _x;
@@ -35,6 +37,8 @@ AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, fl
     }
     currentFrame = 0;
 }
+
+
 //behavior functions
 void show() {
   imageMode(CENTER);
@@ -42,5 +46,11 @@ void show() {
   image(pics[currentFrame], x, y, w, h);
   currentFrame++;
   }
+
+void show(float x, float y, float w, float h) {
+  if (currentFrame >= pics.length)  currentFrame = 0;
+  image(pics[currentFrame], x, y, w, h);
+  currentFrame++;
+}
 
 }

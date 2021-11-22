@@ -7,8 +7,8 @@
 //2. Immune to damage for a set amound of time
 //Flamethrower work
 //make better particles when enemy killed
-//darkness darker
 //two other dropped items
+//lives indicator for enemy
 
 //Game Settings
 int ENEMYHP = 100;
@@ -35,7 +35,7 @@ int FLAMETHROWER_THRESHOLD = 7;
 int FLAMETHROWER_SPEED = 10;
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
-AnimatedGif myGif;
+AnimatedGif myGif, manUp, manDown, manRight, manLeft;
 Hero myHero;
 ArrayList<GameObject> myObjects;
 
@@ -65,6 +65,7 @@ color purple = #6E06B9;
 color darkred = #F25D5D;
 color grey = #48423F;
 color mango = #FF6A5A;
+color green2 = #00ED2D;
 
 Button myButton;
 Button secondButton;
@@ -92,6 +93,9 @@ int tempx, tempy;
 //immunity
 int immune;
 
+//dropped itme types
+boolean health, gun = false;
+
 void setup() {
   size(800, 800);
   mode = INTRO;
@@ -101,7 +105,14 @@ void setup() {
   
   //objects
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
-  myGif = new AnimatedGif(10, "frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
+  
+  //gifs
+  myGif = new AnimatedGif(10, "Data/frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
+  manUp = new AnimatedGif(4, "man/up/sprite_", ".png"); 
+  manDown = new AnimatedGif(4, "man/down/sprite_", ".png"); 
+  manLeft = new AnimatedGif(4, "man/left/sprite_", ".png"); 
+  manRight = new AnimatedGif(4, "man/right/sprite_", ".png"); 
+  
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);

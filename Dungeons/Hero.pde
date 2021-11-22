@@ -45,6 +45,15 @@ class Hero extends GameObject {
     fill(black);
     text(lives, location.x, location.y);
     fill(pink);
+    
+    //hero lives indicator
+    stroke(black);
+    fill(black);
+    rect(location.x, location.y-40, 50, 5, 10);
+    stroke(green2);
+    strokeWeight(1);
+    fill(green2);
+    rect(location.x, location.y-40, myHero.lives/10, 5, 10);
   }
 
   void act() {
@@ -52,6 +61,7 @@ class Hero extends GameObject {
     //print(myHero.lives);
     immune++;
     
+    if (myHero.lives > 500) lives = 500;
     fill(grey);
     textSize(20);
     text(currentGun, 700, 100);
@@ -139,11 +149,16 @@ class Hero extends GameObject {
       }
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {
         DroppedItem item = (DroppedItem) obj;
-          //if (item.type == GUN) {
+          if (gun == true) {
             //myWeapon = item.w;
-            currentGun = 3;
+            currentGun = int (random(0, 5));
             item.lives = 0;
-         // }
+            
+         }
+         if (health == true) {
+           myHero.lives = myHero.lives + 10;
+           item.lives = 0;
+         }
       }
       i++;
     }

@@ -7,7 +7,7 @@ class Particle extends GameObject {
     size = int (random(3, 7)); 
     t = int(random(200, 255)); //255 = solid
     location = new PVector (x, y);
-    velocity = new PVector (0,0.1);
+    velocity = new PVector (0, 0.1);
     velocity.rotate(PI+random(-3, 3)); //180 degrees
     velocity.setMag(1);
     roomX = myHero.roomX;

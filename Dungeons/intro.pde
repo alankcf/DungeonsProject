@@ -1,5 +1,5 @@
 void intro() {
-  //background(orange);
+
   myGif.show(); 
   myButton.show();
   
@@ -11,6 +11,4 @@ void intro() {
   textSize(100);
   textAlign(CENTER);
   text("Dungeons", width/2, height/5);
-  textSize(25);
-  //text("click to begin!", width/2, 4*height/5);
 }

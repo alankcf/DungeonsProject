@@ -80,11 +80,4 @@ void game() {
   
   fill(purple);
   square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
-  
-  //hero lives indicator
-  fill(darkred);
-  rect(200, 750, myHero.lives/4, 30);
-}
-
-void drawRoom() {  
 }

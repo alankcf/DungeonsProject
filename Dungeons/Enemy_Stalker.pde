@@ -121,7 +121,7 @@ class Turret extends Enemy {
    
   void act() {
     shotTimer++;
-    
+    super.act();
     if (shotTimer >= threshold) {
      //using the mouse to aim
      PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
