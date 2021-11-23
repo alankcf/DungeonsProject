@@ -5,10 +5,10 @@ class AnimatedGif {
   int numFrames;
   int currentFrame;
   float x, y, w, h;
-  int r;
+  int rate;
   
   //constructor
-  AnimatedGif(int nf, String prefix, String post) {
+  AnimatedGif(int r, int nf, String prefix, String post) {
     x = width/2;
     y = height/2;
     w = width;
@@ -21,9 +21,9 @@ class AnimatedGif {
       i++;
     }
     currentFrame = 0;
-    r = 1;
-}
-AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, float _h) {
+    rate = r;
+  }
+  AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, float _h) {
     x = _x;
     y = _y;
     w = _w;
@@ -36,21 +36,20 @@ AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, fl
       i++;
     }
     currentFrame = 0;
-}
-
-
-//behavior functions
-void show() {
-  imageMode(CENTER);
-  if (currentFrame == numFrames) currentFrame = 0;
-  image(pics[currentFrame], x, y, w, h);
-  currentFrame++;
   }
 
-void show(float x, float y, float w, float h) {
-  if (currentFrame >= pics.length)  currentFrame = 0;
-  image(pics[currentFrame], x, y, w, h);
-  currentFrame++;
-}
+  //behavior functions
+  void show() {
+    imageMode(CENTER);
+    rate++;
+    if (currentFrame == numFrames) currentFrame = 0;
+    image(pics[currentFrame], x, y, w, h);
+    if (frameCount % rate == 0) currentFrame++;
+  }
 
+  void show(float x, float y, float w, float h) {
+    if (currentFrame >= pics.length)  currentFrame = 0;
+    image(pics[currentFrame], x, y, w, h);
+    if (frameCount % rate == 0 && myHero.velocity.x != 0) currentFrame++;
+  }
 }

@@ -7,6 +7,7 @@ class Hero extends GameObject {
   Weapon [] myGuns;
   int currentGun;
   boolean clicked;
+  AnimatedGif currentAction;
 
   Hero() {
     lives = 500;
@@ -28,18 +29,20 @@ class Hero extends GameObject {
     shotTimer = 0;
     //currentGun = 0;
     clicked = false;
-    size = 50;
+    size = 60;
+    currentAction = manDown;
   }
 
   void show() {
     pushMatrix();
-    translate(location.x, location.y);
-    rotate(direction.heading());
+    //translate(location.x, location.y);
+    //rotate(direction.heading());
     strokeWeight(10);
     if (immune >= 100) stroke(white);
     if (immune < 100) stroke(yellow);
-    fill(purple);
-    circle(0, 0, size);
+    fill(green);
+    circle(location.x, location.y, size);
+    currentAction.show(location.x, location.y, size/1.5, size);
     textSize(10);
     popMatrix();
     fill(black);
@@ -104,7 +107,20 @@ class Hero extends GameObject {
     if (velocity.mag() > 3) {
       velocity.setMag(3);
     }
-
+    //rate
+    //animations
+    //println(velocity.x);
+    //println("y", velocity.y);
+    if (velocity.x != 0 || velocity.y != 0) {
+      if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
+        if (velocity.y > 0) currentAction = manDown;
+        else currentAction = manUp;
+      } else {
+        if (velocity.x > 0) currentAction = manRight;
+        else currentAction = manLeft;
+    }
+    }
+    //if (velocity.x == 0 && velocity.y == 0) currentAction = manDown;
     //north exit
     if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
       roomY--;

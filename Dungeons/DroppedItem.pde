@@ -6,7 +6,7 @@ class DroppedItem extends GameObject {
   int dropped;
   
   DroppedItem(float x, float y, int rx, int ry) {
-    dropped = int (random(1, 4));
+    dropped = int (random(1, 3));
     if (dropped == 1) health = true;
     if (dropped == 2) gun = true;
     w = new ShotGun();
@@ -43,5 +43,6 @@ class DroppedItem extends GameObject {
   
   void act() {
     //nothing
+    dropped = int (random(1, 3));
   }
 }

@@ -108,10 +108,10 @@ void setup() {
   
   //gifs
   myGif = new AnimatedGif(10, "Data/frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
-  manUp = new AnimatedGif(4, "man/up/sprite_", ".png"); 
-  manDown = new AnimatedGif(4, "man/down/sprite_", ".png"); 
-  manLeft = new AnimatedGif(4, "man/left/sprite_", ".png"); 
-  manRight = new AnimatedGif(4, "man/right/sprite_", ".png"); 
+  manUp = new AnimatedGif(7, 4, "man/up/sprite_", ".png"); 
+  manDown = new AnimatedGif(7, 4, "man/down/sprite_", ".png"); 
+  manLeft = new AnimatedGif(7, 4, "man/left/sprite_", ".png"); 
+  manRight = new AnimatedGif(7, 4, "man/right/sprite_", ".png"); 
   
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 

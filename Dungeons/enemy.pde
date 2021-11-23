@@ -69,6 +69,10 @@ class Enemy extends GameObject {
         //if (d <= size/2 + obj.size/2) {
           lives = lives - 1;
           obj.lives = 0;
+          myObjects.add(new Particle(location.x, location.y));
+          if (lives <= 0) {
+            myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+          }
         }
       }
       
