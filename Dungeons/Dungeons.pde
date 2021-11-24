@@ -7,8 +7,7 @@
 //2. Immune to damage for a set amound of time
 //Flamethrower work
 //make better particles when enemy killed
-//two other dropped items
-//lives indicator for enemy
+//dropped item random
 
 //Game Settings
 int ENEMYHP = 100;
@@ -36,6 +35,7 @@ int FLAMETHROWER_SPEED = 10;
 
 boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
 AnimatedGif myGif, manUp, manDown, manRight, manLeft;
+AnimatedGif eUp, eDown, eRight, eLeft;
 Hero myHero;
 ArrayList<GameObject> myObjects;
 
@@ -93,8 +93,11 @@ int tempx, tempy;
 //immunity
 int immune;
 
-//dropped itme types
+//dropped item types
 boolean health, gun = false;
+
+PImage healthpotion;
+PImage shotgun;
 
 void setup() {
   size(800, 800);
@@ -112,6 +115,13 @@ void setup() {
   manDown = new AnimatedGif(7, 4, "man/down/sprite_", ".png"); 
   manLeft = new AnimatedGif(7, 4, "man/left/sprite_", ".png"); 
   manRight = new AnimatedGif(7, 4, "man/right/sprite_", ".png"); 
+  eUp = new AnimatedGif(7, 4, "skeleton/_up/Skeleton_", ".png");
+  eDown = new AnimatedGif(7, 4, "skeleton/_down/Skeleton_0", ".png");
+  eLeft = new AnimatedGif(7, 4, "skeleton/_left/Skeleton_0", ".png");
+  eRight = new AnimatedGif(7, 4, "skeleton/_right/Skeleton_", ".png");
+  
+  healthpotion = loadImage("_0.png");
+  shotgun = loadImage("shotgun.png");
   
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 

@@ -13,7 +13,7 @@ class DroppedItem extends GameObject {
     lives = 1;
     location = new PVector(x, y);
     velocity = new PVector(0, 0);
-    size = 20;
+    size = 30;
     roomX = rx;
     roomY = ry;
     c = brown;
@@ -26,16 +26,18 @@ class DroppedItem extends GameObject {
       strokeWeight(2);
       fill(c);
       circle(location.x, location.y, size);
-      fill(black);
-      textSize(5);
-      text("Health", location.x, location.y);
+      //fill(black);
+      //textSize(5);
+      //text("Health", location.x, location.y);
+      image(healthpotion, location.x, location.y, size, size);
     } else if (gun == true) {
       stroke(black);
       strokeWeight(2);
       fill(c);
       circle(location.x, location.y, size);
-      fill(black);
-      text("GUN", location.x, location.y);
+      //fill(black);
+      //text("GUN", location.x, location.y);
+      image(shotgun, location.x, location.y, size, size/2);
     } else if (dropped == 4) {
       //nothing
     }

@@ -2,6 +2,7 @@ class Follower extends Enemy {
   
   int timer;
   int shotTimer, threshold;
+  AnimatedGif Action;
   
   Follower(int x, int y, float orginx, float orginy) {
     super(ENEMYHP, FOLLOWER_SIZE, x, y);
@@ -9,6 +10,7 @@ class Follower extends Enemy {
     timer = 0;
     shotTimer = 0;
     threshold = 100;
+    Action = eDown;
   }
   
   Follower(int x, int y) {
@@ -23,10 +25,22 @@ class Follower extends Enemy {
     stroke(black);
     strokeWeight(2);
     fill(blue);
-    ellipse(location.x, location.y, size, size);
+    //ellipse(location.x, location.y, size, size);
     fill(black);
-    textSize(10);
-    text(lives, location.x, location.y);
+    Action.show(location.x, location.y, size/1.5, size);
+    //textSize(10);
+    //text(lives, location.x, location.y);
+    
+    //healthbar
+    rectMode(CORNER);
+    stroke(black);
+    fill(black);
+    rect(location.x-25, location.y-40, 50, 5, 10);
+    stroke(green2);
+    strokeWeight(1);
+    fill(green2);
+    rect(location.x-25, location.y-40, lives/2, 5, 10);
+    rectMode(CENTER);
   }
   
   void act() {
@@ -50,7 +64,15 @@ class Follower extends Enemy {
         immune = 0;
       }
     }
-    
+    if (velocity.x != 0 || velocity.y != 0) {
+      if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
+        if (velocity.y > 0) Action = eDown;
+        else Action = eUp;
+      } else {
+        if (velocity.x > 0) Action = eRight;
+        else Action = eLeft;
+      }
+    }
     //text(shotTimer, 200, 200);
    // if (shotTimer >= threshold) {
    //  //using the mouse to aim
@@ -76,8 +98,19 @@ class shootFollower extends Enemy {
     fill(yellow);
     ellipse(location.x, location.y, size, size);
     fill(black);
-    textSize(10);
-    text(lives, location.x, location.y);
+    //textSize(10);
+    //text(lives, location.x, location.y);
+    
+    //healthbar
+    rectMode(CORNER);
+    stroke(black);
+    fill(black);
+    rect(location.x-25, location.y-40, 50, 5, 10);
+    stroke(green2);
+    strokeWeight(1);
+    fill(green2);
+    rect(location.x-25, location.y-40, lives/2, 5, 10);
+    rectMode(CENTER);
   }
   
   void act() {
@@ -114,9 +147,20 @@ class Turret extends Enemy {
     strokeWeight(2);
     fill(yellow);
     ellipse(location.x, location.y, size, size);
+    //fill(black);
+    //textSize(10);
+    //text(lives, location.x, location.y);
+    
+    //healthbar
+    rectMode(CORNER);
+    stroke(black);
     fill(black);
-    textSize(10);
-    text(lives, location.x, location.y);
+    rect(location.x-35, location.y-60, 70, 5, 10);
+    stroke(green2);
+    strokeWeight(1);
+    fill(green2);
+    rect(location.x-35, location.y-60, lives*0.7, 5, 10);
+    rectMode(CENTER);
   }
    
   void act() {

@@ -36,6 +36,17 @@ class Enemy extends GameObject {
       fill(black);
       textSize(10);
       text(lives, location.x, location.y);
+      
+      //healthbar
+      rectMode(CORNER);
+      stroke(black);
+      fill(black);
+      rect(location.x-25, location.y-30, 50, 5, 10);
+      stroke(green2);
+      strokeWeight(1);
+      fill(green2);
+      rect(location.x-25, location.y-30, lives/2, 5, 10);
+      rectMode(CENTER);
     }
   }
   

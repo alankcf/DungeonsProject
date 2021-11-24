@@ -10,7 +10,7 @@ class Hero extends GameObject {
   AnimatedGif currentAction;
 
   Hero() {
-    lives = 500;
+    lives = 10;
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0);
     direction = new PVector(0, -0.1);
@@ -49,14 +49,17 @@ class Hero extends GameObject {
     text(lives, location.x, location.y);
     fill(pink);
     
-    //hero lives indicator
+    //healthbars
+    rectMode(CORNER);
+    //strokeWeight(1);
     stroke(black);
     fill(black);
-    rect(location.x, location.y-40, 50, 5, 10);
+    rect(location.x-25, location.y-40, 50, 5, 10);
     stroke(green2);
     strokeWeight(1);
     fill(green2);
-    rect(location.x, location.y-40, myHero.lives/10, 5, 10);
+    rect(location.x-25, location.y-40, myHero.lives*5, 5, 10);
+    rectMode(CENTER);
   }
 
   void act() {
@@ -118,7 +121,7 @@ class Hero extends GameObject {
       } else {
         if (velocity.x > 0) currentAction = manRight;
         else currentAction = manLeft;
-    }
+      }
     }
     //if (velocity.x == 0 && velocity.y == 0) currentAction = manDown;
     //north exit
