@@ -7,7 +7,7 @@
 //2. Immune to damage for a set amound of time
 //Flamethrower work
 //make better particles when enemy killed
-//dropped item random
+//dropped item random - different enemies different dropped item?
 
 //Game Settings
 int ENEMYHP = 100;
@@ -167,7 +167,7 @@ void setup() {
     if (roomColor == blue) {
       myObjects.add(new Follower(a, b, random(100, 700), random(100, 700)));
     }
-    if (roomColor == black) {
+    if (roomColor == black && myHero.roomX != 1 && myHero.roomY != 1) {
       myObjects.add(new Enemy(a, b));
     }
     if (roomColor == green) {
