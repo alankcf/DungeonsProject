@@ -6,6 +6,7 @@ class GameObject {
   PVector velocity;
   int size;
   int roomX, roomY;
+  int livesMax;
   
   GameObject() {
     

@@ -8,9 +8,12 @@ class Hero extends GameObject {
   int currentGun;
   boolean clicked;
   AnimatedGif currentAction;
+  int start;
+  int velocityspeed,  velocityspeedstart;
 
   Hero() {
     lives = 10;
+    start = lives - 10;
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0);
     direction = new PVector(0, -0.1);
@@ -30,7 +33,9 @@ class Hero extends GameObject {
     //currentGun = 0;
     clicked = false;
     size = 60;
-    currentAction = manDown;
+    currentAction = manDown; 
+    velocityspeed = 3;
+    velocityspeedstart = 7;
   }
 
   void show() {
@@ -76,14 +81,14 @@ class Hero extends GameObject {
 
     if (upkey == false) velocity.setMag(velocity.mag() *0);
 
-    if (upkey) velocity.y = -3;
-    if (downkey) velocity.y = 3;
+    if (upkey) velocity.y = -velocityspeed;
+    if (downkey) velocity.y = velocityspeed;
     if (leftkey) {
       //direction.rotate(-radians(5));
-      velocity.x = -3;
+      velocity.x = -velocityspeed;
     }
     if (rightkey) {
-      velocity.x = 3;
+      velocity.x = velocityspeed;
       //direction.rotate(radians(5));
     }
     //println(currentGun);

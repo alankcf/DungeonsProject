@@ -65,6 +65,7 @@ class Enemy extends GameObject {
           myObjects.add(new Particle(location.x, location.y));
           if (lives <= 0) {
             myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+            points++;
           }
         }
       }
@@ -83,6 +84,7 @@ class Enemy extends GameObject {
           myObjects.add(new Particle(location.x, location.y));
           if (lives <= 0) {
             myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
+            points++;
           }
         }
       }

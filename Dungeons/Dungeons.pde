@@ -8,6 +8,7 @@
 //Flamethrower work
 //make better particles when enemy killed
 //dropped item random - different enemies different dropped item?
+//different enemy animations
 
 //Game Settings
 int ENEMYHP = 100;
@@ -69,6 +70,9 @@ color green2 = #00ED2D;
 
 Button myButton;
 Button secondButton;
+Button speed;
+Button lives;
+Button exit;
 
 //mode variables
 int mode; 
@@ -98,6 +102,9 @@ boolean health, gun = false;
 
 PImage healthpotion;
 PImage shotgun;
+
+int points = 0; //xp
+int damage;
 
 void setup() {
   size(800, 800);

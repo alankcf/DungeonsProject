@@ -29,9 +29,12 @@ void game() {
   stroke(black);
   rect(400, 400, 650, 650);
   
-  secondButton = new Button("GAME", width/2, 35, 200, 50, blue, purple);
+  secondButton = new Button("PAUSE", width/2, 35, 200, 50, blue, purple);
   secondButton.show();
-  if (secondButton.clicked) mode = GAMEOVER;
+  if (secondButton.clicked) mode = PAUSE;
+  
+  if (myHero.lives == 0) mode = GAMEOVER;
+  if (myHero.roomX == 8 && myHero.roomY == 8) mode = GAMEOVER;
   
   int j = 0;
   while (j < myObjects.size()) {
