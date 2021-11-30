@@ -7,8 +7,10 @@
 //2. Immune to damage for a set amound of time
 //Flamethrower work
 //make better particles when enemy killed
-//dropped item random - different enemies different dropped item?
+//dropped item random - speed
 //different enemy animations
+//bullets to enemy bullet cancel each other
+//work on indicator
 
 //Game Settings
 int ENEMYHP = 100;
@@ -105,6 +107,7 @@ PImage shotgun;
 
 int points = 0; //xp
 int damage;
+int addspeed = 0;
 
 void setup() {
   size(800, 800);

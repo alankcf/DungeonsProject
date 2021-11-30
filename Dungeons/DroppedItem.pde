@@ -48,3 +48,33 @@ class DroppedItem extends GameObject {
     dropped = int (random(1, 3));
   }
 }
+
+class Indicator extends GameObject {
+  
+  int t;
+  
+  Indicator(float x, float y) {
+    lives = 0;
+    location = new PVector(x, y);
+    velocity = new PVector(0, 0);
+    size = 10;
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
+    t = 100;
+  }
+  
+  void show() {
+    fill(grey, t);
+    textSize(30);
+    text("+1", location.x, location.y);
+  }
+  
+  void act() {
+    //super.act();
+    location.x--;
+      t = t - 1;
+
+      if (t <= 0) lives = 0;
+    }
+  
+}

@@ -50,8 +50,8 @@ class Hero extends GameObject {
     currentAction.show(location.x, location.y, size/1.5, size);
     textSize(10);
     popMatrix();
-    fill(black);
-    text(lives, location.x, location.y);
+    //fill(black);
+    //text(lives, location.x, location.y);
     fill(pink);
     
     //healthbars
@@ -72,13 +72,14 @@ class Hero extends GameObject {
     //print(myHero.lives);
     immune++;
     
-    if (myHero.lives > 500) lives = 500;
+    
+    if (myHero.lives > 100) lives = 10;
     fill(grey);
     textSize(20);
     text(currentGun, 700, 100);
     
     shotTimer ++;
-
+//println(myHero.velocityspeed);
     if (upkey == false) velocity.setMag(velocity.mag() *0);
 
     if (upkey) velocity.y = -velocityspeed;
@@ -115,7 +116,7 @@ class Hero extends GameObject {
     if (velocity.mag() > 3) {
       velocity.setMag(3);
     }
-    //rate
+
     //animations
     //println(velocity.x);
     //println("y", velocity.y);
@@ -156,7 +157,6 @@ class Hero extends GameObject {
       roomX = 1;
       roomY = 1; 
       location = new PVector(width/2, height/2);
-      
     }
     //println(immune);
     int i = 0;
@@ -175,7 +175,8 @@ class Hero extends GameObject {
         DroppedItem item = (DroppedItem) obj;
           if (gun == true) {
             //myWeapon = item.w;
-            currentGun = int (random(0, 5));
+            //currentGun = int (random(0, 5));
+            addspeed = addspeed + 5;
             item.lives = 0;
             
          }
