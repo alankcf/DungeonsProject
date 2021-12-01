@@ -9,7 +9,7 @@ class Hero extends GameObject {
   boolean clicked;
   AnimatedGif currentAction;
   int start;
-  int velocityspeed,  velocityspeedstart;
+  int velocityspeed, velocityspeedstart;
 
   Hero() {
     lives = 10;
@@ -53,7 +53,7 @@ class Hero extends GameObject {
     //fill(black);
     //text(lives, location.x, location.y);
     fill(pink);
-    
+
     //healthbars
     rectMode(CORNER);
     //strokeWeight(1);
@@ -71,15 +71,14 @@ class Hero extends GameObject {
     super.act();
     //print(myHero.lives);
     immune++;
-    
-    
+
     if (myHero.lives > 100) lives = 10;
-    fill(grey);
+    fill(black);
     textSize(20);
     text(currentGun, 700, 100);
-    
+
     shotTimer ++;
-//println(myHero.velocityspeed);
+    //println(myHero.velocityspeed);
     if (upkey == false) velocity.setMag(velocity.mag() *0);
 
     if (upkey) velocity.y = -velocityspeed;
@@ -153,11 +152,13 @@ class Hero extends GameObject {
 
     //reset Hero
     if (myHero.lives <= 0) mode = GAMEOVER;
-    if (mode == GAMEOVER) {
+    if (mode == INTRO) {
       roomX = 1;
-      roomY = 1; 
+      roomY = 1;
+      addspeed = 0;
       location = new PVector(width/2, height/2);
     }
+    
     //println(immune);
     int i = 0;
     while (i < myObjects.size()) {
@@ -165,7 +166,7 @@ class Hero extends GameObject {
       if (obj instanceof Bullet && ((Bullet) obj).good == false) { 
         //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (isCollidingWith(obj)) {
-        //if (d <= size/2 + obj.size/2 && immune > 100) {
+          //if (d <= size/2 + obj.size/2 && immune > 100) {
           lives = lives - 1;
           obj.lives = 0;
           immune = 0;
@@ -173,17 +174,17 @@ class Hero extends GameObject {
       }
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {
         DroppedItem item = (DroppedItem) obj;
-          if (gun == true) {
-            //myWeapon = item.w;
-            //currentGun = int (random(0, 5));
-            addspeed = addspeed + 5;
-            item.lives = 0;
-            
-         }
-         if (health == true) {
-           myHero.lives = myHero.lives + 10;
-           item.lives = 0;
-         }
+        if (item.gun == true) {
+          //myWeapon = item.w;
+          //currentGun = int (random(0, 5));
+          addspeed = addspeed + 5;
+          item.lives = 0;
+        }
+        if (item.health == true) {
+          myHero.lives = myHero.lives + 1;
+          item.lives = 0;
+          if (lives >= 10) lives = 10;
+        }
       }
       i++;
     }

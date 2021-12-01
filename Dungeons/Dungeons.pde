@@ -66,7 +66,7 @@ color darkyellow = #FFAC12;
 color darkblue = #272D4D;
 color purple = #6E06B9;
 color darkred = #F25D5D;
-color grey = #48423F;
+color grey = #D6D6D6;
 color mango = #FF6A5A;
 color green2 = #00ED2D;
 
@@ -100,7 +100,7 @@ int tempx, tempy;
 int immune;
 
 //dropped item types
-boolean health, gun = false;
+
 
 PImage healthpotion;
 PImage shotgun;
@@ -115,10 +115,10 @@ void setup() {
   font = createFont("Raleway-Black.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
-  
+
   //objects
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
-  
+
   //gifs
   myGif = new AnimatedGif(10, "Data/frame_0", "_delay-0.1s.gif", 400, 400, 800, 800);
   manUp = new AnimatedGif(7, 4, "man/up/sprite_", ".png"); 
@@ -129,10 +129,10 @@ void setup() {
   eDown = new AnimatedGif(7, 4, "skeleton/_down/Skeleton_0", ".png");
   eLeft = new AnimatedGif(7, 4, "skeleton/_left/Skeleton_0", ".png");
   eRight = new AnimatedGif(7, 4, "skeleton/_right/Skeleton_", ".png");
-  
+
   healthpotion = loadImage("_0.png");
   shotgun = loadImage("shotgun.png");
-  
+
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
@@ -141,7 +141,7 @@ void setup() {
   //myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
   //myObjects.add(new shootFollower(3, 1));
   //myObjects.add(new Turret(1, 3, width/2, height/2));
-  
+
   //darkness cells  
   brickd = 10;
   num = 7000;
@@ -165,7 +165,7 @@ void setup() {
       tempx = 0;
     }
   } 
-  
+
   //loading enemies from minimap
   int a = 0;
   int b = 0;
@@ -193,9 +193,9 @@ void setup() {
 
 void draw() {
   click();
-    
+
   //modes
-   if (mode == INTRO) {
+  if (mode == INTRO) {
     intro();
   } else if (mode == GAME) {
     game();

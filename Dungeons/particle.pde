@@ -1,7 +1,7 @@
 class Particle extends GameObject {
-  
+
   int t; //transparancy   
-  
+
   Particle(float x, float y) {
     lives = 1;
     size = int (random(3, 7)); 
@@ -13,14 +13,14 @@ class Particle extends GameObject {
     roomX = myHero.roomX;
     roomY = myHero.roomY;
   }
-  
+
   //override
   void show () {
     noStroke();
     fill(orange, t);
     rect(location.x, location.y, size, size);
   }
-  
+
   void act () {
     super.act();
     //location.add(velocity);

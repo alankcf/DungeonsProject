@@ -1,32 +1,32 @@
 class Enemy extends GameObject {
-  
+
   Enemy() {
     location = new PVector(width/2, height/2);
-    velocity = new PVector(0,0);
+    velocity = new PVector(0, 0);
     lives = 100;
     roomX = 1;
     roomY = 1;
     size = 30;
   }
-  
+
   Enemy(int x, int y) {
     location = new PVector(width/2, height/2);
-    velocity = new PVector(0,0);
+    velocity = new PVector(0, 0);
     lives = 100;
     roomX = x;
     roomY = y;
     size = 30;
   }
-  
+
   Enemy(int hp, int s, int x, int y) {
     location = new PVector(int (random(100, 700)), int (random(100, 700)));
-    velocity = new PVector(0,0);
+    velocity = new PVector(0, 0);
     lives = hp;
     size = s;
     roomX = x;
     roomY = y;
   }
-  
+
   void show() {
     if (roomX == myHero.roomX && roomY == myHero.roomY) {
       stroke(black);
@@ -36,7 +36,7 @@ class Enemy extends GameObject {
       fill(black);
       textSize(10);
       text(lives, location.x, location.y);
-      
+
       //healthbar
       rectMode(CORNER);
       stroke(black);
@@ -49,28 +49,28 @@ class Enemy extends GameObject {
       rectMode(CENTER);
     }
   }
-  
+
   void act() {
     super.act();
-    
+
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing   
         //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (isCollidingWith(obj)) {
-        //if (d <= size/2 + obj.size/2) {
+          //if (d <= size/2 + obj.size/2) {
           lives = lives - int(obj.velocity.mag());
           obj.lives = 0;
           myObjects.add(new Particle(location.x, location.y));
           if (lives <= 0) {
             myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
-            myObjects.add(new Indicator(location.x, location.y));
+            myObjects.add(new Indicator(location.x, location.y, roomX, roomY));
             points++;
           }
         }
       }
-      
+
       i++;
     }
     int j = 0;
@@ -79,7 +79,7 @@ class Enemy extends GameObject {
       if (obj instanceof Fire) { 
         //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (isCollidingWith(obj)) {
-        //if (d <= size/2 + obj.size/2) {
+          //if (d <= size/2 + obj.size/2) {
           lives = lives - 1;
           obj.lives = 0;
           myObjects.add(new Particle(location.x, location.y));
@@ -89,7 +89,7 @@ class Enemy extends GameObject {
           }
         }
       }
-      
+
       j++;
     }
   }

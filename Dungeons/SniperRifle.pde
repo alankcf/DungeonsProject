@@ -1,23 +1,23 @@
 class SniperRifle extends Weapon {
-  
+
   SniperRifle() {
     super(SNIPER_THRESHOLD, SNIPER_SPEED);//threshold, speed
   }
 }
 
 class Machine extends Weapon {
-  
+
   Machine() {
     super(MACHINEGUN_THRESHOLD, MACHINEGUN_SPEED);
   }
 }
 
 class ShotGun extends Weapon {
-  
+
   ShotGun() {
     super(SHOTGUN_THRESHOLD, SHOTGUN_SPEED);
   }
-  
+
   void shoot() {
     if (shotTimer >= threshold) {
       int i = 0;
@@ -27,32 +27,31 @@ class ShotGun extends Weapon {
         aimVector.setMag(bulletSpeed);
         myObjects.add(new Bullet(aimVector, purple, 10));
       }
-      
     }
   }
 }
 class Flamethrower extends Weapon {
-  
+
   Flamethrower() {
     super(FLAMETHROWER_THRESHOLD, FLAMETHROWER_SPEED);
   }
-  
+
   void shoot() {
     if (shotTimer >= threshold) {
-     //using the mouse to aim
-     //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
-     //aimVector.setMag(bulletSpeed); //speed of bullet
-     int i = 0;
+      //using the mouse to aim
+      //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
+      //aimVector.setMag(bulletSpeed); //speed of bullet
+      int i = 0;
       while (i < 50) {
         myObjects.add(new Fire());
         i++;
       } 
-     shotTimer = 0;
-   }
+      shotTimer = 0;
+    }
   }
 }
 class Fire extends GameObject {
-  
+
   int t; //transparancy
   PVector nudge;  
 

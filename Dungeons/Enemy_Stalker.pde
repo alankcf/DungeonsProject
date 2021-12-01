@@ -1,9 +1,9 @@
 class Follower extends Enemy {
-  
+
   int timer;
   int shotTimer, threshold;
   AnimatedGif Action;
-  
+
   Follower(int x, int y, float orginx, float orginy) {
     super(ENEMYHP, FOLLOWER_SIZE, x, y);
     location = new PVector(orginx, orginy);
@@ -12,7 +12,7 @@ class Follower extends Enemy {
     threshold = 100;
     Action = eDown;
   }
-  
+
   Follower(int x, int y) {
     super(ENEMYHP, FOLLOWER_SIZE, x, y);
     location = new PVector(width/2, height/2);
@@ -20,7 +20,7 @@ class Follower extends Enemy {
     shotTimer = 0;
     threshold = 100;
   }
-  
+
   void show() {
     stroke(black);
     strokeWeight(2);
@@ -30,7 +30,7 @@ class Follower extends Enemy {
     Action.show(location.x, location.y, size/1.5, size);
     //textSize(10);
     //text(lives, location.x, location.y);
-    
+
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -42,13 +42,13 @@ class Follower extends Enemy {
     rect(location.x-25, location.y-40, lives/2, 5, 10);
     rectMode(CENTER);
   }
-  
+
   void act() {
     super.act(); //calls only enemy, in which the enemy functions calls the gameobject
-    
+
     shotTimer++;
     timer++;
-    
+
     if (myHero.location.x - location.x < 100 && myHero.location.y - location.y < 100) {
       velocity = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
       velocity.setMag(2);
@@ -56,7 +56,7 @@ class Follower extends Enemy {
       velocity = new PVector(random(0, 3), random(0, 3));
       velocity.setMag(1);
     }
-    
+
     //println(immune);
     if (immune > 100) {
       if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10) {
@@ -74,24 +74,24 @@ class Follower extends Enemy {
       }
     }
     //text(shotTimer, 200, 200);
-   // if (shotTimer >= threshold) {
-   //  //using the mouse to aim
-   //  PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
-   //  aimVector.setMag(5); //instead of using bullet speed use a set number
-   //  myObjects.add(new Bullet(location.x, location.y, aimVector, purple, 10)); //orgin, where to go, color, size
-   //  shotTimer = 0;
-   //}
+    // if (shotTimer >= threshold) {
+    //  //using the mouse to aim
+    //  PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
+    //  aimVector.setMag(5); //instead of using bullet speed use a set number
+    //  myObjects.add(new Bullet(location.x, location.y, aimVector, purple, 10)); //orgin, where to go, color, size
+    //  shotTimer = 0;
+    //}
   }
 }
 
 class shootFollower extends Enemy {
-  
+
   int release;
-  
+
   shootFollower(int x, int y) {
     super(SHOOTFOLLOWER_HP, SHOOTFOLLOWER_SIZE, x, y);
   }
-  
+
   void show() {
     stroke(black);
     strokeWeight(2);
@@ -100,7 +100,7 @@ class shootFollower extends Enemy {
     fill(black);
     //textSize(10);
     //text(lives, location.x, location.y);
-    
+
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -112,10 +112,10 @@ class shootFollower extends Enemy {
     rect(location.x-25, location.y-40, lives/2, 5, 10);
     rectMode(CENTER);
   }
-  
+
   void act() {
     super.act();
-    
+
     release++;
     //println(velocity);
     if (release > 200) {
@@ -131,9 +131,9 @@ class shootFollower extends Enemy {
 }
 
 class Turret extends Enemy {
-  
+
   int shotTimer, threshold;
-  
+
   Turret(int x, int y, float orginx, float orginy) {
     super(TURRET_HP, TURRET_SIZE, x, y);
     location = new PVector(orginx, orginy);
@@ -141,7 +141,7 @@ class Turret extends Enemy {
     shotTimer = 0;
     threshold = 70;
   }
-  
+
   void show () {
     stroke(black);
     strokeWeight(2);
@@ -150,7 +150,7 @@ class Turret extends Enemy {
     //fill(black);
     //textSize(10);
     //text(lives, location.x, location.y);
-    
+
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -162,16 +162,16 @@ class Turret extends Enemy {
     rect(location.x-35, location.y-60, lives*0.7, 5, 10);
     rectMode(CENTER);
   }
-   
+
   void act() {
     shotTimer++;
     super.act();
     if (shotTimer >= threshold) {
-     //using the mouse to aim
-     PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
-     aimVector.setMag(5); //instead of using bullet speed use a set number
-     myObjects.add(new Bullet(location.x, location.y, aimVector, purple, TURRET_BULLETSIZE)); //orgin, where to go, color, size
-     shotTimer = 0;
-     }
+      //using the mouse to aim
+      PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
+      aimVector.setMag(5); //instead of using bullet speed use a set number
+      myObjects.add(new Bullet(location.x, location.y, aimVector, purple, TURRET_BULLETSIZE)); //orgin, where to go, color, size
+      shotTimer = 0;
+    }
   }
 }

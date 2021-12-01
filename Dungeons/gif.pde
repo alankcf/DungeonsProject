@@ -1,12 +1,12 @@
 class AnimatedGif {
-  
+
   //instance variables (of a GIF)
   PImage [] pics;
   int numFrames;
   int currentFrame;
   float x, y, w, h;
   int rate;
-  
+
   //constructor
   AnimatedGif(int r, int nf, String prefix, String post) {
     x = width/2;

@@ -1,12 +1,13 @@
 class DroppedItem extends GameObject {
-  
+
   int type;
   Weapon w;
   color c;
   int dropped;
-  
+  boolean health, gun;
+
   DroppedItem(float x, float y, int rx, int ry) {
-    dropped = int (random(1, 3));
+    dropped = int (random(1, 4));
     if (dropped == 1) health = true;
     if (dropped == 2) gun = true;
     w = new ShotGun();
@@ -18,7 +19,7 @@ class DroppedItem extends GameObject {
     roomY = ry;
     c = brown;
   }
-  
+
   void show() {
     //use if statements to draw different items differently
     if (health == true) {
@@ -39,42 +40,46 @@ class DroppedItem extends GameObject {
       //text("GUN", location.x, location.y);
       image(shotgun, location.x, location.y, size, size/2);
     } else if (dropped == 4) {
-      //nothing
+      //drops nothing
     }
   }
-  
+
   void act() {
     //nothing
     dropped = int (random(1, 3));
+    //print(dropped);
+    if (lives <= 0) {
+      health = false;
+      gun = false;
+    }
   }
 }
 
 class Indicator extends GameObject {
-  
+
   int t;
-  
-  Indicator(float x, float y) {
-    lives = 0;
+
+  Indicator(float x, float y, int rx, int ry) {
+    lives = 1;
     location = new PVector(x, y);
     velocity = new PVector(0, 0);
-    size = 10;
-    roomX = myHero.roomX;
-    roomY = myHero.roomY;
-    t = 100;
+    size = 40;
+    roomX = rx;
+    roomY = ry;
+    t = 255;
   }
-  
+
   void show() {
     fill(grey, t);
-    textSize(30);
+    textSize(size);
     text("+1", location.x, location.y);
   }
-  
+
   void act() {
     //super.act();
-    location.x--;
-      t = t - 1;
+    location.y--;
+    t = t - 1;
 
-      if (t <= 0) lives = 0;
-    }
-  
+    if (t <= 0) lives = 0;
+  }
 }

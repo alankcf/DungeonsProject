@@ -2,9 +2,9 @@ void intro() {
 
   myGif.show(); 
   myButton.show();
-  
-  if(myButton.clicked) mode = GAME;
-  
+
+  if (myButton.clicked) mode = GAME;
+
   //font
   textFont(font);
   fill(darkyellow);
