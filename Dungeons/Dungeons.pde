@@ -5,12 +5,9 @@
 //Things to add for Criteria (Two Slots)
 //1. Freeze or slow down thing
 //2. Immune to damage for a set amound of time
-//Flamethrower work
-//make better particles when enemy killed
-//dropped item random - speed
-//different enemy animations
-//bullets to enemy bullet cancel each other
-//work on indicator
+//different skins for heros (less damage)
+//defend bullets with bullets
+//have bullets bounce with immunity
 
 //Game Settings
 int ENEMYHP = 100;
@@ -98,10 +95,11 @@ int tempx, tempy;
 
 //immunity
 int immune;
+int immunestart = 100;
+int immuneplus = 0;
+int immunelength = immunestart + immuneplus;
 
-//dropped item types
-
-
+//dropped images
 PImage healthpotion;
 PImage shotgun;
 
@@ -115,7 +113,7 @@ void setup() {
   font = createFont("Raleway-Black.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
-
+  
   //objects
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
 

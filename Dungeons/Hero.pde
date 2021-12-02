@@ -43,8 +43,8 @@ class Hero extends GameObject {
     //translate(location.x, location.y);
     //rotate(direction.heading());
     strokeWeight(10);
-    if (immune >= 100) stroke(white);
-    if (immune < 100) stroke(yellow);
+    if (immune >= immunelength) stroke(white);
+    if (immune < immunelength) stroke(yellow);
     fill(green);
     circle(location.x, location.y, size);
     currentAction.show(location.x, location.y, size/1.5, size);
@@ -165,11 +165,12 @@ class Hero extends GameObject {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == false) { 
         //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (isCollidingWith(obj)) {
+        if (isCollidingWith(obj) && immune > immunelength) {
           //if (d <= size/2 + obj.size/2 && immune > 100) {
           lives = lives - 1;
           obj.lives = 0;
           immune = 0;
+          myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
         }
       }
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {

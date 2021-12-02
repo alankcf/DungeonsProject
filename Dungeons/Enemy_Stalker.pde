@@ -58,7 +58,7 @@ class Follower extends Enemy {
     }
 
     //println(immune);
-    if (immune > 100) {
+    if (immune > immunelength) {
       if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10) {
         myHero.lives = myHero.lives - 1;
         immune = 0;

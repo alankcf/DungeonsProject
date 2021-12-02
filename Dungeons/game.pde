@@ -42,9 +42,9 @@ void game() {
       if (myObj.lives <= 0) {
         myObjects.remove(j);
         j--;
-        //} else if (myHero.lives <= 0) {
-        //  myObjects.remove(j);
-        //} else if (count == 21) {
+        } else if (myHero.lives <= 0) {
+          myObjects.remove(j);
+        //else if (count == 21) {
         //  myObjects.remove(i);
       }
     }

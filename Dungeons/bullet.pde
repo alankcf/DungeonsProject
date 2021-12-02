@@ -74,7 +74,7 @@ class Bullet extends GameObject {
     //    immune = 0;
     //  }
     //}
-
+    
     if (location.x >= 700) {
       int i = 0;
       while (i < 20) {

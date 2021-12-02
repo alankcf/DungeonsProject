@@ -58,21 +58,29 @@ class DroppedItem extends GameObject {
 class Indicator extends GameObject {
 
   int t;
+  int a;
 
-  Indicator(float x, float y, int rx, int ry) {
+  Indicator(float x, float y, int rx, int ry, int type) {
     lives = 1;
     location = new PVector(x, y);
     velocity = new PVector(0, 0);
-    size = 40;
+    size = 30;
     roomX = rx;
     roomY = ry;
     t = 255;
+    a = type;
   }
 
   void show() {
-    fill(grey, t);
-    textSize(size);
-    text("+1", location.x, location.y);
+    if (a == 1) {
+      fill(grey, t);
+      textSize(size);
+      text("+1", location.x, location.y);
+    } else if (a == 2) {
+      fill(red, t);
+      textSize(size);
+      text("-1", location.x, location.y);   
+    }
   }
 
   void act() {
