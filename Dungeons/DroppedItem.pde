@@ -75,7 +75,7 @@ class Indicator extends GameObject {
     if (a == 1) {
       fill(grey, t);
       textSize(size);
-      text("+1", location.x, location.y);
+      text("+1", location.x, location.y);  //680, 100
     } else if (a == 2) {
       fill(red, t);
       textSize(size);

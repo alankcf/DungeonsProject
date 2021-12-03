@@ -1,6 +1,7 @@
 void game() {
 
-  background(darkblue);
+  //background(darkblue);
+  background(red);
   line(0, 0, width, height);
   line(0, height, width, 0);
 
@@ -24,11 +25,16 @@ void game() {
   if (westRoom != white) {
     ellipse(width*0.1, height/2, 100, 100);
   }
-  fill(green);
+  fill(orange);
   strokeWeight(10);
   stroke(black);
   rect(400, 400, 650, 650);
-
+  
+  //xp indicator
+  fill(blue);
+  textSize(20);
+  text(points, 680, 100);
+  
   if (myHero.lives == 0) mode = GAMEOVER;
   if (myHero.roomX == 8 && myHero.roomY == 8) mode = GAMEOVER;
 
@@ -81,7 +87,7 @@ void game() {
   square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
 
   //shop
-  secondButton = new Button("SHOP", 95, 170, 100, 30, blue, purple);
+  secondButton = new Button("SHOP", 95, 170, 100, 30, red, orange);
   secondButton.show();
   if (secondButton.clicked) mode = PAUSE;
 }

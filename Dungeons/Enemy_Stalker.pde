@@ -171,7 +171,7 @@ class Turret extends Enemy {
       PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
       aimVector.setMag(5); //instead of using bullet speed use a set number
       myObjects.add(new Bullet(location.x, location.y, aimVector, purple, TURRET_BULLETSIZE)); //orgin, where to go, color, size
-      shotTimer = 0;
+      shotTimer = 0;     
     }
   }
 }

@@ -7,7 +7,8 @@
 //2. Immune to damage for a set amound of time
 //different skins for heros (less damage)
 //defend bullets with bullets
-//have bullets bounce with immunity
+//have bullets bounce with immunity - WHY BULLETS GET STUCK!
+//have mesage xp float to xp counter
 
 //Game Settings
 int ENEMYHP = 100;
@@ -110,7 +111,8 @@ int addspeed = 0;
 void setup() {
   size(800, 800);
   mode = INTRO;
-  font = createFont("Raleway-Black.ttf", 2);
+  //font = createFont("Raleway-Black.ttf", 2);
+  font = createFont("FredokaOne-Regular.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
   

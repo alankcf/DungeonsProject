@@ -99,5 +99,7 @@ class Bullet extends GameObject {
       } 
       lives = 0;
     }
+    
+    
   }
 }

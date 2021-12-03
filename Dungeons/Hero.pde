@@ -43,9 +43,9 @@ class Hero extends GameObject {
     //translate(location.x, location.y);
     //rotate(direction.heading());
     strokeWeight(10);
-    if (immune >= immunelength) stroke(white);
+    if (immune >= immunelength) stroke(orange);
     if (immune < immunelength) stroke(yellow);
-    fill(green);
+    fill(orange);
     circle(location.x, location.y, size);
     currentAction.show(location.x, location.y, size/1.5, size);
     textSize(10);
@@ -158,19 +158,24 @@ class Hero extends GameObject {
       addspeed = 0;
       location = new PVector(width/2, height/2);
     }
-    
+
     //println(immune);
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == false) { 
         //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
-        if (isCollidingWith(obj) && immune > immunelength) {
-          //if (d <= size/2 + obj.size/2 && immune > 100) {
-          lives = lives - 1;
-          obj.lives = 0;
-          immune = 0;
-          myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
+        if (isCollidingWith(obj)) {
+          if (immune > immunelength) {
+            //if (d <= size/2 + obj.size/2 && immune > 100) {
+            lives = lives - 1;
+            obj.lives = 0;
+            immune = 0;
+            myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
+          } else if (immune < immunelength) {
+            obj.velocity = new PVector(location.x - myHero.location.x, location.y - myHero.location.y);
+            obj.velocity.setMag(5);
+          }
         }
       }
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {
