@@ -1,7 +1,7 @@
 class SniperRifle extends Weapon {
 
   SniperRifle() {
-    super(SNIPER_THRESHOLD, SNIPER_SPEED);//threshold, speed
+    super(SNIPER_THRESHOLD, SNIPER_SPEED); //threshold, speed
   }
 }
 
@@ -61,14 +61,15 @@ class Fire extends GameObject {
     t = int(random(200, 255)); //255 = solid
     location = myHero.location.copy();
     velocity = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
-    velocity.rotate(random(-0.2, 0.2)); 
+    velocity.rotate(random(-0.1, 0.15)); 
     velocity.setMag(random(4, 10)); 
     roomX = myHero.roomX;
     roomY = myHero.roomY;
   }
 
   void show () {
-    noStroke();
+    stroke(black);
+    strokeWeight(3);
     fill(orange, t);
     circle(location.x, location.y, size);
   }

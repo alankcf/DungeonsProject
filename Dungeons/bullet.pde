@@ -51,29 +51,19 @@ class Bullet extends GameObject {
     //super.act();
     location.add(velocity);
     timer--;
-
+    
     if (timer <= 0) lives = 0;
-
+    
+    if (lives == 0) myObjects.add (new Particle(location.x, location.y));
+    
     if (location.x <= 100) {
       int i = 0;
       while (i < 20) {
         myObjects.add(new Particle(location.x, location.y));
         i++;
       } 
-
-      //myObjects.add(new Particle(location.x, location.y));
-      //myObjects.add(new Particle(location.x, location.y));
-      //myObjects.add(new Particle(location.x, location.y));
       lives = 0;
     }
-
-    //damage
-    //if (immune > 100) {
-    //  if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10 && good == false) {
-    //    //myHero.lives = myHero.lives - 5;
-    //    immune = 0;
-    //  }
-    //}
     
     if (location.x >= 700) {
       int i = 0;
@@ -99,7 +89,6 @@ class Bullet extends GameObject {
       } 
       lives = 0;
     }
-    
     
   }
 }

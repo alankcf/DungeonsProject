@@ -7,7 +7,6 @@
 //2. Immune to damage for a set amound of time
 //different skins for heros (less damage)
 //defend bullets with bullets
-//have bullets bounce with immunity - WHY BULLETS GET STUCK!
 //have mesage xp float to xp counter
 
 //Game Settings

@@ -25,7 +25,6 @@ class GameObject {
     if (mode == GAMEOVER) {
       roomX = 1;
       roomY = 1;
-      //myHero.lives = 500;
     }
   }
 

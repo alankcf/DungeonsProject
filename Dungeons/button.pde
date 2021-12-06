@@ -1,7 +1,7 @@
 class Button {
 
   //variables
-  int x, y, w, h; //could do PVector  
+  int x, y, w, h; 
   String text;
   color normal, highlight;
   boolean clicked;

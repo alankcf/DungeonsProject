@@ -59,8 +59,9 @@ class Follower extends Enemy {
 
     //println(immune);
     if (immune > immunelength) {
-      if (myHero.location.x - location.x < 10 && myHero.location.y - location.y < 10) {
+      if (myHero.location.x - location.x < 5 && myHero.location.y - location.y < 5) {
         myHero.lives = myHero.lives - 1;
+        myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
         immune = 0;
       }
     }
@@ -73,14 +74,6 @@ class Follower extends Enemy {
         else Action = eLeft;
       }
     }
-    //text(shotTimer, 200, 200);
-    // if (shotTimer >= threshold) {
-    //  //using the mouse to aim
-    //  PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
-    //  aimVector.setMag(5); //instead of using bullet speed use a set number
-    //  myObjects.add(new Bullet(location.x, location.y, aimVector, purple, 10)); //orgin, where to go, color, size
-    //  shotTimer = 0;
-    //}
   }
 }
 

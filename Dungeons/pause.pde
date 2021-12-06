@@ -1,14 +1,17 @@
 void pause() {
   fill(darkblue);
   
+  //window
   stroke(black);
   strokeWeight(2);
   rect(width/2, height/2, 550, 550);
-  //if (mousePressed) mode = GAME;
+
+  //XP Indicator
   fill(white);
   textSize(50);
   text("You have "+points+ " XP", width/2, 240);
-
+  
+  //Advancement
   textSize(35);
   text("Lives: " + myHero.lives, width/2, 360);
   text("Shield Time: " + (immunelength), 3*width/5-15, 460);
@@ -26,8 +29,9 @@ void pause() {
   lives.show();
   exit.show();
   
+  //clicked
   if (exit.clicked) mode = GAME;
-  if (lives.clicked && points > 0 && myHero.lives <= 10) {
+  if (lives.clicked && points > 0 && myHero.lives < 10) {
     myHero.lives++;
     points--;
   }

@@ -43,20 +43,17 @@ class Hero extends GameObject {
     //translate(location.x, location.y);
     //rotate(direction.heading());
     strokeWeight(10);
-    if (immune >= immunelength) stroke(orange);
+    if (immune >= immunelength)  stroke(orange, 10);
     if (immune < immunelength) stroke(yellow);
-    fill(orange);
+    fill(orange, 10);
     circle(location.x, location.y, size);
     currentAction.show(location.x, location.y, size/1.5, size);
     textSize(10);
     popMatrix();
-    //fill(black);
-    //text(lives, location.x, location.y);
     fill(pink);
 
     //healthbars
     rectMode(CORNER);
-    //strokeWeight(1);
     stroke(black);
     fill(black);
     rect(location.x-25, location.y-40, 50, 5, 10);
@@ -69,7 +66,7 @@ class Hero extends GameObject {
 
   void act() {
     super.act();
-    //print(myHero.lives);
+ 
     immune++;
 
     if (myHero.lives > 100) lives = 10;
@@ -78,19 +75,15 @@ class Hero extends GameObject {
     text(currentGun, 700, 100);
 
     shotTimer ++;
-    //println(myHero.velocityspeed);
+   
     if (upkey == false) velocity.setMag(velocity.mag() *0);
 
     if (upkey) velocity.y = -velocityspeed;
     if (downkey) velocity.y = velocityspeed;
-    if (leftkey) {
-      //direction.rotate(-radians(5));
-      velocity.x = -velocityspeed;
-    }
-    if (rightkey) {
-      velocity.x = velocityspeed;
+    if (leftkey) velocity.x = -velocityspeed;
+    if (rightkey) velocity.x = velocityspeed;
       //direction.rotate(radians(5));
-    }
+    
     //println(currentGun);
     //myWeapon.update();
     clicked = false;
@@ -103,22 +96,13 @@ class Hero extends GameObject {
     if (currentGun == 5 && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
-    if (spacekey) {
-      //myWeapon.shoot();
-      myGuns[currentGun].shoot();
-      //int i = 0;
-      //while (i < 10) {
-      //  myWeapon[i].shoot();
-      //  i++;
-      //}
-    }
+    if (spacekey) myGuns[currentGun].shoot();
+    
     if (velocity.mag() > 3) {
       velocity.setMag(3);
     }
 
     //animations
-    //println(velocity.x);
-    //println("y", velocity.y);
     if (velocity.x != 0 || velocity.y != 0) {
       if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
         if (velocity.y > 0) currentAction = manDown;
@@ -128,7 +112,7 @@ class Hero extends GameObject {
         else currentAction = manLeft;
       }
     }
-    //if (velocity.x == 0 && velocity.y == 0) currentAction = manDown;
+ 
     //north exit
     if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
       roomY--;
@@ -173,7 +157,8 @@ class Hero extends GameObject {
             immune = 0;
             myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
           } else if (immune < immunelength) {
-            obj.velocity = new PVector(location.x - myHero.location.x, location.y - myHero.location.y);
+            obj.velocity = new PVector(0, 1);
+            obj.velocity.rotate (random(PI, TWO_PI));
             obj.velocity.setMag(5);
           }
         }
