@@ -8,6 +8,9 @@
 //different skins for heros (less damage)
 //defend bullets with bullets
 //have mesage xp float to xp counter
+//win condition (xp)
+//trap hero in room
+//run out of ammo
 
 //Game Settings
 int ENEMYHP = 100;
@@ -72,6 +75,7 @@ Button secondButton;
 Button speed;
 Button lives;
 Button exit;
+Button addammo;
 
 //mode variables
 int mode; 
@@ -106,6 +110,8 @@ PImage shotgun;
 int points = 0; //xp
 int damage;
 int addspeed = 0;
+int pointswin = 25;
+int ammo = 50;
 
 void setup() {
   size(800, 800);

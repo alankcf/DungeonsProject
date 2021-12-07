@@ -9,7 +9,8 @@ void game() {
   eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
   southRoom = map.get(myHero.roomX, myHero.roomY+1);
   westRoom = map.get(myHero.roomX - 1, myHero.roomY);
-
+  
+  //exits
   strokeWeight(5);
   stroke(yellow);
   fill(black);
@@ -36,6 +37,7 @@ void game() {
   text(points, 680, 100);
   
   if (myHero.lives == 0) mode = GAMEOVER;
+  if (points >= pointswin) mode = GAMEOVER;
   if (myHero.roomX == 8 && myHero.roomY == 8) mode = GAMEOVER;
 
   int j = 0;
@@ -48,10 +50,11 @@ void game() {
       if (myObj.lives <= 0) {
         myObjects.remove(j);
         j--;
+        
         } else if (myHero.lives <= 0) {
           myObjects.remove(j);
-        //else if (count == 21) {
-        //  myObjects.remove(i);
+        } else if (points == pointswin) {
+          myObjects.remove(j);
       }
     }
     j++;
@@ -90,4 +93,19 @@ void game() {
   secondButton = new Button("SHOP", 95, 170, 100, 30, red, orange);
   secondButton.show();
   if (secondButton.clicked) mode = PAUSE;
+  
+  //ammo
+  rectMode(CORNER);
+  fill(darkyellow);
+  stroke(darkyellow);
+  rect(100, 670, 200, 20, 200);
+  fill(darkblue);
+  stroke(darkblue);
+  rect(100, 670, ammo*4, 20, 200); 
+  textSize(20);
+  fill(darkyellow);
+  if (ammo > 0) text("Ammo", 100+ammo*4/2, 690);
+  fill(darkblue);
+  if (ammo <= 0) text("No Ammo Left", 200, 690);
+  rectMode(CENTER);
 }

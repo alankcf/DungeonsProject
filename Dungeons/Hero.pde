@@ -112,7 +112,7 @@ class Hero extends GameObject {
         else currentAction = manLeft;
       }
     }
- 
+
     //north exit
     if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
       roomY--;
@@ -168,7 +168,7 @@ class Hero extends GameObject {
         if (item.gun == true) {
           //myWeapon = item.w;
           //currentGun = int (random(0, 5));
-          addspeed = addspeed + 5;
+          ammo = ammo + 3;
           item.lives = 0;
         }
         if (item.health == true) {
