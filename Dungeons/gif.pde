@@ -23,6 +23,7 @@ class AnimatedGif {
     currentFrame = 0;
     rate = r;
   }
+  
   AnimatedGif(int nf, String prefix, String post, float _x, float _y, float _w, float _h) {
     x = _x;
     y = _y;
@@ -36,15 +37,22 @@ class AnimatedGif {
       i++;
     }
     currentFrame = 0;
+    //rate = 7;
   }
 
   //behavior functions
   void show() {
     imageMode(CENTER);
+    //println(currentFrame, numFrames);
+    
     rate++;
     if (currentFrame == numFrames) currentFrame = 0;
     image(pics[currentFrame], x, y, w, h);
-    if (frameCount % rate == 0) currentFrame++;
+    //if (frameCount % rate == 0) 
+    currentFrame++;
+    //if (currentFrame >= pics.length)  currentFrame = 0;
+    //image(pics[currentFrame], x, y, w, h);
+    //if (frameCount % rate == 0 && myHero.velocity.x != 0) currentFrame++;
   }
 
   void show(float x, float y, float w, float h) {

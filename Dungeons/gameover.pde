@@ -1,7 +1,8 @@
 void gameover() {
-  background(orange);
+  background(orange, 200);
   
   if (myHero.lives == 0) {
+    fill(purple);
     textSize(100);
     text("GAMEOVER", width/2, height/3);
     textSize(20);
@@ -10,14 +11,22 @@ void gameover() {
   } else if (points >= pointswin) {
     textSize(100);
     text("YOU WON", width/2, height/3);
+  } else if (ammo <= 0) {
+    textSize(100);
+    text("GAMEOVER", width/2, height/3);
+    textSize(20);
+    fill(black);
+    text("(you ran out of ammo)", width/2, height/2);
   }
   
    if (mousePressed) {
      mode = INTRO;
+     myObjects = new ArrayList<GameObject>();
      myHero = new Hero();
      myObjects.add(myHero);
      myHero.roomX = 1;
      myHero.roomY = 1;
      points = 0;
+     ammo = 50;
    }
 }

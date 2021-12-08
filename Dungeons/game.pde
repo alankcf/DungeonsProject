@@ -36,8 +36,10 @@ void game() {
   textSize(20);
   text(points, 680, 100);
   
+  //lose condition
   if (myHero.lives == 0) mode = GAMEOVER;
   if (points >= pointswin) mode = GAMEOVER;
+  if (ammo <= 0) mode = GAMEOVER;
   if (myHero.roomX == 8 && myHero.roomY == 8) mode = GAMEOVER;
 
   int j = 0;
@@ -55,7 +57,9 @@ void game() {
           myObjects.remove(j);
         } else if (points == pointswin) {
           myObjects.remove(j);
-      }
+        } else if (ammo <= 0) {
+          myObjects.remove(j);
+        }
     }
     j++;
   }

@@ -44,7 +44,7 @@ void pause() {
     points--;
   }
   
-  if (addammo.clicked && points > 0) {
+  if (addammo.clicked && points > 0 && ammo >= 50) {
     ammo++;
     points--;
   }

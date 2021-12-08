@@ -11,6 +11,11 @@
 //win condition (xp)
 //trap hero in room
 //run out of ammo
+//unlock new weapons with visual feedback
+//making enemies that are different in term of behaviors (angry enemies)
+//enemy boss
+
+//Thurs, Dec 8 - Work on can't leave until enemy killed
 
 //Game Settings
 int ENEMYHP = 100;
@@ -70,6 +75,7 @@ color grey = #D6D6D6;
 color mango = #FF6A5A;
 color green2 = #00ED2D;
 
+//Buttons
 Button myButton;
 Button secondButton;
 Button speed;
@@ -107,11 +113,14 @@ int immunelength = immunestart + immuneplus;
 PImage healthpotion;
 PImage shotgun;
 
+//variables
 int points = 0; //xp
 int damage;
 int addspeed = 0;
 int pointswin = 25;
 int ammo = 50;
+
+boolean leave = false;
 
 void setup() {
   size(800, 800);

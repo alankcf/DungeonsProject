@@ -101,7 +101,7 @@ class Hero extends GameObject {
     if (velocity.mag() > 3) {
       velocity.setMag(3);
     }
-
+    
     //animations
     if (velocity.x != 0 || velocity.y != 0) {
       if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
@@ -112,7 +112,13 @@ class Hero extends GameObject {
         else currentAction = manLeft;
       }
     }
-
+    
+    //can't leave room
+    if (leave == true) print(true);
+    if (leave == false) print (false);
+    if (roomX == 1 && roomY == 1) leave = true;
+    if (roomX != 1 && roomY != 1) leave = false;
+    if (leave == true) {
     //north exit
     if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
       roomY--;
@@ -133,7 +139,7 @@ class Hero extends GameObject {
       roomY++;
       location = new PVector (width/2, height*0.1+50);
     }
-
+    }
     //reset Hero
     if (myHero.lives <= 0) mode = GAMEOVER;
     if (mode == INTRO) {

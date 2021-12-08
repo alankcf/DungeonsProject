@@ -16,7 +16,8 @@ class Particle extends GameObject {
 
   //override
   void show () {
-    noStroke();
+    strokeWeight(2);
+    stroke(black);
     fill(orange, t);
     rect(location.x, location.y, size, size);
   }

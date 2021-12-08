@@ -54,7 +54,7 @@ class Bullet extends GameObject {
     
     if (timer <= 0) lives = 0;
     
-    if (lives == 0) myObjects.add (new Particle(location.x, location.y));
+    //if (lives == 0) myObjects.add (new Particle(location.x, location.y));
     
     if (location.x <= 100) {
       int i = 0;
