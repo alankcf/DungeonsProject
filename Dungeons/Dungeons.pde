@@ -11,11 +11,12 @@
 //win condition (xp)
 //trap hero in room
 //run out of ammo
-//unlock new weapons with visual feedback
-//making enemies that are different in term of behaviors (angry enemies)
+//unlock new weapons with visual feedback with showing new weapons changed
+//making enemies that are different in term of behavior (angry enemies)
 //enemy boss
 
 //Thurs, Dec 8 - Work on can't leave until enemy killed
+//Fri, Dec 9 - work on weapons indicator
 
 //Game Settings
 int ENEMYHP = 100;
@@ -122,6 +123,10 @@ int ammo = 50;
 
 boolean leave = false;
 
+int gunmax = 5;
+
+PImage pistol, sniper, machine, shotsgun, flamethrower;
+
 void setup() {
   size(800, 800);
   mode = INTRO;
@@ -129,6 +134,13 @@ void setup() {
   font = createFont("FredokaOne-Regular.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
+  
+  //weapons
+  pistol = loadImage("pistol.png");
+  sniper = loadImage("sniper.png");
+  machine = loadImage("machine.png");
+  shotsgun = loadImage("shotgun.png");
+  flamethrower = loadImage("flame.png");
   
   //objects
   myButton = new Button("Start", width/2, 600, 200, 60, red, orange);
@@ -179,7 +191,7 @@ void setup() {
       tempx = 0;
     }
   } 
-
+  if (myHero.roomX != 1 || myHero.roomY != 1) leave = false;
   //loading enemies from minimap
   int a = 0;
   int b = 0;

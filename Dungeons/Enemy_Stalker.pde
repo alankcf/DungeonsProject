@@ -56,7 +56,9 @@ class Follower extends Enemy {
       velocity = new PVector(random(0, 3), random(0, 3));
       velocity.setMag(1);
     }
-
+    
+    if (lives <= 0) leave = true;
+    
     //println(immune);
     if (immune > immunelength) {
       if (myHero.location.x - location.x < 5 && myHero.location.y - location.y < 5) {
@@ -108,7 +110,7 @@ class shootFollower extends Enemy {
 
   void act() {
     super.act();
-
+    if (lives <= 0) leave = true;
     release++;
     //println(velocity);
     if (release > 200) {
@@ -159,6 +161,7 @@ class Turret extends Enemy {
   void act() {
     shotTimer++;
     super.act();
+    if (lives <= 0) leave = true;
     if (shotTimer >= threshold) {
       //using the mouse to aim
       PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);

@@ -93,7 +93,7 @@ class Hero extends GameObject {
     }
 
     if (clicked == true) currentGun++;
-    if (currentGun == 5 && clicked == true) currentGun = 0;
+    if (currentGun == gunmax && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
     if (spacekey) myGuns[currentGun].shoot();
@@ -112,33 +112,41 @@ class Hero extends GameObject {
         else currentAction = manLeft;
       }
     }
-    
+    //println(roomX, roomY);
     //can't leave room
-    if (leave == true) print(true);
-    if (leave == false) print (false);
+    //if (leave == true) print(true);
+    //if (leave == false) print (false);
     if (roomX == 1 && roomY == 1) leave = true;
-    if (roomX != 1 && roomY != 1) leave = false;
+    
     if (leave == true) {
-    //north exit
-    if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
-      roomY--;
-      location = new PVector (width/2, 700 - 3-10);
-    }
-    //east exit
-    if (eastRoom != white && location.x == 700 - 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
-      roomX++;
-      location = new PVector (width*0.1+30, height/2);
-    }
-    //west exit
-    if (westRoom != white && location.x == 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
-      roomX--;
-      location = new PVector (700 - 3, height/2);
-    }
-    //south exit
-    if (southRoom != white && location.y == 700 - 3 && location.x > height/2-50 && location.x <= height/2 + 50) {
-      roomY++;
-      location = new PVector (width/2, height*0.1+50);
-    }
+      //north exit
+      if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
+        roomY--;
+        location = new PVector (width/2, 700 - 3-10);
+        cleanUp();
+        leave = false;
+      }
+      //east exit
+      if (eastRoom != white && location.x == 700 - 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
+        roomX++;
+        location = new PVector (width*0.1+30, height/2);
+        cleanUp();
+        leave = false;
+      }
+      //west exit
+      if (westRoom != white && location.x == 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
+        roomX--;
+        location = new PVector (700 - 3, height/2);
+        cleanUp();
+        leave = false;
+      }
+      //south exit
+      if (southRoom != white && location.y == 700 - 3 && location.x > height/2-50 && location.x <= height/2 + 50) {
+        roomY++;
+        location = new PVector (width/2, height*0.1+50);
+        cleanUp();
+        leave = false;
+      }
     }
     //reset Hero
     if (myHero.lives <= 0) mode = GAMEOVER;
@@ -186,4 +194,18 @@ class Hero extends GameObject {
       i++;
     }
   }
+  
+  void cleanUp() {
+    int u = 0;
+    while (u < myObjects.size()) { //.size = number of pages
+      GameObject obj = myObjects.get(u); //different objects
+      if (obj instanceof Bullet || obj instanceof Indicator) {
+        if (inRoomWith (obj)) {
+          myObjects.remove(u);
+          u--;
+        }
+      }   
+      u++;
+     }
+   }
 }

@@ -52,7 +52,7 @@ class Enemy extends GameObject {
 
   void act() {
     super.act();
-
+    
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);

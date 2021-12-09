@@ -11,20 +11,22 @@ void game() {
   westRoom = map.get(myHero.roomX - 1, myHero.roomY);
   
   //exits
-  strokeWeight(5);
-  stroke(yellow);
-  fill(black);
-  if (northRoom != white) { 
-    ellipse(width/2, height * 0.1, 100, 100);
-  }
-  if (eastRoom != white) {
-    ellipse(width*0.9, height/2, 100, 100);
-  }
-  if (southRoom != white) {
-    ellipse(width/2, height * 0.9, 100, 100);
-  }
-  if (westRoom != white) {
-    ellipse(width*0.1, height/2, 100, 100);
+  if (leave == true) {
+    strokeWeight(5);
+    stroke(yellow);
+    fill(black);
+    if (northRoom != white) { 
+      ellipse(width/2, height * 0.1, 100, 100);
+    }
+    if (eastRoom != white) {
+      ellipse(width*0.9, height/2, 100, 100);
+    }
+    if (southRoom != white) {
+      ellipse(width/2, height * 0.9, 100, 100);
+    }
+    if (westRoom != white) {
+      ellipse(width*0.1, height/2, 100, 100);
+    }
   }
   fill(orange);
   strokeWeight(10);
