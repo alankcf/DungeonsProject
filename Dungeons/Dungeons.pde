@@ -17,6 +17,7 @@
 
 //Thurs, Dec 8 - Work on can't leave until enemy killed
 //Fri, Dec 9 - work on weapons indicator
+//get for transparancy
 
 //Game Settings
 int ENEMYHP = 100;
@@ -81,8 +82,9 @@ Button myButton;
 Button secondButton;
 Button speed;
 Button lives;
-Button exit;
+Button exit, exit2;
 Button addammo;
+Button info;
 
 //mode variables
 int mode; 
@@ -90,6 +92,7 @@ final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
+final int INFO = 4;
 
 //gif
 PImage [] gif;
@@ -229,6 +232,8 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameover();
+  } else if (mode == INFO) {
+    info();
   } else {
     println("Error: mode = " + mode);
   }

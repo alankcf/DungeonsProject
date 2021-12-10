@@ -69,15 +69,48 @@ class Hero extends GameObject {
  
     immune++;
 
-    if (myHero.lives > 100) lives = 10;
-    fill(black);
-    textSize(20);
-    text(currentGun, 700, 100);
+    if (myHero.lives > 10) lives = 10;
+    //fill(black);
+    //textSize(20);
+    //text(currentGun, 700, 100);
 
     shotTimer ++;
-   
+    
+    //gun type indicator
+    if (currentGun == 0) {
+      image(pistol, 200, 610, 80, 60);
+      textSize(20);
+      fill(white);
+      text("PISTOL", 200, 660);
+    }
+    if (currentGun == 1) {
+      image(sniper, 200, 610, 160, 40);
+      textSize(20);
+      fill(white);
+      text("SNIPER RIFLE", 200, 660);
+    }
+    if (currentGun == 2) {
+      image(machine, 200, 610, 200, 80);
+      textSize(20);
+      fill(white);
+      text("MACHINE GUN", 200, 660);
+    }
+    if (currentGun == 3) {
+      image(shotgun, 200, 620, 200, 40);
+      textSize(20);
+      fill(white);
+      text("SHOTGUN", 200, 660);
+    }
+    if (currentGun == 4) {
+      image(flamethrower, 200, 610, 180, 60);
+      textSize(20);
+      fill(white);
+      text("FLAMETHROWER", 200, 660);
+    }
+    
     if (upkey == false) velocity.setMag(velocity.mag() *0);
-
+    
+    //move around
     if (upkey) velocity.y = -velocityspeed;
     if (downkey) velocity.y = velocityspeed;
     if (leftkey) velocity.x = -velocityspeed;
@@ -113,9 +146,10 @@ class Hero extends GameObject {
       }
     }
     //println(roomX, roomY);
-    //can't leave room
     //if (leave == true) print(true);
     //if (leave == false) print (false);
+    
+    //can't leave room
     if (roomX == 1 && roomY == 1) leave = true;
     
     if (leave == true) {

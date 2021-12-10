@@ -4,7 +4,7 @@ void game() {
   background(red);
   line(0, 0, width, height);
   line(0, height, width, 0);
-
+  
   northRoom = map.get(myHero.roomX, myHero.roomY-1);
   eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
   southRoom = map.get(myHero.roomX, myHero.roomY+1);
@@ -38,7 +38,7 @@ void game() {
   textSize(20);
   text(points, 680, 100);
   
-  //lose condition
+  //lose conditions
   if (myHero.lives == 0) mode = GAMEOVER;
   if (points >= pointswin) mode = GAMEOVER;
   if (ammo <= 0) mode = GAMEOVER;
@@ -76,24 +76,24 @@ void game() {
   }
 
   //minimap
-  int x = 0;
-  int y = 0;
-  float size = 10;
-  while (y < map.height) {
-    color c = map.get(x, y);
-    //x += size;
-    fill(c, 220);
-    square(x*10 + 50, y*10 + 50, size);
-    x = x + 1;
+  //int x = 0;
+  //int y = 0;
+  //float size = 10;
+  //while (y < map.height) {
+  //  color c = map.get(x, y);
+  //  //x += size;
+  //  fill(c, 220);
+  //  square(x*10 + 50, y*10 + 50, size);
+  //  x = x + 1;
 
-    if  (x >= map.width) {
-      x = 0;
-      y = y + 1;
-    }
-  }
+  //  if  (x >= map.width) {
+  //    x = 0;
+  //    y = y + 1;
+  //  }
+  //}
 
-  fill(purple);
-  square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
+  //fill(purple);
+  //square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
 
   //shop
   secondButton = new Button("SHOP", 95, 170, 100, 30, red, orange);
@@ -112,6 +112,12 @@ void game() {
   fill(darkyellow);
   if (ammo > 0) text("Ammo", 100+ammo*4/2, 690);
   fill(darkblue);
-  if (ammo <= 0) text("No Ammo Left", 200, 690);
+  if (ammo <= 10) text("No Ammo Left", 200, 690);
   rectMode(CENTER);
+  
+  info = new Button("+", 50, 50, 40, 40, white, blue, 5, 30);
+  info.show();
+  if (info.clicked) {
+    mode = INFO;
+  }
 }
