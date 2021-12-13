@@ -34,9 +34,9 @@ void game() {
   rect(400, 400, 650, 650);
   
   //xp indicator
-  fill(blue);
-  textSize(20);
-  text(points, 680, 100);
+  //fill(blue);
+  //textSize(20);
+  //text(points, 680, 100);
   
   //lose conditions
   if (myHero.lives == 0) mode = GAMEOVER;
@@ -94,11 +94,6 @@ void game() {
 
   //fill(purple);
   //square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
-
-  //shop
-  secondButton = new Button("SHOP", 95, 170, 100, 30, red, orange);
-  secondButton.show();
-  if (secondButton.clicked) mode = PAUSE;
   
   //ammo
   rectMode(CORNER);
@@ -110,9 +105,9 @@ void game() {
   rect(100, 670, ammo*4, 20, 200); 
   textSize(20);
   fill(darkyellow);
-  if (ammo > 0) text("Ammo", 100+ammo*4/2, 690);
+  if (ammo > 10) text("Ammo", 100+ammo*4/2, 690);
   fill(darkblue);
-  if (ammo <= 10) text("No Ammo Left", 200, 690);
+  if (ammo <= 0) text("No Ammo Left", 200, 690);
   rectMode(CENTER);
   
   info = new Button("+", 50, 50, 40, 40, white, blue, 5, 30);

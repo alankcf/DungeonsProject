@@ -38,7 +38,7 @@ class Button {
   //behavior functions
   void show() {
     strokeWeight(1);
-
+    stroke(normal);
     if (mouseX > x - w/2 && mouseX < x + w/2 && mouseY > y - h/2 && mouseY < y + h/2) {
       fill(highlight);
     } else fill (normal);

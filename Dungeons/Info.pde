@@ -23,9 +23,22 @@ void info() {
       y = y + 1;
     }
   }
+  
+  //xp indicator
+  fill(white);
+  textSize(25);
+  text("XP: " + points, 230, 130);
+  
+  //shop
+  secondButton = new Button("SHOP", 230, 160, 100, 30, red, orange);
+  secondButton.show();
+  if (secondButton.clicked) mode = PAUSE;
+  
   fill(purple);
   square(50 + myHero.roomX*10, 100 + myHero.roomY*10, size);
   exit2 = new Button("x", 50, 50, 40, 40, white, red, 0, 40); 
   exit2.show();
-  if (exit2.clicked) mode = GAME;
+  if (exit2.clicked) {
+    mode = GAME;
+  }
 }

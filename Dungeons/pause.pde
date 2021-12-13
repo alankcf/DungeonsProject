@@ -9,13 +9,13 @@ void pause() {
   //XP Indicator
   fill(white);
   textSize(50);
-  text("You have "+points+ " XP", width/2, 240);
+  text("You have "+points+ " XP", width/2, 220);
   
   //Advancement
   textSize(35);
-  text("Lives: " + myHero.lives, width/2, 360);
-  text("Shield Time: " + (immunelength), 3*width/5-15, 460);
-  text("Ammo: " + ammo, width/2, 560);
+  text("Lives: " + myHero.lives, width/2, 320);
+  text("Shield Time: " + (immunelength), 3*width/5-15, 420);
+  text("Ammo: " + ammo, width/2, 520);
   
   stroke(black);
   fill(grey);
@@ -23,15 +23,38 @@ void pause() {
   
   //buttons
   stroke(purple);
-  speed = new Button("+", 250, 450, 100, 60, blue, white, 20, 40); 
-  lives = new Button("+", 250, 350, 100, 60, blue, white, 20, 40); 
+  speed = new Button("+", 250, 410, 100, 60, blue, white, 20, 40); 
+  lives = new Button("+", 250, 310, 100, 60, blue, white, 20, 40); 
   exit = new Button("x", 650, 130, 40, 30, white, red, 0, 40); 
-  addammo = new Button ("+", 250, 550, 100, 60, blue, white, 20, 40); 
+  addammo = new Button ("+", 250, 510, 100, 60, blue, white, 20, 40); 
+  addgun = new Button(" ", width/2+100, 610, 200, 70, darkblue, white, 20, 40);
   speed.show();
   lives.show();
   exit.show();
   addammo.show();
+  if (gunmax != 5) addgun.show();
   
+  //uplock weapons
+  if (gunmax == 2) { //unlock machine print("j");
+    image(machine, width/2+100, 610, 200, 70);
+    textSize(20);
+    fill(white);
+    text("MACHINE GUN", width/2-100, 610);
+  }
+  
+  if (gunmax == 3) {
+    image(shotgun, width/2+100, 610, 200, 40);
+    textSize(20);
+    fill(white);
+    text("SHOTGUN", width/2-100, 610);
+  }
+  
+  if (gunmax == 4) {
+    image(flamethrower, width/2+100, 610, 200, 40);
+    textSize(20);
+    fill(white);
+    text("FLAMETHROWER",  width/2-100, 610);
+  }
   //clicked
   if (exit.clicked) mode = GAME;
   if (lives.clicked && points > 0 && myHero.lives < 10) {
@@ -47,5 +70,10 @@ void pause() {
   if (addammo.clicked && points > 0 && ammo <= 50) {
     ammo = ammo + 2;
     points--;
+  }
+  
+  if (addgun.clicked) {
+    gunmax++;
+    points = points - 2;
   }
 }

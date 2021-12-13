@@ -18,6 +18,13 @@
 //Thurs, Dec 8 - Work on can't leave until enemy killed
 //Fri, Dec 9 - work on weapons indicator
 //get for transparancy
+//Finish Info Mode - XP Indicator
+//Have gun indicator labeled
+//make sure that gameover reset is good
+//sniperifle line
+//unlock new weapons for xp
+//make enemies PImages
+//stop weapons from changing when exit info
 
 //Game Settings
 int ENEMYHP = 100;
@@ -85,6 +92,7 @@ Button lives;
 Button exit, exit2;
 Button addammo;
 Button info;
+Button addgun;
 
 //mode variables
 int mode; 
@@ -118,7 +126,7 @@ PImage healthpotion;
 PImage shotgun;
 
 //variables
-int points = 0; //xp
+int points = 10; //xp
 int damage;
 int addspeed = 0;
 int pointswin = 25;
@@ -126,7 +134,7 @@ int ammo = 50;
 
 boolean leave = false;
 
-int gunmax = 5;
+int gunmax = 2;
 
 PImage pistol, sniper, machine, shotsgun, flamethrower;
 

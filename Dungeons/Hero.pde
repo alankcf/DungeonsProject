@@ -82,30 +82,41 @@ class Hero extends GameObject {
       textSize(20);
       fill(white);
       text("PISTOL", 200, 660);
+      cursor();
     }
     if (currentGun == 1) {
       image(sniper, 200, 610, 160, 40);
       textSize(20);
       fill(white);
       text("SNIPER RIFLE", 200, 660);
+      stroke(black);
+      strokeWeight(2);
+      //line(myHero.location.x, myHero.location.y, mouseX, mouseY);
+      line(mouseX-10, mouseY, mouseX+10, mouseY);
+      line(mouseX, mouseY-10, mouseX, mouseY+10);
+      if (mode == GAME && velocity.x == 0 && velocity.y == 0) noCursor();
+      //print(velocity.x, velocity.y);
     }
     if (currentGun == 2) {
       image(machine, 200, 610, 200, 80);
       textSize(20);
       fill(white);
       text("MACHINE GUN", 200, 660);
+      cursor();
     }
     if (currentGun == 3) {
       image(shotgun, 200, 620, 200, 40);
       textSize(20);
       fill(white);
       text("SHOTGUN", 200, 660);
+      cursor();
     }
     if (currentGun == 4) {
       image(flamethrower, 200, 610, 180, 60);
       textSize(20);
       fill(white);
       text("FLAMETHROWER", 200, 660);
+      cursor();
     }
     
     if (upkey == false) velocity.setMag(velocity.mag() *0);
@@ -125,7 +136,7 @@ class Hero extends GameObject {
       //print("!", frameCount);
     }
 
-    if (clicked == true) currentGun++;
+    if (clicked == true && mode == GAME) currentGun++;
     if (currentGun == gunmax && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
