@@ -89,12 +89,13 @@ class Hero extends GameObject {
       textSize(20);
       fill(white);
       text("SNIPER RIFLE", 200, 660);
-      stroke(black);
-      strokeWeight(2);
-      //line(myHero.location.x, myHero.location.y, mouseX, mouseY);
-      line(mouseX-10, mouseY, mouseX+10, mouseY);
-      line(mouseX, mouseY-10, mouseX, mouseY+10);
-      if (mode == GAME && velocity.x == 0 && velocity.y == 0) noCursor();
+      if (mode == GAME && mouseX > 100 && mouseY > 100) {       
+        noCursor();
+        stroke(red);
+        strokeWeight(5);
+        line(mouseX-10, mouseY, mouseX+10, mouseY);
+        line(mouseX, mouseY-10, mouseX, mouseY+10);
+      } else if (mouseX <= 100 && mouseY <= 100) cursor();
       //print(velocity.x, velocity.y);
     }
     if (currentGun == 2) {
@@ -122,10 +123,10 @@ class Hero extends GameObject {
     if (upkey == false) velocity.setMag(velocity.mag() *0);
     
     //move around
-    if (upkey) velocity.y = -velocityspeed;
-    if (downkey) velocity.y = velocityspeed;
-    if (leftkey) velocity.x = -velocityspeed;
-    if (rightkey) velocity.x = velocityspeed;
+    if (upkey || wkey) velocity.y = -velocityspeed;
+    if (downkey || skey) velocity.y = velocityspeed;
+    if (leftkey || akey) velocity.x = -velocityspeed;
+    if (rightkey || dkey) velocity.x = velocityspeed;
       //direction.rotate(radians(5));
     
     //println(currentGun);

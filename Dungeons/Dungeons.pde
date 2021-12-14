@@ -26,6 +26,8 @@
 //make enemies PImages
 //stop weapons from changing when exit info
 
+//Wed, Dec 15 - try enemy boss
+
 //Game Settings
 int ENEMYHP = 100;
 
@@ -50,7 +52,7 @@ int SHOTGUN_SPEED = 5;
 int FLAMETHROWER_THRESHOLD = 7;
 int FLAMETHROWER_SPEED = 10;
 
-boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey;
+boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey, wkey, akey, skey, dkey;
 AnimatedGif myGif, manUp, manDown, manRight, manLeft;
 AnimatedGif eUp, eDown, eRight, eLeft;
 Hero myHero;
@@ -89,7 +91,7 @@ Button myButton;
 Button secondButton;
 Button speed;
 Button lives;
-Button exit, exit2;
+Button exit, exit2, exit3;
 Button addammo;
 Button info;
 Button addgun;
@@ -101,6 +103,7 @@ final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
 final int INFO = 4;
+final int UNLOCKED = 5;
 
 //gif
 PImage [] gif;
@@ -242,6 +245,8 @@ void draw() {
     gameover();
   } else if (mode == INFO) {
     info();
+  } else if (mode == UNLOCKED) {
+    unlocked();
   } else {
     println("Error: mode = " + mode);
   }
@@ -253,6 +258,10 @@ void keyPressed() {
   if (keyCode == LEFT)  leftkey  = true;
   if (keyCode == RIGHT) rightkey = true;
   if (keyCode == ENTER) enterkey = true;
+  if (keyCode == 'W')   wkey = true;
+  if (keyCode == 'S')   skey = true;
+  if (keyCode == 'A')   akey = true;
+  if (keyCode == 'D')   dkey = true;
   if (key == ' ')       spacekey = true;
 }
 
@@ -262,5 +271,9 @@ void keyReleased() {
   if (keyCode == LEFT)  leftkey  = false;
   if (keyCode == RIGHT) rightkey = false;
   if (keyCode == ENTER) enterkey = false;
+  if (keyCode == 'W')   wkey = false;
+  if (keyCode == 'S')   skey = false;
+  if (keyCode == 'A')   akey = false;
+  if (keyCode == 'D')   dkey = false;
   if (key == ' ')       spacekey = false;
 } 

@@ -67,13 +67,61 @@ void pause() {
     points--;
   }
   
-  if (addammo.clicked && points > 0 && ammo <= 50) {
+  if (addammo.clicked && points > 0 && ammo < 50) {
     ammo = ammo + 2;
     points--;
   }
-  
   if (addgun.clicked) {
     gunmax++;
     points = points - 2;
+    mode = UNLOCKED;
   }
+}
+
+void unlocked() {
+  
+    fill(orange);
+    stroke(black);
+    strokeWeight(2);
+    rect(width/2, height/2, 250, 150);
+    fill(grey);
+    rect(width/2, height/2-75, 250, 20);
+    exit3 = new Button("x", 507, 325, 35, 15, white, red, 0, 25); 
+    exit3.show();
+    fill(white);
+    stroke(white);
+    textSize(20);
+    text("New Weapon Unlocked!", width/2, height/2-30);
+  
+   if (gunmax == 3) { //unlock machine
+      fill(white);
+      stroke(white);
+      textSize(25);
+      image(machine, width/2, height/2+10, 100, 40);
+      textSize(20);
+      fill(white);
+      text("MACHINE GUN", width/2, height/2+50);
+   }
+   
+   if (gunmax == 4) {
+      fill(white);
+      stroke(white);
+      textSize(25);
+      image(shotgun, width/2, height/2+10, 100, 40);
+      textSize(20);
+      fill(white);
+      text("SHOTGUN", width/2, height/2+50);
+   }
+   
+   if (gunmax == 5) {
+      fill(white);
+      stroke(white);
+      textSize(25);
+      image(flamethrower, width/2, height/2+10, 100, 40);
+      textSize(20);
+      fill(white);
+      text("FLAMETHROWER", width/2, height/2+50);
+   }
+  
+  if (exit3.clicked) mode = PAUSE;
 }

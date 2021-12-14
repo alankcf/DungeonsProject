@@ -110,6 +110,8 @@ void game() {
   if (ammo <= 0) text("No Ammo Left", 200, 690);
   rectMode(CENTER);
   
+  if (enterkey) leave = true;
+  
   info = new Button("+", 50, 50, 40, 40, white, blue, 5, 30);
   info.show();
   if (info.clicked) {

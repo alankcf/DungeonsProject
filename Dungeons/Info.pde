@@ -32,7 +32,9 @@ void info() {
   //shop
   secondButton = new Button("SHOP", 230, 160, 100, 30, red, orange);
   secondButton.show();
-  if (secondButton.clicked) mode = PAUSE;
+  if (secondButton.clicked) {
+    mode = PAUSE;
+  }
   
   fill(purple);
   square(50 + myHero.roomX*10, 100 + myHero.roomY*10, size);
