@@ -30,7 +30,9 @@ void gameover() {
   points = 0;
   ammo = 50;
   gunmax = 2;
-     
+  damage = 0;
+  level = 1;
+  livesbooster = 0;
   //   int a = 0;
   //int b = 0;
   //while (b < map.height) {

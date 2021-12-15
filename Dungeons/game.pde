@@ -112,8 +112,9 @@ void game() {
   
   if (enterkey) leave = true;
   
+  //info
   info = new Button("+", 50, 50, 40, 40, white, blue, 5, 30);
-  info.show();
+  if (leave == true) info.show();
   if (info.clicked) {
     mode = INFO;
   }

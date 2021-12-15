@@ -1,21 +1,21 @@
 class SniperRifle extends Weapon {
 
   SniperRifle() {
-    super(SNIPER_THRESHOLD, SNIPER_SPEED); //threshold, speed
+    super(SNIPER_THRESHOLD, SNIPER_SPEED+damage); //threshold, speed
   }
 }
 
 class Machine extends Weapon {
 
   Machine() {
-    super(MACHINEGUN_THRESHOLD, MACHINEGUN_SPEED);
+    super(MACHINEGUN_THRESHOLD, MACHINEGUN_SPEED+damage);
   }
 }
 
 class ShotGun extends Weapon {
 
   ShotGun() {
-    super(SHOTGUN_THRESHOLD, SHOTGUN_SPEED);
+    super(SHOTGUN_THRESHOLD, SHOTGUN_SPEED+damage);
   }
 
   void shoot() {
@@ -24,7 +24,7 @@ class ShotGun extends Weapon {
       if (i < 30) {
         PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
         aimVector.rotate(random(-PI, PI));
-        aimVector.setMag(bulletSpeed);
+        aimVector.setMag(bulletSpeed+damage);
         myObjects.add(new Bullet(aimVector, purple, 10));
       }
     }
@@ -33,7 +33,7 @@ class ShotGun extends Weapon {
 class Flamethrower extends Weapon {
 
   Flamethrower() {
-    super(FLAMETHROWER_THRESHOLD, FLAMETHROWER_SPEED);
+    super(FLAMETHROWER_THRESHOLD, FLAMETHROWER_SPEED+damage);
   }
 
   void shoot() {

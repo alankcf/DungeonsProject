@@ -60,25 +60,39 @@ void pause() {
   if (lives.clicked && points > 0 && myHero.lives < 10) {
     myHero.lives++;
     points--;
+    clickedtimelives++;
   }
 
   if (speed.clicked && points > 0) {
     immunelength++;  
     points--;
+    clickedtimeshield++;
   }
-  
+  if (ammo > 50) ammo = 50;
   if (addammo.clicked && points > 0 && ammo < 50) {
     ammo = ammo + 2;
     points--;
+    clickedtimeammo++;
   }
   if (addgun.clicked) {
     gunmax++;
     points = points - 2;
     mode = UNLOCKED;
   }
+  
+  if (clickedtimeammo >= 1 && clickedtimeshield >= 1 && clickedtimeammo >= 1) {
+    level = 2;
+    damage = 5;
+    livesbooster = 1;
+    myHero.velocityspeed = 4;
+    mode = UNLOCKED;
+    //println(myHero.lives, myHero.velocityspeed);
+  }
+  //println(level, clickedtimelives, clickedtimeshield, clickedtimeammo);
 }
 
 void unlocked() {
+    int times = 0;
   
     fill(orange);
     stroke(black);
@@ -88,12 +102,21 @@ void unlocked() {
     rect(width/2, height/2-75, 250, 20);
     exit3 = new Button("x", 507, 325, 35, 15, white, red, 0, 25); 
     exit3.show();
-    fill(white);
-    stroke(white);
-    textSize(20);
-    text("New Weapon Unlocked!", width/2, height/2-30);
-  
+   
+   if (level == 2 && times == 0) {
+     fill(white);
+     stroke(white);
+     textSize(10);
+     text("New Level Unlocked!", width/2+10, height/2-30);
+     circle(width/2 - 10, height/2-30, 10);
+     fill(blue);
+     text(level, width/2 - 10, height/2-30);
+   }
    if (gunmax == 3) { //unlock machine
+      fill(white);
+      stroke(white);
+      textSize(20);
+      text("New Weapon Unlocked!", width/2, height/2-30);
       fill(white);
       stroke(white);
       textSize(25);
@@ -104,7 +127,11 @@ void unlocked() {
    }
    
    if (gunmax == 4) {
-      fill(white);
+     fill(white);
+     stroke(white);
+     textSize(20);
+     text("New Weapon Unlocked!", width/2, height/2-30);
+     fill(white);
       stroke(white);
       textSize(25);
       image(shotgun, width/2, height/2+10, 100, 40);
@@ -116,6 +143,10 @@ void unlocked() {
    if (gunmax == 5) {
       fill(white);
       stroke(white);
+      textSize(20);
+      text("New Weapon Unlocked!", width/2, height/2-30);
+      fill(white);
+      stroke(white);
       textSize(25);
       image(flamethrower, width/2, height/2+10, 100, 40);
       textSize(20);
@@ -123,5 +154,8 @@ void unlocked() {
       text("FLAMETHROWER", width/2, height/2+50);
    }
   
-  if (exit3.clicked) mode = PAUSE;
+  if (exit3.clicked) {
+    mode = PAUSE;
+  }
+  
 }

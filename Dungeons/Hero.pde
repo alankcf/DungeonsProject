@@ -12,7 +12,7 @@ class Hero extends GameObject {
   int velocityspeed, velocityspeedstart;
 
   Hero() {
-    lives = 10;
+    lives = 10 + livesbooster;
     start = lives - 10;
     location = new PVector(width/2, height/2);
     velocity = new PVector(0, 0);
@@ -62,14 +62,19 @@ class Hero extends GameObject {
     fill(green2);
     rect(location.x-25, location.y-40, myHero.lives*5, 5, 10);
     rectMode(CENTER);
+    
+    //level
+    fill(white);
+    textSize(15);
+    text(level, location.x, location.y-50);
   }
 
   void act() {
     super.act();
- 
+     //println(lives, velocityspeed);
     immune++;
 
-    if (myHero.lives > 10) lives = 10;
+    if (myHero.lives + livesbooster > 10) lives = 10;
     //fill(black);
     //textSize(20);
     //text(currentGun, 700, 100);
@@ -123,10 +128,10 @@ class Hero extends GameObject {
     if (upkey == false) velocity.setMag(velocity.mag() *0);
     
     //move around
-    if (upkey || wkey) velocity.y = -velocityspeed;
-    if (downkey || skey) velocity.y = velocityspeed;
-    if (leftkey || akey) velocity.x = -velocityspeed;
-    if (rightkey || dkey) velocity.x = velocityspeed;
+    if (upkey || wkey) location.y = location.y - velocityspeed;
+    if (downkey || skey) location.y = location.y + velocityspeed;
+    if (leftkey || akey) location.x = location.x - velocityspeed;
+    if (rightkey || dkey) location.x = location.x + velocityspeed;
       //direction.rotate(radians(5));
     
     //println(currentGun);
@@ -148,22 +153,22 @@ class Hero extends GameObject {
     }
     
     //animations
-    if (velocity.x != 0 || velocity.y != 0) {
-      if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
-        if (velocity.y > 0) currentAction = manDown;
-        else currentAction = manUp;
-      } else {
-        if (velocity.x > 0) currentAction = manRight;
-        else currentAction = manLeft;
-      }
-    }
+    //if (velocity.x != 0 || velocity.y != 0) {
+    //  if (abs(velocity.y) >= abs(velocity.x)) { //abs = absolute value (no negative signs)
+        if (downkey || skey) currentAction = manDown;
+        else if (upkey || wkey) currentAction = manUp;
+   //   } else {
+        if (rightkey || dkey) currentAction = manRight;
+        else if (leftkey || akey) currentAction = manLeft;
+     // }
+  //  }
     //println(roomX, roomY);
     //if (leave == true) print(true);
     //if (leave == false) print (false);
     
     //can't leave room
     if (roomX == 1 && roomY == 1) leave = true;
-    
+//println(location.x);
     if (leave == true) {
       //north exit
       if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
@@ -180,7 +185,7 @@ class Hero extends GameObject {
         leave = false;
       }
       //west exit
-      if (westRoom != white && location.x == 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
+      if (westRoom != white && location.x <= 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
         roomX--;
         location = new PVector (700 - 3, height/2);
         cleanUp();

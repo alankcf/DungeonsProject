@@ -26,7 +26,8 @@
 //make enemies PImages
 //stop weapons from changing when exit info
 
-//Wed, Dec 15 - try enemy boss
+//Hero levels, escape room ability, make shop not accessible
+//Thurs, Dec 16: work on Level message
 
 //Game Settings
 int ENEMYHP = 100;
@@ -130,10 +131,13 @@ PImage shotgun;
 
 //variables
 int points = 10; //xp
-int damage;
+int damage = 0;
 int addspeed = 0;
 int pointswin = 25;
 int ammo = 50;
+int level = 1;
+int clickedtimelives, clickedtimeshield, clickedtimeammo = 0;
+int livesbooster, speedbooster = 0;
 
 boolean leave = false;
 
