@@ -2,32 +2,11 @@
 //Dungeons Project
 //November 2021
 
-//Things to add for Criteria (Two Slots)
-//1. Freeze or slow down thing
-//2. Immune to damage for a set amound of time
-//different skins for heros (less damage)
-//defend bullets with bullets
-//have mesage xp float to xp counter
-//win condition (xp)
-//trap hero in room
-//run out of ammo
-//unlock new weapons with visual feedback with showing new weapons changed
 //making enemies that are different in term of behavior (angry enemies)
 //enemy boss
-
-//Thurs, Dec 8 - Work on can't leave until enemy killed
-//Fri, Dec 9 - work on weapons indicator
-//get for transparancy
-//Finish Info Mode - XP Indicator
-//Have gun indicator labeled
 //make sure that gameover reset is good
-//sniperifle line
-//unlock new weapons for xp
 //make enemies PImages
 //stop weapons from changing when exit info
-
-//Hero levels, escape room ability, make shop not accessible
-//Thurs, Dec 16: work on Level message
 
 //Game Settings
 int ENEMYHP = 100;
@@ -138,18 +117,23 @@ int ammo = 50;
 int level = 1;
 int clickedtimelives, clickedtimeshield, clickedtimeammo = 0;
 int livesbooster, speedbooster = 0;
-
-boolean leave = false;
-
 int gunmax = 2;
 
+//booleans
+boolean leave = false;
+boolean clickedonce2 = false;
+boolean clickedonce3 = false;
+boolean clickedonce4 = false;
+
+//weapons images
 PImage pistol, sniper, machine, shotsgun, flamethrower;
 
 void setup() {
   size(800, 800);
   mode = INTRO;
   //font = createFont("Raleway-Black.ttf", 2);
-  font = createFont("FredokaOne-Regular.ttf", 2);
+  font = createFont("BakbakOne-Regular.ttf", 2);
+  //font = createFont("FredokaOne-Regular.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
   
@@ -174,17 +158,14 @@ void setup() {
   eLeft = new AnimatedGif(7, 4, "skeleton/_left/Skeleton_0", ".png");
   eRight = new AnimatedGif(7, 4, "skeleton/_right/Skeleton_", ".png");
 
+  //dropped item images
   healthpotion = loadImage("_0.png");
   shotgun = loadImage("shotgun.png");
-
+  
+  //Hero
   myHero = new Hero();
   myObjects = new ArrayList<GameObject>(); 
   myObjects.add(myHero);
-  //myObjects.add(new Enemy());
-  //myObjects.add(new Follower(1, 2, random(100, 700), random(100, 700)));
-  //myObjects.add(new Follower(2, 1, random(100, 700), random(100, 700)));
-  //myObjects.add(new shootFollower(3, 1));
-  //myObjects.add(new Turret(1, 3, width/2, height/2));
 
   //darkness cells  
   brickd = 10;
@@ -210,6 +191,7 @@ void setup() {
     }
   } 
   if (myHero.roomX != 1 || myHero.roomY != 1) leave = false;
+  
   //loading enemies from minimap
   int a = 0;
   int b = 0;

@@ -29,17 +29,12 @@ class GameObject {
   }
 
   boolean inRoomWith(GameObject myObj) {
-    //if (roomX == myObj.roomX && roomY == myObj.roomY) {
     return roomX == myObj.roomX && roomY == myObj.roomY;
-    //  return true;
-   // } else return false;
   }
+  
 
   boolean isCollidingWith(GameObject myObj) {
     float d = dist(myObj.location.x, myObj.location.y, location.x, location.y);
     return inRoomWith(myObj) && d < size/2 + myObj.size/2 && lives > 0;
-    //if (inRoomWith(myObj) && d < size/2 + myObj.size/2 && lives > 0) {
-    //  return true;
-    //} else return false;
   }
 }

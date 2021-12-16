@@ -21,23 +21,18 @@ class DroppedItem extends GameObject {
   }
 
   void show() {
-    //use if statements to draw different items differently
+ 
     if (health == true) {
       stroke(black);
       strokeWeight(2);
       fill(c);
       circle(location.x, location.y, size);
-      //fill(black);
-      //textSize(5);
-      //text("Health", location.x, location.y);
       image(healthpotion, location.x, location.y, size, size);
     } else if (gun == true) {
       stroke(black);
       strokeWeight(2);
       fill(c);
       circle(location.x, location.y, size);
-      //fill(black);
-      //text("GUN", location.x, location.y);
       image(shotgun, location.x, location.y, size, size/2);
     } else if (dropped == 4) {
       //drops nothing
@@ -45,9 +40,7 @@ class DroppedItem extends GameObject {
   }
 
   void act() {
-    //nothing
     dropped = int (random(1, 3));
-    //print(dropped);
     if (lives <= 0) {
       health = false;
       gun = false;

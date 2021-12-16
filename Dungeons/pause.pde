@@ -50,7 +50,7 @@ void pause() {
   }
   
   if (gunmax == 4) {
-    image(flamethrower, width/2+100, 610, 200, 40);
+    image(flamethrower, width/2+100, 610, 100, 40);
     textSize(20);
     fill(white);
     text("FLAMETHROWER",  width/2-100, 610);
@@ -80,11 +80,29 @@ void pause() {
     mode = UNLOCKED;
   }
   
-  if (clickedtimeammo >= 1 && clickedtimeshield >= 1 && clickedtimeammo >= 1) {
+  if (clickedtimeammo >= 1 && clickedtimeshield >= 1 && clickedtimeammo >= 1  && clickedonce2 == false) {
     level = 2;
-    damage = 5;
+    damage = 2;
     livesbooster = 1;
     myHero.velocityspeed = 4;
+    mode = UNLOCKED;
+    //println(myHero.lives, myHero.velocityspeed);
+  }
+  
+  if (clickedtimeammo >= 2 && clickedtimeshield >= 2 && clickedtimeammo >= 2  && clickedonce3 == false) {
+    level = 3;
+    damage = 4;
+    livesbooster = 1;
+    myHero.velocityspeed = 5;
+    mode = UNLOCKED;
+    //println(myHero.lives, myHero.velocityspeed);
+  }
+  
+  if (clickedtimeammo >= 3 && clickedtimeshield >= 3 && clickedtimeammo >= 3  && clickedonce4 == false) {
+    level = 4;
+    damage = 5;
+    livesbooster = 1;
+    myHero.velocityspeed = 6;
     mode = UNLOCKED;
     //println(myHero.lives, myHero.velocityspeed);
   }
@@ -106,12 +124,51 @@ void unlocked() {
    if (level == 2 && times == 0) {
      fill(white);
      stroke(white);
-     textSize(10);
-     text("New Level Unlocked!", width/2+10, height/2-30);
-     circle(width/2 - 10, height/2-30, 10);
+     textSize(20);
+     text("New Level", width/2+30, height/2-30);
+     text("Unlocked!", width/2+30, height/2-10);
+     circle(width/2 - 80, height/2-30, 40);
      fill(blue);
-     text(level, width/2 - 10, height/2-30);
+     textSize(20);
+     text(level, width/2 - 80, height/2-20);
+     textSize(17);
+     text("Damage +2", width/2, height/2+20);
+     text("Lives +1", width/2, height/2+40);
+     text("Speed +1", width/2, height/2+60);
    }
+   
+   if (level == 3 && times == 0) {
+     fill(white);
+     stroke(white);
+     textSize(20);
+     text("New Level", width/2+30, height/2-30);
+     text("Unlocked!", width/2+30, height/2-10);
+     circle(width/2 - 80, height/2-30, 40);
+     fill(blue);
+     textSize(20);
+     text(level, width/2 - 80, height/2-20);
+     textSize(17);
+     text("Damage +2", width/2, height/2+20);
+     text("Lives +1", width/2, height/2+40);
+     text("Speed +1", width/2, height/2+60);
+   }
+   
+   if (level == 4 && times == 0) {
+     fill(white);
+     stroke(white);
+     textSize(20);
+     text("New Level", width/2+30, height/2-30);
+     text("Unlocked!", width/2+30, height/2-10);
+     circle(width/2 - 80, height/2-30, 40);
+     fill(blue);
+     textSize(15);
+     text("MAX", width/2 - 80, height/2-20);
+     textSize(17);
+     text("Damage +2", width/2, height/2+20);
+     text("Lives +1", width/2, height/2+40);
+     text("Speed +1", width/2, height/2+60);
+   }
+   
    if (gunmax == 3) { //unlock machine
       fill(white);
       stroke(white);
@@ -120,7 +177,7 @@ void unlocked() {
       fill(white);
       stroke(white);
       textSize(25);
-      image(machine, width/2, height/2+10, 100, 40);
+      image(machine, width/2, height/2+10, 150, 40);
       textSize(20);
       fill(white);
       text("MACHINE GUN", width/2, height/2+50);
@@ -134,7 +191,7 @@ void unlocked() {
      fill(white);
       stroke(white);
       textSize(25);
-      image(shotgun, width/2, height/2+10, 100, 40);
+      image(shotgun, width/2, height/2+10, 200, 40);
       textSize(20);
       fill(white);
       text("SHOTGUN", width/2, height/2+50);
@@ -154,8 +211,9 @@ void unlocked() {
       text("FLAMETHROWER", width/2, height/2+50);
    }
   
-  if (exit3.clicked) {
-    mode = PAUSE;
-  }
-  
+  if (exit3.clicked) mode = PAUSE;
+    
+  if (exit3.clicked && level == 2) clickedonce2 = true;
+  if (exit3.clicked && level == 3) clickedonce3 = true;
+  if (exit3.clicked && level == 4) clickedonce4 = true;
 }

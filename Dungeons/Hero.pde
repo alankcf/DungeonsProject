@@ -9,7 +9,7 @@ class Hero extends GameObject {
   boolean clicked;
   AnimatedGif currentAction;
   int start;
-  int velocityspeed, velocityspeedstart;
+  int velocityspeed;
 
   Hero() {
     lives = 10 + livesbooster;
@@ -35,13 +35,11 @@ class Hero extends GameObject {
     size = 60;
     currentAction = manDown; 
     velocityspeed = 3;
-    velocityspeedstart = 7;
+    //velocityspeedstart = 7;
   }
 
   void show() {
     pushMatrix();
-    //translate(location.x, location.y);
-    //rotate(direction.heading());
     strokeWeight(10);
     if (immune >= immunelength)  stroke(orange, 10);
     if (immune < immunelength) stroke(yellow);
@@ -66,18 +64,16 @@ class Hero extends GameObject {
     //level
     fill(white);
     textSize(15);
-    text(level, location.x, location.y-50);
+    if (level < 4) text(level, location.x, location.y-50);
+    if (level >= 4) text("MAX Level", location.x, location.y-50);
   }
 
   void act() {
     super.act();
-     //println(lives, velocityspeed);
+ 
     immune++;
 
     if (myHero.lives + livesbooster > 10) lives = 10;
-    //fill(black);
-    //textSize(20);
-    //text(currentGun, 700, 100);
 
     shotTimer ++;
     
@@ -101,7 +97,6 @@ class Hero extends GameObject {
         line(mouseX-10, mouseY, mouseX+10, mouseY);
         line(mouseX, mouseY-10, mouseX, mouseY+10);
       } else if (mouseX <= 100 && mouseY <= 100) cursor();
-      //print(velocity.x, velocity.y);
     }
     if (currentGun == 2) {
       image(machine, 200, 610, 200, 80);
@@ -125,17 +120,13 @@ class Hero extends GameObject {
       cursor();
     }
     
-    if (upkey == false) velocity.setMag(velocity.mag() *0);
-    
     //move around
     if (upkey || wkey) location.y = location.y - velocityspeed;
+    if (upkey == false) velocity.setMag(velocity.mag() *0);
     if (downkey || skey) location.y = location.y + velocityspeed;
     if (leftkey || akey) location.x = location.x - velocityspeed;
     if (rightkey || dkey) location.x = location.x + velocityspeed;
-      //direction.rotate(radians(5));
     
-    //println(currentGun);
-    //myWeapon.update();
     clicked = false;
     if (mouseReleased) {
       clicked = true; 
@@ -168,7 +159,6 @@ class Hero extends GameObject {
     
     //can't leave room
     if (roomX == 1 && roomY == 1) leave = true;
-//println(location.x);
     if (leave == true) {
       //north exit
       if (northRoom != white && location.y == 100 + 3 && location.x > width/2-50 && location.x <= width/2 + 50) {
@@ -208,20 +198,18 @@ class Hero extends GameObject {
       location = new PVector(width/2, height/2);
     }
 
-    //println(immune);
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == false) { 
-        //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (isCollidingWith(obj)) {
           if (immune > immunelength) {
-            //if (d <= size/2 + obj.size/2 && immune > 100) {
             lives = lives - 1;
             obj.lives = 0;
             immune = 0;
             myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
           } else if (immune < immunelength) {
+            myObjects.add(new Particle(obj.location.x, obj.location.y));
             obj.velocity = new PVector(0, 1);
             obj.velocity.rotate (random(PI, TWO_PI));
             obj.velocity.setMag(5);
@@ -231,8 +219,6 @@ class Hero extends GameObject {
       if (obj instanceof DroppedItem && isCollidingWith(obj)) {
         DroppedItem item = (DroppedItem) obj;
         if (item.gun == true) {
-          //myWeapon = item.w;
-          //currentGun = int (random(0, 5));
           ammo = ammo + 3;
           item.lives = 0;
         }

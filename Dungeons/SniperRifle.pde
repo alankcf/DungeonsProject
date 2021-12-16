@@ -26,6 +26,7 @@ class ShotGun extends Weapon {
         aimVector.rotate(random(-PI, PI));
         aimVector.setMag(bulletSpeed+damage);
         myObjects.add(new Bullet(aimVector, purple, 10));
+        ammo--;
       }
     }
   }
@@ -39,14 +40,13 @@ class Flamethrower extends Weapon {
   void shoot() {
     if (shotTimer >= threshold) {
       //using the mouse to aim
-      //PVector aimVector = new PVector(mouseX - myHero.location.x, mouseY - myHero.location.y);
-      //aimVector.setMag(bulletSpeed); //speed of bullet
       int i = 0;
       while (i < 50) {
         myObjects.add(new Fire());
         i++;
       } 
       shotTimer = 0;
+      ammo--;
     }
   }
 }

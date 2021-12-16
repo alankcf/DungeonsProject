@@ -24,12 +24,8 @@ class Follower extends Enemy {
   void show() {
     stroke(black);
     strokeWeight(2);
-    fill(blue);
-    //ellipse(location.x, location.y, size, size);
     fill(black);
     Action.show(location.x, location.y, size/1.5, size);
-    //textSize(10);
-    //text(lives, location.x, location.y);
 
     //healthbar
     rectMode(CORNER);
@@ -93,8 +89,6 @@ class shootFollower extends Enemy {
     fill(yellow);
     ellipse(location.x, location.y, size, size);
     fill(black);
-    //textSize(10);
-    //text(lives, location.x, location.y);
 
     //healthbar
     rectMode(CORNER);
@@ -110,18 +104,17 @@ class shootFollower extends Enemy {
 
   void act() {
     super.act();
+    
     if (lives <= 0) leave = true;
+    
     release++;
-    //println(velocity);
+    
     if (release > 200) {
       myObjects.add(new Follower (roomX, roomY, location.x, location.y));     
       release = 0;
       velocity = new PVector(random(-1, 1), random(-1, 1));
       //myObjects.add(new Bullet(location.x, location.y, myHero.location.x - location.x, myHero.location.y - location.y, white));
     }
-    //if (enterkey) myObjects.add(new Bullet(location.x, location.y, myHero.location.x - location.x, myHero.location.y - location.y, white));
-    //velocity = new PVector(random(-1, 1), random(-1, 1));
-    //velocity.setMag(0);
   }
 }
 
@@ -142,9 +135,6 @@ class Turret extends Enemy {
     strokeWeight(2);
     fill(yellow);
     ellipse(location.x, location.y, size, size);
-    //fill(black);
-    //textSize(10);
-    //text(lives, location.x, location.y);
 
     //healthbar
     rectMode(CORNER);
@@ -165,7 +155,7 @@ class Turret extends Enemy {
     if (shotTimer >= threshold) {
       //using the mouse to aim
       PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
-      aimVector.setMag(5); //instead of using bullet speed use a set number
+      aimVector.setMag(5); 
       myObjects.add(new Bullet(location.x, location.y, aimVector, purple, TURRET_BULLETSIZE)); //orgin, where to go, color, size
       shotTimer = 0;     
     }

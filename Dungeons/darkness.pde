@@ -20,7 +20,4 @@ class DarknessCell {
     fill(black, opacity); //0 = transparent
     rect(x, y, size, size);
   }
-
-  void act() {
-  }
 }
