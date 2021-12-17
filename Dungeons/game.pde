@@ -4,7 +4,7 @@ void game() {
   background(red);
   line(0, 0, width, height);
   line(0, height, width, 0);
-  
+ //println(myHero.roomX, myHero.roomY);
   northRoom = map.get(myHero.roomX, myHero.roomY-1);
   eastRoom = map.get(myHero.roomX + 1, myHero.roomY);
   southRoom = map.get(myHero.roomX, myHero.roomY+1);
@@ -33,11 +33,6 @@ void game() {
   stroke(black);
   rect(400, 400, 650, 650);
   
-  //xp indicator
-  //fill(blue);
-  //textSize(20);
-  //text(points, 680, 100);
-  
   //lose conditions
   if (myHero.lives == 0) mode = GAMEOVER;
   if (points >= pointswin) mode = GAMEOVER;
@@ -65,13 +60,14 @@ void game() {
     }
     j++;
   }
+  
   //image(map, 100, 100, 100, 100);
   //darkness
   int i = 0;
   while (i < num) {
     myCell = new DarknessCell(x[i], y[i], brickd);
     myCell.show();
-    myCell.act();
+    //myCell.act();
     i++;
   }
 

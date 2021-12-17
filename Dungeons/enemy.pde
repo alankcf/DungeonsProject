@@ -1,7 +1,7 @@
 class Enemy extends GameObject {
 
   Enemy() {
-    location = new PVector(width/2, height/2);
+    location = new PVector(random(200, 600), random(200, 600));
     velocity = new PVector(0, 0);
     lives = 100;
     roomX = 1;
@@ -10,7 +10,7 @@ class Enemy extends GameObject {
   }
 
   Enemy(int x, int y) {
-    location = new PVector(width/2, height/2);
+    location = new PVector(random(200, 600), random(200, 600));
     velocity = new PVector(0, 0);
     lives = 100;
     roomX = x;
@@ -33,9 +33,9 @@ class Enemy extends GameObject {
       strokeWeight(2);
       fill(yellow);
       ellipse(location.x, location.y, size, size);
-      fill(black);
-      textSize(10);
-      text(lives, location.x, location.y);
+      //fill(black);
+      //textSize(10);
+      //text(lives, location.x, location.y);
 
       //healthbar
       rectMode(CORNER);
@@ -52,14 +52,12 @@ class Enemy extends GameObject {
 
   void act() {
     super.act();
-    
+    if (lives <= 0) leave = true;
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
       if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing   
-        //float d = dist(obj.location.x, obj.location.y, location.x, location.y);
         if (isCollidingWith(obj)) {
-          //if (d <= size/2 + obj.size/2) {
           lives = lives - int(obj.velocity.mag());
           obj.lives = 0;
           myObjects.add(new Particle(location.x, location.y));
@@ -67,6 +65,7 @@ class Enemy extends GameObject {
             myObjects.add(new DroppedItem(location.x, location.y, roomX, roomY));
             myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 1));
             points++;
+            leave = true;
           }
         }
       }

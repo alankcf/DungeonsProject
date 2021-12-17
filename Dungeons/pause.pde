@@ -60,7 +60,7 @@ void pause() {
   if (lives.clicked && points > 0 && myHero.lives < 10) {
     myHero.lives++;
     points--;
-    clickedtimelives++;
+    clickedtimelives++; 
   }
 
   if (speed.clicked && points > 0) {

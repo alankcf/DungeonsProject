@@ -73,7 +73,7 @@ class Indicator extends GameObject {
       fill(red, t);
       textSize(size);
       text("-1", location.x, location.y);   
-    }
+    } 
   }
 
   void act() {

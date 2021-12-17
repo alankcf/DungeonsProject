@@ -17,6 +17,9 @@ void gameover() {
     textSize(20);
     fill(black);
     text("(you ran out of ammo)", width/2, height/2);
+  } else if (points >= pointswin) {
+    textSize(100);
+    text("YOU WON", width/2, height/3);
   }
   
   //reset

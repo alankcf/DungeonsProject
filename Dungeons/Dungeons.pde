@@ -8,6 +8,12 @@
 //make enemies PImages
 //stop weapons from changing when exit info
 
+//Features
+//Shop for new weapons
+//When buy all things in shop, level upgrades: speed, damage and health
+//Hero can't leave room until enemy killed; shop not acessible as well
+//click to change weapons, with up to five different weapons
+
 //Game Settings
 int ENEMYHP = 100;
 
@@ -203,7 +209,7 @@ void setup() {
     if (roomColor == blue) {
       myObjects.add(new Follower(a, b, random(100, 700), random(100, 700)));
     }
-    if (roomColor == black && myHero.roomX != 1 && myHero.roomY != 1) {
+    if (roomColor == black) {
       myObjects.add(new Enemy(a, b));
     }
     if (roomColor == green) {
