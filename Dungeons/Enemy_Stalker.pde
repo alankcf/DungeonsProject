@@ -78,27 +78,30 @@ class Follower extends Enemy {
 class shootFollower extends Enemy {
 
   int release;
+  AnimatedGif Action;
 
   shootFollower(int x, int y) {
     super(SHOOTFOLLOWER_HP, SHOOTFOLLOWER_SIZE, x, y);
+    Action = eDown;
   }
 
   void show() {
     stroke(black);
     strokeWeight(2);
-    fill(yellow);
-    ellipse(location.x, location.y, size, size);
+   // fill(yellow);
+    //ellipse(location.x, location.y, size, size);
+    Action.show(location.x, location.y, size/1.5, size);
     fill(black);
 
     //healthbar
     rectMode(CORNER);
     stroke(black);
     fill(black);
-    rect(location.x-25, location.y-40, 50, 5, 10);
+    rect(location.x-25, location.y-60, 50, 5, 10);
     stroke(green2);
     strokeWeight(1);
     fill(green2);
-    rect(location.x-25, location.y-40, lives/2, 5, 10);
+    rect(location.x-25, location.y-60, lives/2, 5, 10);
     rectMode(CENTER);
   }
 
@@ -121,6 +124,7 @@ class shootFollower extends Enemy {
 class Turret extends Enemy {
 
   int shotTimer, threshold;
+  PVector direction;
 
   Turret(int x, int y, float orginx, float orginy) {
     super(TURRET_HP, TURRET_SIZE, x, y);
@@ -128,6 +132,7 @@ class Turret extends Enemy {
     size = 90;
     shotTimer = 0;
     threshold = 70;
+    direction = new PVector(0.1, 0);
   }
 
   void show () {
@@ -135,7 +140,9 @@ class Turret extends Enemy {
     strokeWeight(2);
     fill(yellow);
     ellipse(location.x, location.y, size, size);
-
+    //rotate(direction.heading());
+    //image(turret, location.x, location.y, size, size);
+   
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -150,6 +157,7 @@ class Turret extends Enemy {
 
   void act() {
     shotTimer++;
+  
     super.act();
     if (lives <= 0) leave = true;
     if (shotTimer >= threshold) {

@@ -31,11 +31,7 @@ class Enemy extends GameObject {
     if (roomX == myHero.roomX && roomY == myHero.roomY) {
       stroke(black);
       strokeWeight(2);
-      fill(yellow);
-      ellipse(location.x, location.y, size, size);
-      //fill(black);
-      //textSize(10);
-      //text(lives, location.x, location.y);
+      image(rock, location.x, location.y, 50, 50);
 
       //healthbar
       rectMode(CORNER);

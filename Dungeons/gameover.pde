@@ -11,16 +11,13 @@ void gameover() {
   } else if (points >= pointswin) {
     textSize(100);
     text("YOU WON", width/2, height/3);
-  } else if (ammo <= 0) {
+  } else if (ammo <= 0 && points <= 0) {
     textSize(100);
     text("GAMEOVER", width/2, height/3);
     textSize(20);
     fill(black);
-    text("(you ran out of ammo)", width/2, height/2);
-  } else if (points >= pointswin) {
-    textSize(100);
-    text("YOU WON", width/2, height/3);
-  }
+    text("(you ran out of ammo and could not buy more)", width/2, height/2);
+  } 
   
   //reset
    if (mousePressed) {
@@ -33,6 +30,12 @@ void gameover() {
      gunmax = 2;
      damage = 0;
      level = 1;
+     addspeed = 0;
+     immuneplus = 0;
      livesbooster = 0;
+     speedbooster = 0;
+     clickedtimelives = 0;
+     clickedtimeshield = 0;
+     clickedtimeammo = 0;
    }
 }

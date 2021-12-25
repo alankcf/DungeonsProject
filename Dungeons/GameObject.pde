@@ -1,6 +1,5 @@
 class GameObject {
 
-  //common stuff
   int lives;
   PVector location;
   PVector velocity;

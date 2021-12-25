@@ -121,6 +121,12 @@ void unlocked() {
     exit3 = new Button("x", 507, 325, 35, 15, white, red, 0, 25); 
     exit3.show();
    
+   if (ammo <= 0 && times == 0) {
+     fill(red);
+     textSize(20);
+     text("Buy Ammo to Continue", width/2, height/2);
+   }
+   
    if (level == 2 && times == 0) {
      fill(white);
      stroke(white);

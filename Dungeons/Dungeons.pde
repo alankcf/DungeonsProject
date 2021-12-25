@@ -1,6 +1,6 @@
 //Alan Fung
 //Dungeons Project
-//November 2021
+//January 2022
 
 //making enemies that are different in term of behavior (angry enemies)
 //enemy boss
@@ -9,7 +9,8 @@
 //stop weapons from changing when exit info
 
 //Features
-//Shop for new weapons
+//Shop for new weapons, ammo, health, immunity length
+//Ammo
 //When buy all things in shop, level upgrades: speed, damage and health
 //Hero can't leave room until enemy killed; shop not acessible as well
 //click to change weapons, with up to five different weapons
@@ -20,7 +21,7 @@ int ENEMYHP = 100;
 int FOLLOWER_SIZE = 50;
 
 int SHOOTFOLLOWER_HP = 100;
-int SHOOTFOLLOWER_SIZE = 50;
+int SHOOTFOLLOWER_SIZE = 90;
 
 int TURRET_HP = 100;
 int TURRET_SIZE = 50;
@@ -110,12 +111,14 @@ int immunestart = 100;
 int immuneplus = 0;
 int immunelength = immunestart + immuneplus;
 
-//dropped images
+//images
 PImage healthpotion;
 PImage shotgun;
+PImage rock;
+PImage turret;
 
 //variables
-int points = 10; //xp
+int points = 0; //xp
 int damage = 0;
 int addspeed = 0;
 int pointswin = 25;
@@ -164,9 +167,11 @@ void setup() {
   eLeft = new AnimatedGif(7, 4, "skeleton/_left/Skeleton_0", ".png");
   eRight = new AnimatedGif(7, 4, "skeleton/_right/Skeleton_", ".png");
 
-  //dropped item images
+  //images
   healthpotion = loadImage("_0.png");
   shotgun = loadImage("shotgun.png");
+  rock = loadImage("rock.png");
+  turret = loadImage("turret.png");
   
   //Hero
   myHero = new Hero();

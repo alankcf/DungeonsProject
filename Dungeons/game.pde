@@ -36,7 +36,7 @@ void game() {
   //lose conditions
   if (myHero.lives == 0) mode = GAMEOVER;
   if (points >= pointswin) mode = GAMEOVER;
-  if (ammo <= 0) mode = GAMEOVER;
+  if (ammo <= 0 && points <= 0) mode = GAMEOVER;
   if (myHero.roomX == 8 && myHero.roomY == 8) mode = GAMEOVER;
 
   int j = 0;
@@ -48,13 +48,12 @@ void game() {
       myObj.act();
       if (myObj.lives <= 0) {
         myObjects.remove(j);
-        j--;
-        
+        j--;       
         } else if (myHero.lives <= 0) {
           myObjects.remove(j);
         } else if (points == pointswin) {
           myObjects.remove(j);
-        } else if (ammo <= 0) {
+        } else if (ammo <= 0 && points <= 0) {
           myObjects.remove(j);
         }
     }
@@ -114,4 +113,7 @@ void game() {
   if (info.clicked) {
     mode = INFO;
   }
+  
+  //ammo message
+  if (ammo <= 0 && points > 0) mode = UNLOCKED;
 }
