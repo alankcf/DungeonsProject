@@ -140,6 +140,7 @@ class Turret extends Enemy {
     strokeWeight(2);
     fill(yellow);
     ellipse(location.x, location.y, size, size);
+    //mouseX - myHero.location.x, mouseY - myHero.location.y
     //rotate(direction.heading());
     //image(turret, location.x, location.y, size, size);
    

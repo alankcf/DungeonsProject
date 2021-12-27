@@ -2,6 +2,7 @@ void game() {
 
   //background(darkblue);
   background(red);
+  strokeWeight(4);
   line(0, 0, width, height);
   line(0, height, width, 0);
  //println(myHero.roomX, myHero.roomY);
