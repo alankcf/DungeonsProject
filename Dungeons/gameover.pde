@@ -1,6 +1,6 @@
 void gameover() {
   background(orange, 200);
-  
+  cursor();
   if (myHero.lives == 0) {
     fill(purple);
     textSize(100);
@@ -32,6 +32,7 @@ void gameover() {
      level = 1;
      addspeed = 0;
      immuneplus = 0;
+     immunestart = 100;
      livesbooster = 0;
      speedbooster = 0;
      clickedtimelives = 0;

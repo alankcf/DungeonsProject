@@ -30,7 +30,6 @@ class GameObject {
   boolean inRoomWith(GameObject myObj) {
     return roomX == myObj.roomX && roomY == myObj.roomY;
   }
-  
 
   boolean isCollidingWith(GameObject myObj) {
     float d = dist(myObj.location.x, myObj.location.y, location.x, location.y);

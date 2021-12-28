@@ -1,5 +1,5 @@
 void intro() {
-
+  cursor();
   myGif.show(); 
   myButton.show();
 

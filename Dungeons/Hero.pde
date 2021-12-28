@@ -72,9 +72,9 @@ class Hero extends GameObject {
     super.act();
  
     immune++;
-
+    
     if (myHero.lives + livesbooster > 10) lives = 10;
-
+    
     shotTimer ++;
     
     //gun type indicator

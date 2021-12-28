@@ -201,7 +201,7 @@ void setup() {
       tempx = 0;
     }
   } 
-  if (myHero.roomX != 1 || myHero.roomY != 1) leave = false;
+  //if (myHero.roomX != 1 || myHero.roomY != 1) leave = false;
   
   //loading enemies from minimap
   int a = 0;

@@ -35,21 +35,21 @@ void pause() {
   if (gunmax != 5) addgun.show();
   
   //uplock weapons
-  if (gunmax == 2) { //unlock machine print("j");
+  if (gunmax == 2 && points > 1) { //unlock machine print("j");
     image(machine, width/2+100, 610, 200, 70);
     textSize(20);
     fill(white);
     text("MACHINE GUN", width/2-100, 610);
   }
   
-  if (gunmax == 3) {
+  if (gunmax == 3 && points > 1) {
     image(shotgun, width/2+100, 610, 200, 40);
     textSize(20);
     fill(white);
     text("SHOTGUN", width/2-100, 610);
   }
   
-  if (gunmax == 4) {
+  if (gunmax == 4 && points > 1) {
     image(flamethrower, width/2+100, 610, 100, 40);
     textSize(20);
     fill(white);
