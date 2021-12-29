@@ -57,7 +57,7 @@ void game() {
         } else if (ammo <= 0 && points <= 0) {
           myObjects.remove(j);
         }
-    }
+    } 
     j++;
   }
   

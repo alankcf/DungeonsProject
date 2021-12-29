@@ -111,7 +111,7 @@ void pause() {
 
 void unlocked() {
     int times = 0;
-  
+    cursor();
     fill(orange);
     stroke(black);
     strokeWeight(2);

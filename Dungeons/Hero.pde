@@ -165,28 +165,28 @@ class Hero extends GameObject {
         roomY--;
         location = new PVector (width/2, 700 - 3-10);
         cleanUp();
-        leave = false;
+        //leave = false;
       }
       //east exit
       if (eastRoom != white && location.x >= 700 - 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
         roomX++;
         location = new PVector (width*0.1+30, height/2);
         cleanUp();
-        leave = false;
+        //leave = false;
       }
       //west exit
       if (westRoom != white && location.x <= 100 + 3 && location.y > height/2-50 && location.y <= height/2 + 50) {
         roomX--;
         location = new PVector (700 - 3, height/2);
         cleanUp();
-        leave = false;
+        //leave = false;
       }
       //south exit
       if (southRoom != white && location.y >= 700 - 3 && location.x > height/2-50 && location.x <= height/2 + 50) {
         roomY++;
         location = new PVector (width/2, height*0.1+50);
         cleanUp();
-        leave = false;
+        //leave = false;
       }
     }
     //reset Hero
