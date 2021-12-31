@@ -41,7 +41,7 @@ class Follower extends Enemy {
 
   void act() {
     super.act(); //calls only enemy, in which the enemy functions calls the gameobject
-
+    leave();
     shotTimer++;
     timer++;
 
@@ -107,7 +107,7 @@ class shootFollower extends Enemy {
 
   void act() {
     super.act();
-    
+    leave();
     if (lives <= 0) leave = true;
     
     release++;
@@ -158,8 +158,8 @@ class Turret extends Enemy {
 
   void act() {
     shotTimer++;
-  
     super.act();
+    leave();
     if (lives <= 0) leave = true;
     if (shotTimer >= threshold) {
       //using the mouse to aim
@@ -169,4 +169,16 @@ class Turret extends Enemy {
       shotTimer = 0;     
     }
   }
+}
+void leave() {
+   int i = 0;
+   while (i < myObjects.size()) {
+      GameObject obj = myObjects.get(i);
+      if (obj instanceof Hero) {
+        if (obj.inRoomWith (myHero)) {
+          leave = false;
+        }        
+      }
+      i++;
+    }
 }

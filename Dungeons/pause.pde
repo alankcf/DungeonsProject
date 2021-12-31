@@ -23,16 +23,72 @@ void pause() {
   
   //buttons
   stroke(purple);
-  speed = new Button("+", 250, 410, 100, 60, blue, white, 20, 40); 
-  lives = new Button("+", 250, 310, 100, 60, blue, white, 20, 40); 
+  speed = new Button("+", 250, 410, 95, 50, blue, white, 20, 40); 
+  lives = new Button("+", 250, 310, 95, 50, blue, white, 20, 40); 
   exit = new Button("x", 650, 130, 40, 30, white, red, 0, 40); 
-  addammo = new Button ("+", 250, 510, 100, 60, blue, white, 20, 40); 
+  addammo = new Button ("+", 250, 510, 95, 50, blue, white, 20, 40); 
   addgun = new Button(" ", width/2+100, 610, 200, 70, darkblue, white, 20, 40);
   speed.show();
   lives.show();
   exit.show();
   addammo.show();
-  if (gunmax != 5) addgun.show();
+  if (gunmax != 5 && points > 1) addgun.show();
+  
+  //descriptions
+  
+  //lives
+  if (mouseY < height/2-100 && mouseY > height/2-200) {
+    rectMode(CORNER);
+    fill(white, 200);
+    noStroke();
+    rect(2.7*width/8, 240, 100, 50, 5, 5, 5, 0);
+    triangle(2.7*width/8, 290, 2.75*width/8, 290, 2.7*width/8, 300);
+    textSize(15);
+    fill(red);
+    text("+1 Lives", 3.2*width/8, 260);
+    text("Cost: -1 XP", 3.2*width/8, 280);
+    rectMode(CENTER);
+  }
+  
+  if (mouseY < height/2+50 && mouseY > height/2-50) {
+    rectMode(CORNER);
+    fill(white, 200);
+    noStroke();
+    rect(2.7*width/8, 340, 105, 50, 5, 5, 5, 0);
+    triangle(2.7*width/8, 390, 2.75*width/8, 390, 2.7*width/8, 400);
+    textSize(15);
+    fill(darkyellow);
+    text("+1 Shield Time", 3.22*width/8, 360);
+    text("Cost: -1 XP", 3.22*width/8, 380);
+    rectMode(CENTER);
+  }
+  
+  if (mouseY < height/2+200 && mouseY > height/2+100) {
+    rectMode(CORNER);
+    fill(white, 200);
+    noStroke();
+    rect(2.7*width/8, 440, 100, 50, 5, 5, 5, 0);
+    triangle(2.7*width/8, 490, 2.75*width/8, 490, 2.7*width/8, 500);
+    textSize(15);
+    fill(brown);
+    text("+5 Ammo", 3.2*width/8, 460);
+    text("Cost: -1 XP", 3.2*width/8, 480);
+    fill(white, 200);
+    rectMode(CENTER);
+  }
+  
+  if (mouseY < height/2+300 && mouseY > height/2+200 && points > 1) {
+    rectMode(CORNER);
+    fill(white, 200);
+    noStroke();
+    rect(5*width/8, 540, 100, 50, 5, 5, 5, 0);
+    triangle(5*width/8, 590, 5.05*width/8, 590, 5*width/8, 600);
+    textSize(15);
+    fill(darkblue);
+    text("Cost: -2 XP", 5.5*width/8, 570);
+    fill(white, 200);
+    rectMode(CENTER);
+  }
   
   //uplock weapons
   if (gunmax == 2 && points > 1) { //unlock machine print("j");
@@ -70,7 +126,7 @@ void pause() {
   }
   if (ammo > 50) ammo = 50;
   if (addammo.clicked && points > 0 && ammo < 50) {
-    ammo = ammo + 2;
+    ammo = ammo + 5;
     points--;
     clickedtimeammo++;
   }

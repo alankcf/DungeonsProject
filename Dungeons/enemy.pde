@@ -52,12 +52,12 @@ class Enemy extends GameObject {
     int i = 0;
     while (i < myObjects.size()) {
       GameObject obj = myObjects.get(i);
-      if (obj instanceof Hero) {
-        if (obj.inRoomWith (myHero)) {
-          //println("a", roomX, roomY, lives);
-          leave = false;
-        } 
-      } else if (lives <= 0) leave = true;
+      //if (obj instanceof Hero) {
+      //  if (obj.inRoomWith (myHero)) {
+      //    //println("a", roomX, roomY, lives);
+      //    leave = false;
+      //  } 
+      //} else if (lives <= 0) leave = true;
       if (obj instanceof Bullet && ((Bullet) obj).good == true) { //downsizing   
         if (isCollidingWith(obj)) {
           lives = lives - int(obj.velocity.mag());
