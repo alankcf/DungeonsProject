@@ -118,7 +118,7 @@ PImage rock;
 PImage turret;
 
 //variables
-int points = 10; //xp
+int points = 0; //xp
 int damage = 0;
 int addspeed = 0;
 int pointswin = 25;
