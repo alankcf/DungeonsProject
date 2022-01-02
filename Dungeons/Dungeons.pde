@@ -118,7 +118,7 @@ PImage rock;
 PImage turret;
 
 //variables
-int points = 0; //xp
+int points = 10; //xp
 int damage = 0;
 int addspeed = 0;
 int pointswin = 25;
@@ -127,6 +127,8 @@ int level = 1;
 int clickedtimelives, clickedtimeshield, clickedtimeammo = 0;
 int livesbooster, speedbooster = 0;
 int gunmax = 2;
+int leveltimes = 0;
+int guntimes = 0;
 
 //booleans
 boolean leave = false;
@@ -145,7 +147,7 @@ void setup() {
   //font = createFont("FredokaOne-Regular.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
-  
+
   //weapons
   pistol = loadImage("pistol.png");
   sniper = loadImage("sniper.png");
@@ -230,7 +232,7 @@ void setup() {
 
 void draw() {
   click();
-
+  
   //modes
   if (mode == INTRO) {
     intro();

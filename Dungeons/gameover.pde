@@ -38,5 +38,7 @@ void gameover() {
      clickedtimelives = 0;
      clickedtimeshield = 0;
      clickedtimeammo = 0;
+     leveltimes = 0;
+     guntimes = 0;
    }
 }

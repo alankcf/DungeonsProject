@@ -166,7 +166,7 @@ void pause() {
 }
 
 void unlocked() {
-    int times = 0;
+    
     cursor();
     fill(orange);
     stroke(black);
@@ -177,13 +177,13 @@ void unlocked() {
     exit3 = new Button("x", 507, 325, 35, 15, white, red, 0, 25); 
     exit3.show();
    
-   if (ammo <= 0 && times == 0) {
+   if (ammo <= 0) {
      fill(red);
      textSize(20);
      text("Buy Ammo to Continue", width/2, height/2);
    }
    
-   if (level == 2 && times == 0) {
+   if (level == 2 && leveltimes == 0) {
      fill(white);
      stroke(white);
      textSize(20);
@@ -199,7 +199,7 @@ void unlocked() {
      text("Speed +1", width/2, height/2+60);
    }
    
-   if (level == 3 && times == 0) {
+   if (level == 3 && leveltimes == 1) {
      fill(white);
      stroke(white);
      textSize(20);
@@ -215,7 +215,7 @@ void unlocked() {
      text("Speed +1", width/2, height/2+60);
    }
    
-   if (level == 4 && times == 0) {
+   if (level == 4 && leveltimes == 2) {
      fill(white);
      stroke(white);
      textSize(20);
@@ -231,7 +231,7 @@ void unlocked() {
      text("Speed +1", width/2, height/2+60);
    }
    
-   if (gunmax == 3) { //unlock machine
+   if (gunmax == 3 && guntimes == 0) { //unlock machine
       fill(white);
       stroke(white);
       textSize(20);
@@ -245,7 +245,7 @@ void unlocked() {
       text("MACHINE GUN", width/2, height/2+50);
    }
    
-   if (gunmax == 4) {
+   if (gunmax == 4 && guntimes == 1) {
      fill(white);
      stroke(white);
      textSize(20);
@@ -259,7 +259,7 @@ void unlocked() {
       text("SHOTGUN", width/2, height/2+50);
    }
    
-   if (gunmax == 5) {
+   if (gunmax == 5 && guntimes == 2) {
       fill(white);
       stroke(white);
       textSize(20);
@@ -274,8 +274,19 @@ void unlocked() {
    }
   
   if (exit3.clicked) mode = PAUSE;
-    
-  if (exit3.clicked && level == 2) clickedonce2 = true;
-  if (exit3.clicked && level == 3) clickedonce3 = true;
-  if (exit3.clicked && level == 4) clickedonce4 = true;
+  if (exit3.clicked && level == 2) {
+    clickedonce2 = true;
+    leveltimes = 1;
+  }
+  if (exit3.clicked && level == 3) {
+    clickedonce3 = true;
+    leveltimes = 2;
+  }
+  if (exit3.clicked && level == 4) {
+    clickedonce4 = true; 
+    leveltimes = 3;
+  }
+  if (exit3.clicked && gunmax == 3) guntimes = 1;
+  if (exit3.clicked && gunmax == 4) guntimes = 2;
+  if (exit3.clicked && gunmax == 5) guntimes = 3;
 }
