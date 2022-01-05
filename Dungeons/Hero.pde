@@ -123,9 +123,9 @@ class Hero extends GameObject {
     //move around
     if (upkey || wkey) location.y = location.y - velocityspeed;
     if (upkey == false) velocity.setMag(velocity.mag() *0);
-    if (downkey || skey) location.y = location.y + velocityspeed;
-    if (leftkey || akey) location.x = location.x - velocityspeed;
-    if (rightkey || dkey) location.x = location.x + velocityspeed;
+    if (downkey || skey) velocity.y = velocity.y + velocityspeed;
+    if (leftkey || akey) velocity.x = velocity.x - velocityspeed;
+    if (rightkey || dkey) velocity.x = velocity.x + velocityspeed;
     
     clicked = false;
     if (mouseReleased) {
@@ -134,14 +134,12 @@ class Hero extends GameObject {
     }
 
     if (clicked == true && mode == GAME) currentGun++;
-    if (currentGun == gunmax && clicked == true) currentGun = 0;
+    if (currentGun >= gunmax && clicked == true) currentGun = 0;
 
     myGuns[currentGun].update();
     if (spacekey) myGuns[currentGun].shoot();
     
-    if (velocity.mag() > 3) {
-      velocity.setMag(3);
-    }
+    if (velocity.mag() >= velocityspeed) velocity.setMag(velocityspeed);
     
     //animations
     //if (velocity.x != 0 || velocity.y != 0) {
@@ -153,9 +151,6 @@ class Hero extends GameObject {
         else if (leftkey || akey) currentAction = manLeft;
      // }
   //  }
-    //println(roomX, roomY);
-    //if (leave == true) print(true);
-    //if (leave == false) print (false);
     
     //can't leave room
     if (roomX == 1 && roomY == 1) leave = true;
