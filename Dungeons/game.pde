@@ -91,6 +91,28 @@ void game() {
   //fill(purple);
   //square(50 + myHero.roomX*10, 50 + myHero.roomY*10, size);
   
+  //freeze
+  strokeWeight(1);
+  rectMode(CORNER);
+  fill(freezeblue);
+  stroke(freezeblue);
+  rect(550, 670, 150, 20, 200);
+  fill(freezeblue2);
+  stroke(freezeblue2);
+  textSize(10);
+  rect(550, 670, freeze/2, 20, 200); 
+  text("Click SHIFT to Freeze", 620, 655);
+  image(snow, (550+freeze/2)-(freeze/4), 680, 20, 20); 
+  if (freeze <= 300) freeze++; else freeze = 300;
+  if (shiftkey && freeze >= 300) {
+    ices = true;
+    freeze = 0;
+    freezetimer = 0;
+  }
+  if (ices == true) freezetimer++; 
+  if (freezetimer >= freezelength) ices = false;
+  //println(freeze, freezetimer);
+  
   //ammo
   rectMode(CORNER);
   fill(darkyellow);

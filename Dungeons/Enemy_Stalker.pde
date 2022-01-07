@@ -26,7 +26,7 @@ class Follower extends Enemy {
     strokeWeight(2);
     fill(black);
     Action.show(location.x, location.y, size/1.5, size);
-
+    if (ices == true) image(ice, location.x-15, location.y + 15, 30, 30);  
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -60,12 +60,12 @@ class Follower extends Enemy {
     } else {
       velocity = new PVector(random(0, 3), random(0, 3));
       velocity.setMag(1);
-    }
+    } if (ices == true) velocity.setMag(0);
     
     if (lives <= 0) leave = true;
     
     //println(immune);
-    if (immune > immunelength) {
+    if (immune > immunelength  && ices == false) {
       if (myHero.location.x - location.x < 5 && myHero.location.y - location.y < 5) {
         myHero.lives = myHero.lives - 1;
         myObjects.add(new Indicator(location.x, location.y, roomX, roomY, 2));
@@ -101,7 +101,7 @@ class shootFollower extends Enemy {
     //ellipse(location.x, location.y, size, size);
     Action.show(location.x, location.y, size/1.5, size);
     fill(black);
-
+    if (ices == true) image(ice, location.x-15, location.y + 15, 30, 30);
     //healthbar
     rectMode(CORNER);
     stroke(black);
@@ -130,10 +130,9 @@ class shootFollower extends Enemy {
     
     release++;
     
-    if (release > 200) {
+    if (release > 220 && ices == false) {
       myObjects.add(new Follower (roomX, roomY, location.x, location.y));     
       release = 0;
-      velocity = new PVector(random(-1, 1), random(-1, 1));
       //myObjects.add(new Bullet(location.x, location.y, myHero.location.x - location.x, myHero.location.y - location.y, white));
     }
   }
@@ -158,6 +157,10 @@ class Turret extends Enemy {
     strokeWeight(2);
     fill(yellow);
     ellipse(location.x, location.y, size, size);
+    if (ices == true) {
+      image(ice, location.x-20, location.y + 35, 50, 50); 
+      image(ice, location.x+30, location.y + 20, 50, 50); 
+    }
     //mouseX - myHero.location.x, mouseY - myHero.location.y
     //rotate(direction.heading());
     //image(turret, location.x, location.y, size, size);
@@ -188,7 +191,7 @@ class Turret extends Enemy {
       i++;
     }
     if (lives <= 0) leave = true;
-    if (shotTimer >= threshold) {
+    if (shotTimer >= threshold && ices == false) {
       //using the mouse to aim
       PVector aimVector = new PVector(myHero.location.x - location.x, myHero.location.y - location.y);
       aimVector.setMag(5); 

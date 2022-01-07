@@ -1,6 +1,6 @@
 class Particle extends GameObject {
 
-  int t; //transparancy   
+  int t; //transparancy  
 
   Particle(float x, float y) {
     lives = 1;
@@ -15,7 +15,7 @@ class Particle extends GameObject {
   }
 
   //override
-  void show () {
+  void show () {  
     strokeWeight(2);
     stroke(black);
     fill(orange, t);

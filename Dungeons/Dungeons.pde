@@ -14,6 +14,7 @@
 //When buy all things in shop, level upgrades: speed, damage and health
 //Hero can't leave room until enemy killed; shop not acessible as well
 //click to change weapons, with up to five different weapons
+//Freeze ability
 
 //Game Settings
 int ENEMYHP = 100;
@@ -39,7 +40,7 @@ int SHOTGUN_SPEED = 5;
 int FLAMETHROWER_THRESHOLD = 7;
 int FLAMETHROWER_SPEED = 10;
 
-boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey, wkey, akey, skey, dkey;
+boolean upkey, downkey, leftkey, rightkey, spacekey, enterkey, shiftkey, wkey, akey, skey, dkey;
 AnimatedGif myGif, manUp, manDown, manRight, manLeft;
 AnimatedGif eUp, eDown, eRight, eLeft;
 Hero myHero;
@@ -72,6 +73,8 @@ color darkred = #F25D5D;
 color grey = #D6D6D6;
 color mango = #FF6A5A;
 color green2 = #00ED2D;
+color freezeblue = #6ACCFF;
+color freezeblue2 = #4982A0;
 
 //Buttons
 Button myButton;
@@ -116,6 +119,8 @@ PImage healthpotion;
 PImage shotgun;
 PImage rock;
 PImage turret;
+PImage ice;
+PImage snow;
 
 //variables
 int points = 0; //xp
@@ -129,12 +134,16 @@ int livesbooster, speedbooster = 0;
 int gunmax = 2;
 int leveltimes = 0;
 int guntimes = 0;
+int freezelength = 200;
+int freeze = 0;
+int freezetimer = 0;
 
 //booleans
 boolean leave = false;
 boolean clickedonce2 = false;
 boolean clickedonce3 = false;
 boolean clickedonce4 = false;
+boolean ices;
 
 //weapons images
 PImage pistol, sniper, machine, shotsgun, flamethrower;
@@ -174,6 +183,8 @@ void setup() {
   shotgun = loadImage("shotgun.png");
   rock = loadImage("rock.png");
   turret = loadImage("turret.png");
+  ice = loadImage("f.png");
+  snow = loadImage("snow.png");
   
   //Hero
   myHero = new Hero();
@@ -257,6 +268,7 @@ void keyPressed() {
   if (keyCode == LEFT)  leftkey  = true;
   if (keyCode == RIGHT) rightkey = true;
   if (keyCode == ENTER) enterkey = true;
+  if (keyCode == SHIFT) shiftkey = true;
   if (keyCode == 'W')   wkey = true;
   if (keyCode == 'S')   skey = true;
   if (keyCode == 'A')   akey = true;
@@ -270,6 +282,7 @@ void keyReleased() {
   if (keyCode == LEFT)  leftkey  = false;
   if (keyCode == RIGHT) rightkey = false;
   if (keyCode == ENTER) enterkey = false;
+  if (keyCode == SHIFT) shiftkey = false;
   if (keyCode == 'W')   wkey = false;
   if (keyCode == 'S')   skey = false;
   if (keyCode == 'A')   akey = false;
