@@ -151,9 +151,7 @@ PImage pistol, sniper, machine, shotsgun, flamethrower;
 void setup() {
   size(800, 800);
   mode = INTRO;
-  //font = createFont("Raleway-Black.ttf", 2);
   font = createFont("BakbakOne-Regular.ttf", 2);
-  //font = createFont("FredokaOne-Regular.ttf", 2);
   map = loadImage("Map.png");
   rectMode(CENTER);
 
@@ -214,7 +212,6 @@ void setup() {
       tempx = 0;
     }
   } 
-  //if (myHero.roomX != 1 || myHero.roomY != 1) leave = false;
   
   //loading enemies from minimap
   int a = 0;

@@ -65,7 +65,7 @@ class Hero extends GameObject {
     fill(white);
     textSize(15);
     if (level < 4) text(level, location.x, location.y-50);
-    if (level >= 4) text("MAX Level", location.x, location.y-50);
+    if (level >= 4) text("MAX", location.x, location.y-50);
   }
 
   void act() {

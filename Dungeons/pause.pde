@@ -118,7 +118,7 @@ void pause() {
     points--;
     clickedtimelives++; 
   }
-
+  
   if (speed.clicked && points > 0) {
     immunelength++;  
     points--;
@@ -136,7 +136,7 @@ void pause() {
     mode = UNLOCKED;
   }
   
-  if (clickedtimeammo >= 1 && clickedtimeshield >= 1 && clickedtimeammo >= 1  && clickedonce2 == false) {
+  if (clickedtimelives >= 1 && clickedtimeshield >= 1 && clickedtimeammo >= 1  && clickedonce2 == false) {
     level = 2;
     damage = 2;
     livesbooster = 1;
@@ -145,7 +145,7 @@ void pause() {
     //println(myHero.lives, myHero.velocityspeed);
   }
   
-  if (clickedtimeammo >= 2 && clickedtimeshield >= 2 && clickedtimeammo >= 2  && clickedonce3 == false) {
+  if (clickedtimelives >= 2 && clickedtimeshield >= 2 && clickedtimeammo >= 2  && clickedonce3 == false) {
     level = 3;
     damage = 4;
     livesbooster = 1;
@@ -154,7 +154,7 @@ void pause() {
     //println(myHero.lives, myHero.velocityspeed);
   }
   
-  if (clickedtimeammo >= 3 && clickedtimeshield >= 3 && clickedtimeammo >= 3  && clickedonce4 == false) {
+  if (clickedtimelives >= 3 && clickedtimeshield >= 3 && clickedtimeammo >= 3  && clickedonce4 == false) {
     level = 4;
     damage = 5;
     livesbooster = 1;
